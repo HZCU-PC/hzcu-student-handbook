@@ -3,3 +3,4 @@ site/
 *.log
 .DS_Store
 __pycache__/
+.dsh-preview/

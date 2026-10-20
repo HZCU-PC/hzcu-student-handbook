@@ -53,6 +53,7 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/light-home.css
 
 nav:
   - 首页 · 前言: index.md

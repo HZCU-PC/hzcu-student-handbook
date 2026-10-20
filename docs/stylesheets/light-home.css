@@ -1,0 +1,416 @@
+/* ===== ZJUers 风格轻首页 · 样式 =====
+   移植自 https://zjuers.com/ 的公开页面样式（ZUI/Bootstrap 网格 + 自定义 CSS）。
+   原站核心配色：主色 #459df5、页面底色 #f2f2f2、卡片 #fff、正文 #808080。
+   所有规则都限定在 .zjuers-light 作用域内，避免影响 Material 主题和本站其它页面。 */
+
+.zjuers-light {
+  --z-bg: #f2f2f2;
+  --z-card: #ffffff;
+  --z-text: #808080;
+  --z-sub: #959595;
+  --z-title: #484848;
+  --z-line: #e6e6e6;
+  --z-blue: #459df5;
+  --z-blue-soft: #64b5f6;
+  --z-hover-text: #ffffff;
+  --z-shadow: rgba(0, 0, 0, .08);
+}
+
+/* 深色模式：跟随 Material 的配色切换 */
+[data-md-color-scheme="slate"] .zjuers-light {
+  --z-bg: #1e2129;
+  --z-card: #262b36;
+  --z-text: #c5c9d3;
+  --z-sub: #9aa0ad;
+  --z-title: #e8eaed;
+  --z-line: #3a4150;
+  --z-shadow: rgba(0, 0, 0, .4);
+}
+
+/* ---------- 页面容器 ---------- */
+.zjuers-light {
+  position: relative;
+  background: var(--z-bg);
+  margin: -0.6rem -0.8rem 0;
+  /* 左侧留出站点图标的位置 */
+  padding: 0.8rem 0.4rem 3rem 3.2rem;
+  border-radius: 0.2rem;
+}
+
+/* 站点图标：绝对定位在左上角，"轻首页"标题那一行的左边。
+   容器顶部正好位于标题下方（标题自带 40px 下边距），所以用负偏移把它提到标题同高。 */
+/* 站点图标：绝对定位在左上角，"轻首页"标题左边那一行的位置。
+   容器顶部正好在标题下方（标题自带 40px 下边距），所以用负偏移把它提到标题同一行。
+   窄屏（无侧边栏）时贴到容器左内边距处。 */
+.zj-logo-mark {
+  position: absolute;
+  top: -2.6rem;
+  left: 0.2rem;
+  z-index: 2;
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  animation: zj-spin 3.7s linear infinite;
+}
+
+@media (min-width: 992px) {
+  .zj-logo-mark {
+    /* 桌面端侧边栏到正文之间有约 24px 空隙，正好放下图标 */
+    left: -1.75rem;
+    top: -2.55rem;
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* 用满内容区宽度，并隐藏本页无用的右侧目录 */
+.md-content__inner:has(.zjuers-light) {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Material 默认把 .md-grid 限制在 61rem(976px)，导致导航卡片过窄、文字折行。
+   本页放宽到 76rem(1216px)，与原站 1200px 的容器宽度一致。 */
+.md-grid:has(.zjuers-light) {
+  max-width: 76rem;
+}
+
+/* 本页没有标题锚点，隐藏右侧目录栏 */
+.md-sidebar--secondary:has(~ .md-content .zjuers-light) {
+  display: none;
+}
+
+.zjuers-light * {
+  box-sizing: border-box;
+}
+
+/* ---------- 顶部标题 ---------- */
+.zj-head {
+  padding: .6rem 0 0;
+  text-align: center;
+}
+
+.zj-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.zj-logo a,
+.zj-logo span {
+  color: var(--z-title);
+}
+
+/* 标题图片：用占位图代替文字，替换成自己的标题图即可 */
+.zj-logo img.zj-logo-title {
+  display: block;
+  height: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  width: auto;
+  max-width: 60vw;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+@keyframes zj-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@media (min-width: 992px) {
+  .zj-logo img.zj-logo-title {
+    height: 36px;
+    min-height: 36px;
+    max-height: 36px;
+  }
+}
+
+/* ---------- 搜索区 ---------- */
+.zj-sousuo {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 1.6rem 0.6rem 2.4rem;
+}
+
+.zj-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background: var(--z-card);
+  border: 1px solid var(--z-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.zj-search-icon {
+  width: 41px;
+  height: 41px;
+  min-width: 41px;
+  max-width: 41px;
+  min-height: 41px;
+  max-height: 41px;
+  flex: 0 0 auto;
+  margin-left: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: contain;
+  opacity: .95;
+  transition: transform .25s ease;
+}
+
+.zj-search-icon:hover {
+  transform: scale(1.08);
+}
+
+.zj-search-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 12px 0 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--z-text);
+}
+
+.zj-search-input::placeholder {
+  color: var(--z-sub);
+}
+
+.zj-search-btn {
+  flex: none;
+  width: 80px;
+  height: 100%;
+  background: var(--z-card);
+  border: none;
+  border-left: 1px solid var(--z-line);
+  color: var(--z-blue-soft);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+
+.zj-search-btn:hover {
+  background: var(--z-blue);
+  color: #fff;
+}
+
+/* 搜索引擎切换下拉：定位在搜索框正下方 */
+.zj-engine {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+  padding: 14px 0 6px;
+  background: var(--z-card);
+  border: 1px solid var(--z-line);
+  border-radius: 8px;
+  box-shadow: 0 6px 22px 0 var(--z-shadow);
+}
+
+.zj-engine.zj-open {
+  display: block;
+}
+
+.zj-engine-head {
+  padding: 0 15px 10px;
+  font-size: 14px;
+  color: var(--z-sub);
+}
+
+/* 三个选项横排，固定 3 列。
+   用 ID 选择器是为了压过浏览器默认的 ul 样式（ID 优先级高于类）。 */
+#zj-engine-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+#zj-engine-list > li {
+  display: flex;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 9px 6px;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--z-text);
+  cursor: pointer;
+  list-style: none;
+  transition: background .25s ease, color .25s ease;
+}
+
+#zj-engine-list > li:hover {
+  background: var(--z-blue);
+  color: #fff;
+}
+
+#zj-engine-list > li.zj-active {
+  background: var(--z-blue);
+  color: #fff;
+}
+
+/* 每个引擎前面的图标（原来是蓝点，改用它自己的图标） */
+.zj-engine-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.zj-rec {
+  margin-top: 12px;
+  padding-left: 4px;
+  font-size: 14px;
+}
+
+.zj-rec a {
+  color: var(--z-sub);
+}
+
+.zj-rec a:hover {
+  color: var(--z-blue);
+}
+
+/* ---------- 分类网格 ---------- */
+.zj-grid {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.zj-col {
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+.zj-card {
+  margin-bottom: 10px;
+}
+
+.zj-name {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--z-text);
+}
+
+/* 注意：主题的 `.md-typeset ul` 规则优先级高于单独的类选择器，
+   会把 display 强制成 flow-root 并加上 margin，导致按钮挤成一列。
+   因此这里用 `.md-typeset` 前缀提高优先级，并对布局关键属性加 !important。 */
+.md-typeset ul.zj-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.md-typeset ul.zj-links > li {
+  display: block !important;
+  width: 33.3333% !important;
+  max-width: 33.3333% !important;
+  flex: 0 0 33.3333% !important;
+  margin: 0 0 .5rem 0 !important;
+  padding: 0 3px !important;
+  list-style: none !important;
+}
+
+.zj-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 4px 4px;
+  background: var(--z-card);
+  border-radius: 2px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.25;
+  color: var(--z-text);
+  text-decoration: none;
+  transition: all .3s ease;
+}
+
+.zj-links a:hover {
+  background: var(--z-blue);
+  color: var(--z-hover-text);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ---------- 页脚 ---------- */
+.zj-footer {
+  padding: 15px 10px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--z-sub);
+}
+
+.zj-footer a {
+  color: var(--z-sub);
+}
+
+.zj-footer a:hover {
+  color: var(--z-blue);
+}
+
+/* ---------- 响应式（对齐原站断点） ---------- */
+@media (min-width: 768px) {
+  .zj-col {
+    width: 50%;
+  }
+
+  .zj-sousuo {
+    padding: 10px 0.6rem 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .zj-col {
+    width: 33.3333%;
+    padding: 0 8px;
+    margin-bottom: 16px;
+  }
+}
+
+/* ---------- 可访问性 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .zj-links a,
+  .zj-search-btn,
+  .zj-engine-list li {
+    transition: none;
+  }
+
+  .zj-logo-mark {
+    animation: none;
+  }
+}
