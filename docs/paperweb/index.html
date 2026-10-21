@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>双轨时间线 · AI 论文的两种读法</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body data-page="home">
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html">双轨时间线<span>1986—2026</span></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">读本</a>
+      <a href="timeline.html" data-page="timeline">时间线工作台</a>
+      <a href="sources.html" data-page="sources">站点导航</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn btn-primary btn-sm" id="openIndex">速查索引 /</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section style="padding-top:0">
+    <div class="hero">
+      <div class="eyebrow" style="color:#8595a4">45 篇 · 41 年 · 4 个时代 · 两次范式之外的四次转移</div>
+      <h1>AI 论文的两种读法</h1>
+      <p class="sub">一条轨道收「改变了行业」的突破，一条轨道收「定义了当期 SOTA」的前沿。
+        同一把尺子上量两件事——这不是榜单，而是一部可以横向浏览、纵向下钻、按年代缩放的技术史。</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="timeline.html">进入时间线工作台</a>
+        <a class="btn btn-ghost on-light" href="paper.html?id=B01">从 1986 开始读</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>45</b><span>篇论文</span></div>
+        <div><b>41</b><span>年跨度</span></div>
+        <div><b>4</b><span>个时代</span></div>
+        <div><b>2</b><span>条轨道</span></div>
+      </div>
+      <div class="strip">
+        <div class="strip-head"><span>1986 ——————————— 2011 ｜ 2012 ————————————————————— 2026</span><span>30% / 70% 双尺度</span></div>
+        <div id="heroStrip"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">幕 02 / 评选标准</div>
+        <h2>这把尺子怎么定的</h2>
+        <p>先说明尺子，后面的排序才站得住脚。两条轨道的判据不同，打分只用于突破轨——而且它是判断，不是测量。</p>
+      </div>
+      <div class="grid2">
+        <div class="card dark">
+          <div class="eyebrow" style="color:#0091ff">判据 · 两条轨道</div>
+          <div class="md" id="criteriaTracks"></div>
+        </div>
+        <div class="card soft">
+          <div class="eyebrow">判据 · 突破轨打分</div>
+          <div class="md" id="criteriaScore"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">幕 03 / 四个时代</div>
+        <h2>四次范式转移</h2>
+        <p>每一章是一段判断，后面挂着这个时代的论文名片。点任意一张，直接进详情页。</p>
+      </div>
+      <div id="eras"></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">幕 04 / 五条线索</div>
+        <h2>读完这 45 篇，能看到什么</h2>
+        <p>横向翻页。每张卡一条结论。</p>
+      </div>
+      <div class="clues" id="clues"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">幕 05 / 速查索引</div>
+        <h2>45 篇速查表</h2>
+        <p>点表头排序，或用右上角「速查索引」按编号 / 关键词跳转（快捷键 <span class="mono">/</span>）。</p>
+      </div>
+      <div id="indexFilters" style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px"></div>
+      <table class="tbl">
+        <thead><tr>
+          <th data-k="id">编号</th><th data-k="year">年</th><th data-k="zh">论文</th>
+          <th data-k="venue">发表处</th><th data-k="citations">被引量级</th><th>原文</th>
+        </tr></thead>
+        <tbody id="indexBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h5>双轨时间线</h5>
+        <p>一部可缩放的 AI 技术史。数据来自 v1.1 文档：45 篇论文、双轨判据、四时代划分。</p>
+      </div>
+      <div><h5>浏览</h5><a href="index.html">读本主页</a><a href="timeline.html">时间线工作台</a><a href="sources.html">论文站点导航</a></div>
+      <div><h5>按编号</h5><a href="paper.html?id=B01">B01 反向传播</a><a href="paper.html?id=B09">B09 Transformer</a><a href="paper.html?id=F25">F25 DSec</a></div>
+      <div><h5>数据来源</h5><p>NeurIPS / ICML / ICLR / CVPR / ICCV / COLM / KDD / ACL / NAACL</p><p>Nature / Science / JMLR / Neural Computation</p></div>
+    </div>
+    <div class="bot">引用数据：Google Scholar / OpenAlex 公开统计，取量级区间；截至 2026 年 10 月<br>
+      版本 v1.1 · 本网站由文档自动构建 · 分数为判断，非测量</div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <header><h3>45 篇速查</h3><button id="closeDrawer">×</button></header>
+  <div class="search"><input placeholder="搜索标题 / 编号 / 关键词…"></div>
+  <div class="list" id="drawerList"></div>
+</aside>
+<div class="mininav" id="mininav">
+  <div class="wrap mn-head"><span class="t">双轨导航</span><span class="cur"></span></div>
+  <div class="wrap"><div class="mn-body"></div></div>
+</div>
+
+<script src="data/papers.js"></script>
+<script src="assets/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  renderStrip($("#heroStrip"));
+  $$("#heroStrip .dot").forEach(d => d.addEventListener("click", e => { e.preventDefault(); location.href = paperUrl(byId[d.dataset.id]); }));
+
+  $("#criteriaTracks").innerHTML = md(D.criteria.tracks);
+  $("#criteriaScore").innerHTML = md(D.criteria.scoring);
+
+  $("#eras").innerHTML = ERAS.map(e => {
+    const [a, b] = e.range.split("-").map(Number);
+    const list = P.filter(p => p.year >= a && p.year <= b).sort((x, y) => x.year - y.year);
+    return `<div class="era">
+      <div class="era-top"><h3>${esc(e.name)}</h3><span class="range">${e.range}</span></div>
+      <p class="desc">${esc(e.desc)}</p>
+      <div class="chips">${list.map(p => `<a class="chip" href="${paperUrl(p)}"><i class="${TRACK[p.track].cls}"></i><span class="id">${p.id}</span><span class="nm">${esc(p.zh || p.en)}</span></a>`).join("")}</div>
+    </div>`;
+  }).join("");
+
+  $("#clues").innerHTML = CLUES.map((c, i) => `<div class="clue">
+      <div class="counter">线索 ${String(i + 1).padStart(2, "0")}</div>
+      <h3>${esc(c.title)}</h3>
+      ${c.paras.map(t => `<p>${inline(t)}</p>`).join("")}
+    </div>`).join("");
+
+  let rows = P.slice(), sortK = "year", asc = true;
+  const render = () => {
+    $("#indexBody").innerHTML = rows.sort((a, b) => {
+      let x = a[sortK], y = b[sortK];
+      if (sortK === "id") { x = a.id; y = b.id; }
+      if (typeof x === "number") return asc ? x - y : y - x;
+      return asc ? String(x).localeCompare(String(y), "zh") : String(y).localeCompare(String(x), "zh");
+    }).map(p => `<tr>
+      <td class="id">${p.id}</td><td class="mono">${p.year}</td>
+      <td class="ttl"><a href="${paperUrl(p)}">${esc(p.zh || p.en)}</a><small>${esc(p.en)}</small></td>
+      <td>${esc(p.venue || "")}</td><td class="mono">${esc(p.citations || "")}</td>
+      <td>${p.link ? `<a class="tagx b" href="${p.link}" target="_blank" rel="noopener">原文 ↗</a>` : "—"}</td></tr>`).join("");
+  };
+  buildFilters($("#indexFilters"), f => { rows = f; render(); });
+  $$(".tbl th").forEach(th => th.addEventListener("click", () => {
+    const k = th.dataset.k; asc = sortK === k ? !asc : true; sortK = k; render();
+  }));
+  render();
+});
+</script>
+</body>
+</html>

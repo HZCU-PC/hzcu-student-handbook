@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>论文详情 · 双轨时间线</title>
+<link rel="stylesheet" href="assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body data-page="paper">
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html">双轨时间线<span>1986—2026</span></a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">读本</a>
+      <a href="timeline.html" data-page="timeline">时间线工作台</a>
+      <a href="sources.html" data-page="sources">站点导航</a>
+    </div>
+    <div class="nav-right"><button class="btn btn-primary btn-sm" id="openIndex">速查索引 /</button></div>
+  </div>
+</nav>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="bot">引用数据：Google Scholar / OpenAlex 公开统计，取量级区间；截至 2026 年 10 月 · 版本 v1.1<br>评分为主观判断，非测量结果。</div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <header><h3>45 篇速查</h3><button id="closeDrawer">×</button></header>
+  <div class="search"><input placeholder="搜索标题 / 编号 / 关键词…"></div>
+  <div class="list" id="drawerList"></div>
+</aside>
+<div class="mininav" id="mininav">
+  <div class="wrap mn-head"><span class="t">双轨导航</span><span class="cur"></span></div>
+  <div class="wrap"><div class="mn-body"></div></div>
+</div>
+
+<script src="data/papers.js"></script>
+<script src="assets/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const id = (new URLSearchParams(location.search).get("id") || "B01").toUpperCase();
+  const p = byId[id] || P[0];
+  document.title = `${p.id} · ${p.zh || p.en} · 双轨时间线`;
+
+  const ordered = P.slice().sort((a, b) => a.year - b.year || a.id.localeCompare(b.id));
+  const i = ordered.findIndex(x => x.id === p.id);
+  const prev = ordered[i - 1], next = ordered[i + 1];
+  const sameTrack = P.filter(x => x.track === p.track && x.id !== p.id)
+    .sort((a, b) => Math.abs(a.year - p.year) - Math.abs(b.year - p.year)).slice(0, 4);
+
+  const isArxiv = /arxiv/i.test(p.link || "");
+  const q = encodeURIComponent(p.en);
+  const sources = [
+    { k: "原文", n: isArxiv ? "arXiv 预印本" : "出版方官方页", u: p.link },
+    { k: "镜像", n: "知网检索（国内可达）", u: "https://kns.cnki.net/kns8s/defaultresult/index?kw=" + q },
+    { k: "检索", n: "Semantic Scholar 被引脉络", u: "https://www.semanticscholar.org/search?q=" + q }
+  ].filter(s => s.u);
+
+  const scoreHtml = p.scores ? `<div class="scores">
+      ${[["行业重构", p.scores.industry], ["学术影响", p.scores.academic], ["外溢影响", p.scores.spillover]].map(([n, v]) => `
+        <div class="score"><span class="nm">${n} 40/30/30</span><span class="bar"><i style="width:${v / 5 * 100}%"></i></span><span class="v">${v.toFixed(1)}</span></div>`).join("")}
+      <div class="score total">加权总分 ${p.scores.total.toFixed(1)} / 5.0 · 该分数为主观判断，不是测量结果</div></div>` : "";
+
+  $("#app").innerHTML = `
+  <div class="paper-hero">
+    <div class="meta">
+      <span class="id">${p.id}</span>
+      <span class="m">${TRACK[p.track].name}</span>
+      <span class="m">${p.year}</span>
+      <span class="m">${esc(p.venue || "")}</span>
+      <span class="m">被引 ${esc(p.citations || "—")}</span>
+      <span class="m">${esc(eraOf(p.year).name)}</span>
+    </div>
+    <h1>${esc(p.zh || p.en)}</h1>
+    <div class="en">${esc(p.en)}</div>
+    <div class="tags">${(p.tags || []).map((t, k) => `<span class="${k === 0 ? "hi" : ""}">${esc(t)}</span>`).join("")}</div>
+  </div>
+
+  <div class="wrap">
+    <div class="paper-body">
+      <div>
+        <div class="qa"><h3>01 / 解决什么</h3><p>${esc(p.solve)}</p></div>
+        <div class="qa"><h3>02 / 核心方法</h3><p>${esc(p.method)}</p></div>
+        <div class="qa"><h3>03 / 带来什么</h3><p>${esc(p.impact)}</p></div>
+        ${scoreHtml}
+      </div>
+
+      <aside class="side">
+        <div class="box">
+          <h4>作者</h4>
+          <div class="authors">${esc(p.authors || "—")}</div>
+        </div>
+        <div class="box">
+          <h4>原文出处</h4>
+          ${sources.map(s => `<a class="src" href="${s.u}" target="_blank" rel="noopener">
+            <span class="k">${s.k}</span><span>${s.n}</span><span class="go">↗</span></a>`).join("")}
+          <a class="src" href="sources.html"><span class="k">更多</span><span>全站论文站点导航</span><span class="go">↗</span></a>
+        </div>
+        <div class="box">
+          <h4>同轨邻居（按年份就近）</h4>
+          <div class="neigh">${sameTrack.map(x => `<a href="${paperUrl(x)}"><i class="${TRACK[x.track].cls}"></i><span class="id">${x.id}</span><span>${esc((x.zh || x.en).slice(0, 16))}</span></a>`).join("")}</div>
+        </div>
+        <div class="box">
+          <h4>回到</h4>
+          <div class="neigh">
+            <a href="timeline.html?focus=${p.id}"><i class="${TRACK[p.track].cls}"></i><span>在时间线上定位这一篇</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="paper-nav">
+      <a href="${paperUrl(prev || p)}"><div class="k">← 上一号 ${prev ? prev.id + " · " + prev.year : ""}</div><div class="t">${esc(prev ? (prev.zh || prev.en) : "—")}</div></a>
+      <a href="${paperUrl(next || p)}" style="text-align:right"><div class="k">下一号 ${next ? next.id + " · " + next.year : ""} →</div><div class="t">${esc(next ? (next.zh || next.en) : "—")}</div></a>
+    </div>
+  </div>`;
+});
+</script>
+</body>
+</html>
