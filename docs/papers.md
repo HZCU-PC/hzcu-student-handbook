@@ -9,10 +9,10 @@
 
 时间轴不是等距的：1986—2011 的 26 年只占轴宽 30%，2012—2026 的 15 年占 70%——前段能看清「稀疏」本身，后段才读得清标签。
 
-[打开双轨时间线工作台](paperweb/timeline.html){ .md-button .md-button--primary }
+[打开双轨时间线工作台](../paperweb/timeline.html){ .md-button .md-button--primary }
 
-[读本主页](paperweb/index.html){ .md-button }
-[论文站点导航](paperweb/sources.html){ .md-button }
+[读本主页](../paperweb/index.html){ .md-button }
+[论文站点导航](../paperweb/sources.html){ .md-button }
 
 ### 使用方式
 
@@ -21,3 +21,14 @@
 - **论文站点导航**：预印本、出版方、国内与工具三类常用学术站点，含各发表处分布统计。
 
 > 站点为纯静态页面（无构建、无框架、无后端），不依赖 MkDocs 运行时，随本站一同发布；也可打包后直接双击 `index.html` 离线阅读。
+
+## 多维索引：按方向 / 类型 / 国家 检索
+
+上面那一页按「突破 / 前沿」两轨读。如果你更关心「哪一年、哪个方向、哪个机构」，用这一页：
+
+[打开论文索引（45 篇 · 四维筛选）](../papers-shelf/index.html){ .md-button .md-button--primary }
+
+- **方向**：视觉 / 语言 / 生成 / 决策 / 科学 / 系统 / 基础
+- **类型**：建模 / 训练 / 系统 / 应用
+- **国家 · 机构**：按论文署名单位归类（AlexNet → 多伦多大学 / 加拿大，Stable Diffusion → 慕尼黑大学 / 德国）
+- **相关论文索引**：每篇给出 2–3 条前身 / 后继 / 同源关系，弹窗内可直接跳转
