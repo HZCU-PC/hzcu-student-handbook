@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>论文详情 · 双轨时间线</title>
 <link rel="stylesheet" href="assets/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/paper-theme.css">
 </head>
 <body data-page="paper">
 
 <nav class="nav">
   <div class="wrap nav-in">
-    <a class="logo" href="index.html">双轨时间线<span>1986—2026</span></a>
+    <a class="logo" href="../">HZCU-学生宝典</a>
     <div class="nav-links">
-      <a href="index.html" data-page="home">读本</a>
-      <a href="timeline.html" data-page="timeline">时间线工作台</a>
-      <a href="sources.html" data-page="sources">站点导航</a>
+      <a href="../papers/">论文浏览</a>
+      <a href="../ai-timeline/">AI 发展时间线</a>
     </div>
-    <div class="nav-right"><button class="btn btn-primary btn-sm" id="openIndex">速查索引 /</button></div>
+    <div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="切换颜色模式">切换深色模式</button></div>
   </div>
 </nav>
 
@@ -43,6 +42,37 @@
 <script src="data/papers.js"></script>
 <script src="assets/app.js"></script>
 <script>
+(() => {
+  const key = "hzcu-paper-theme";
+  const root = document.documentElement;
+  const readMainTheme = () => {
+    try {
+      const mainPath = location.pathname.replace(/paperweb\/paper\.html$/, "");
+      const palette = JSON.parse(localStorage.getItem(mainPath + "__palette") || "null");
+      if (palette && Number.isInteger(palette.index)) {
+        const options = [...document.querySelectorAll("[data-md-color-scheme]")];
+        const scheme = options[palette.index]?.dataset.mdColorScheme;
+        if (scheme === "slate" || scheme === "dark") return "dark";
+        if (scheme === "default" || scheme === "light") return "light";
+      }
+    } catch (_) {}
+    return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+  root.dataset.theme = readMainTheme();
+  const syncButton = () => {
+    const dark = root.dataset.theme === "dark";
+    const button = document.getElementById("themeToggle");
+    if (button) button.textContent = dark ? "切换浅色模式" : "切换深色模式";
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    syncButton();
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem(key, root.dataset.theme);
+      syncButton();
+    });
+  });
+})();
 document.addEventListener("DOMContentLoaded", () => {
   const id = (new URLSearchParams(location.search).get("id") || "B01").toUpperCase();
   const p = byId[id] || P[0];
@@ -85,9 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="wrap">
     <div class="paper-body">
       <div>
-        <div class="qa"><h3>01 / 解决什么</h3><p>${esc(p.solve)}</p></div>
-        <div class="qa"><h3>02 / 核心方法</h3><p>${esc(p.method)}</p></div>
-        <div class="qa"><h3>03 / 带来什么</h3><p>${esc(p.impact)}</p></div>
+        <div class="qa"><h3>01 / 解决什么</h3>${p.solve.split(/\n\n+/).map(s => `<p>${esc(s)}</p>`).join("")}</div>
+        <div class="qa"><h3>02 / 核心方法</h3>${p.method.split(/\n\n+/).map(s => `<p>${esc(s)}</p>`).join("")}</div>
+        <div class="qa"><h3>03 / 带来什么</h3>${p.impact.split(/\n\n+/).map(s => `<p>${esc(s)}</p>`).join("")}</div>
         ${scoreHtml}
       </div>
 

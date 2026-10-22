@@ -8,3 +8,136 @@
 .md-content__inner {
   min-height: 60vh;
 }
+
+/* AI timeline topic: keep the timeline readable while inheriting Material colors. */
+.ai-timeline {
+  --timeline-accent: var(--md-primary-fg-color, #459df5);
+  --timeline-border: var(--md-default-fg-color--lightest);
+  --timeline-card: var(--md-code-bg-color);
+  max-width: 58rem;
+  margin: 2rem auto 3rem;
+}
+
+.ai-timeline > h2 {
+  margin: 2.6rem 0 0.5rem;
+  padding: 0.65rem 0 0.65rem 1rem;
+  border-left: 4px solid var(--timeline-accent);
+  background: color-mix(in srgb, var(--timeline-accent) 8%, var(--md-default-bg-color));
+  border-radius: 0 0.35rem 0.35rem 0;
+}
+
+.ai-timeline__events {
+  position: relative;
+  margin: 1.25rem 0 2rem 0.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--timeline-border);
+}
+
+.ai-timeline__events > h3 {
+  position: relative;
+  margin: 1.25rem 0 0.75rem;
+  padding: 1rem 1.15rem 0.25rem;
+  background: var(--timeline-card);
+  border: 1px solid var(--timeline-border);
+  border-bottom: 0;
+  border-radius: 0.55rem 0.55rem 0 0;
+}
+
+.ai-timeline__events > h3::before {
+  position: absolute;
+  top: 1.35rem;
+  left: -1.94rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  content: "";
+  background: var(--timeline-accent);
+  border: 3px solid var(--md-default-bg-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--timeline-accent);
+}
+
+.ai-timeline__events > h3 + p,
+.ai-timeline__events > p + p,
+.ai-timeline__events > p + p + p {
+  margin: 0;
+  padding: 0.35rem 1.15rem 0.75rem;
+  background: var(--timeline-card);
+  border-left: 1px solid var(--timeline-border);
+  border-right: 1px solid var(--timeline-border);
+}
+
+.ai-timeline__events > p:last-child {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--timeline-border);
+  border-radius: 0 0 0.55rem 0.55rem;
+}
+
+.ai-timeline__events > p strong {
+  color: var(--timeline-accent);
+}
+
+.ai-timeline__events a,
+.ai-timeline + h2 + ul a {
+  overflow-wrap: anywhere;
+}
+
+/* Academic paper site directory, using the site's Material color variables. */
+.paper-sites-grid ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 0.7rem;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.paper-sites-grid li {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--md-primary-fg-color);
+  border-radius: 0.45rem;
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+
+.paper-sites-grid li:hover {
+  border-color: var(--md-primary-fg-color);
+  transform: translateY(-2px);
+}
+
+.paper-sites-grid li a {
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .ai-timeline {
+    margin: 1.25rem 0 2rem;
+  }
+
+  .ai-timeline__events {
+    margin-left: 0.2rem;
+    padding-left: 1rem;
+  }
+
+  .ai-timeline__events > h3 {
+    padding-right: 0.75rem;
+    padding-left: 0.8rem;
+  }
+
+  .ai-timeline__events > h3::before {
+    left: -1.44rem;
+  }
+
+  .ai-timeline__events > h3 + p,
+  .ai-timeline__events > p + p,
+  .ai-timeline__events > p + p + p {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+  }
+}
+
+/* 论文页：工作台撑满内容区 */
+.md-content__inner {
+  max-width: 100%;
+}
