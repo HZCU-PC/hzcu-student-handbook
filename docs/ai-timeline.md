@@ -84,6 +84,8 @@ David Rumelhart、Geoffrey Hinton 与 Ronald Williams 在 *Nature* 发表反向�
 
 [来源：Nature 原文](https://doi.org/10.1038/323533a0) · [诺贝尔奖背景资料](https://www.nobelprize.org/prizes/physics/2024/popular-information/)
 
+[论文库介绍：B01 · 反向传播](paperweb/paper.html?id=B01)
+
 ### 1998 · LeNet 与手写文字识别
 
 Yann LeCun、Léon Bottou、Yoshua Bengio 与 Patrick Haffner 总结了卷积网络在手写数字和文件识别中的应用。LeNet 这类网络通过局部卷积和逐步汇集图像信息，从像素中学习识别文字所需的特征；相比人工为每种笔画规则编程，系统可以从标注样本中学习。论文展示了从输入图像到识别结果的整体系统，也讨论了它在真实文件处理中的工程环节。
@@ -91,6 +93,8 @@ Yann LeCun、Léon Bottou、Yoshua Bengio 与 Patrick Haffner 总结了卷积网
 **历史意义：**它说明卷积神经网络在 AlexNet 之前已用于实际识别任务，是连接早期神经网络与 2012 年视觉竞赛突破的重要桥梁。
 
 [来源：IEEE，*Gradient-Based Learning Applied to Document Recognition*](https://doi.org/10.1109/5.726791)
+
+[论文库介绍：B02 · LeNet-5](paperweb/paper.html?id=B02)
 
 ### 2006 · 深层自编码器与逐层预训练
 
@@ -124,6 +128,8 @@ Alex Krizhevsky、Ilya Sutskever 与 Geoffrey Hinton 的卷积神经网络在 IL
 
 [来源：NeurIPS 论文](https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) · [Computer History Museum](https://computerhistory.org/stories/chatbots-decoded/)
 
+[论文库介绍：B03 · AlexNet](paperweb/paper.html?id=B03)
+
 ### 2014 · 生成对抗网络（GAN）
 
 Ian Goodfellow 等人提出生成对抗网络（GAN），用两个相互竞争的网络学习生成数据。生成器负责造出看起来像训练样本的内容，判别器尝试分辨真实样本与生成样本；生成器根据判别结果改进，判别器也持续变强。这个过程类似“造假者”和“鉴别者”彼此提升，但实际训练还需要选择合适的目标函数和参数，可能不稳定。
@@ -131,6 +137,8 @@ Ian Goodfellow 等人提出生成对抗网络（GAN），用两个相互竞争�
 **历史意义：**它代表了深度学习生成模型的一条重要路线，补足只按图像识别叙述发展史的偏差。
 
 [来源：NeurIPS 2014 论文](https://proceedings.neurips.cc/paper/2014/hash/f033ed80deb0234979a61f95710dbe25-Abstract.html)
+
+[论文库介绍：B04 · GAN](paperweb/paper.html?id=B04)
 
 ### 2015（会议发表于 2016）· ResNet
 
@@ -140,6 +148,8 @@ Kaiming He、Xiangyu Zhang、Shaoqing Ren 与 Jian Sun 提出残差学习框架�
 
 [来源：CVF Open Access 论文页](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
 
+[论文库介绍：B08 · ResNet](paperweb/paper.html?id=B08)
+
 ### 2016 · AlphaGo 将深度学习用于围棋
 
 David Silver 等人在 *Nature* 发表 AlphaGo 研究，介绍如何结合深度神经网络与蒙特卡洛树搜索来选择围棋落子。一个网络估计哪些落子值得考虑，另一个网络评估局面和胜率，搜索程序再比较可能的后续走法。论文报告 AlphaGo 在 2015 年与欧洲围棋冠军 Fan Hui 的比赛中以 5 比 0 获胜。围棋的局面组合极多，这项成果展示了学习模型与搜索方法结合的力量。
@@ -147,6 +157,8 @@ David Silver 等人在 *Nature* 发表 AlphaGo 研究，介绍如何结合深度
 **历史意义：**它让深度学习的影响从图像识别扩展到复杂策略决策，也是理解强化学习、搜索与神经网络如何协同工作的代表案例。
 
 [来源：*Nature* 原始论文](https://doi.org/10.1038/nature16961)
+
+[论文库介绍：B06 · AlphaGo](paperweb/paper.html?id=B06)
 
 </div>
 
@@ -164,6 +176,8 @@ Vaswani 等人在 NeurIPS 发表 *Attention Is All You Need*。当模型处理�
 
 [来源：NeurIPS 论文](https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html)
 
+[论文库介绍：B09 · Transformer](paperweb/paper.html?id=B09)
+
 ### 2020 · GPT-3 与少样本学习
 
 Brown 等人在 NeurIPS 发表 GPT-3 研究。GPT-3 根据前文逐个预测下一个词（或词元），再把预测结果接回文本继续生成。论文展示了一种“上下文学习”方式：给模型一段任务说明和几个示例，不重新训练或更新模型参数，就让它尝试完成新例子。实验表明模型规模与这类表现有关，但结果会随任务而变化，也不代表模型真正理解或总能给出正确答案。
@@ -171,6 +185,8 @@ Brown 等人在 NeurIPS 发表 GPT-3 研究。GPT-3 根据前文逐个预测下�
 **历史意义：**它把“规模扩大与上下文示例”带来的少样本能力作为重要研究现象展示出来；论文也明确讨论了模型仍会失败及数据方法上的问题。
 
 [来源：NeurIPS 2020 论文](https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html)
+
+[论文库介绍：B11 · GPT-3](paperweb/paper.html?id=B11)
 
 ### 2020 · 扩散生成模型
 
@@ -180,6 +196,8 @@ Ho、Jain 与 Abbeel 的 *Denoising Diffusion Probabilistic Models* 研究一种
 
 [来源：NeurIPS 2020 论文](https://proceedings.neurips.cc/paper/2020/file/4c5bcfec8584af0d967f1ab10179ca4b-Abstract.html)
 
+[论文库介绍：F12 · DDPM](paperweb/paper.html?id=F12)
+
 ### 2022 · ChatGPT 研究预览发布
 
 OpenAI 于 2022 年 11 月 30 日发布 ChatGPT 研究预览。这是一个可以通过多轮文字对话回答问题、改写文本和协助完成任务的产品服务，不是当日发表的一篇研究论文。发布说明称其训练使用了人类反馈强化学习：人类评估者比较模型回答，反馈被用于进一步调整模型。对话形式让公众更容易试用生成式模型，同时也暴露出回答不准确等问题。
@@ -188,6 +206,8 @@ OpenAI 于 2022 年 11 月 30 日发布 ChatGPT 研究预览。这是一个可�
 
 [来源：OpenAI 发布说明](https://openai.com/index/chatgpt/)
 
+[论文库介绍：B14 · InstructGPT（RLHF 技术背景）](paperweb/paper.html?id=B14)
+
 ### 2023 · GPT-4 发布
 
 OpenAI 于 2023 年 3 月发布 GPT-4。官方材料称它能接收文本和图像输入，并生成文本输出；“多模态”指模型处理不止一种形式的信息。发布材料还包括研究介绍和系统卡，描述评测结果、已知限制及安全工作。读者应把这些描述理解为特定测试和使用条件下的报告，而不是对所有任务都正确或可靠的保证。
@@ -195,6 +215,8 @@ OpenAI 于 2023 年 3 月发布 GPT-4。官方材料称它能接收文本和图�
 **历史意义：**它展示了大型生成模型能力评估与安全说明逐渐成为公开发布材料的一部分。能力描述应以官方报告的测试范围和限制为准。
 
 [来源：OpenAI GPT-4 研究介绍](https://openai.com/index/gpt-4-research/)
+
+[论文库介绍：B15 · GPT-4](paperweb/paper.html?id=B15)
 
 </div>
 

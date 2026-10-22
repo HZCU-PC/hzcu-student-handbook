@@ -54,6 +54,10 @@ extra:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/light-home.css
+  - stylesheets/papers-workbench.css
+
+extra_javascript:
+  - javascripts/papers-shelf.js
 
 nav:
   - 首页 · 前言: index.md
