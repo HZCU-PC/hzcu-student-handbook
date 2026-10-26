@@ -3,15 +3,18 @@
 > 规矩立得住，才能不烧心：精选解决真实问题、文档能让人快速跑通、代码规范且持续维护的开源仓库——看得懂、跑得起来、敢放心依赖。
 
 <div class="repos-page">
+  <div class="repos-search">
+    <div class="search-box" id="searchBox">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="搜索仓库…" autocomplete="off" spellcheck="false" aria-label="搜索仓库">
+            <span class="search-count" id="searchCount"></span>
+            <button type="button" id="searchClear" aria-label="清空搜索">✕</button>
+          </div>
+  </div>
 <div class="app">
 
     <aside class="region region-sidebar">
-      <div class="search-box" id="searchBox">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <input id="searchInput" type="search" placeholder="搜索仓库…" autocomplete="off" spellcheck="false" aria-label="搜索仓库">
-        <span class="search-count" id="searchCount"></span>
-        <button type="button" id="searchClear" aria-label="清空搜索">✕</button>
-      </div>
+
 
       <nav class="side-nav" id="sideNav" aria-label="仓库分类">
         <!-- 顶层 1：最近收录 -->

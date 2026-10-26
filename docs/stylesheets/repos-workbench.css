@@ -584,3 +584,25 @@ body:has(.repos-page) .md-content,
 body:has(.repos-page) .md-content__inner {
   min-width: 0;
 }
+
+/* 视觉调整：去除背景气泡（radial 渐变光斑） */
+.repos-page { background: var(--bg); }
+
+.repos-page {
+  --bg: #1e1e1e;
+  --panel: #1e1e1e;
+  --panel-top: #1e1e1e;
+}
+
+/* 让站点页面底色与仓库页一致 */
+body:has(.repos-page) {
+  background: #1e1e1e;
+}
+body:has(.repos-page) .md-container,
+body:has(.repos-page) .md-main,
+body:has(.repos-page) .md-content {
+  background: transparent;
+}
+
+.repos-page .repos-search { padding: 16px 16px 0; }
+.repos-page .repos-search .search-box { margin: 0; }
