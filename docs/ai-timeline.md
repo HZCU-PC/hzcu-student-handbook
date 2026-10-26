@@ -84,7 +84,7 @@ David Rumelhart、Geoffrey Hinton 与 Ronald Williams 在 *Nature* 发表反向�
 
 [来源：Nature 原文](https://doi.org/10.1038/323533a0) · [诺贝尔奖背景资料](https://www.nobelprize.org/prizes/physics/2024/popular-information/)
 
-[论文库介绍：B01 · 反向传播](paperweb/paper.html?id=B01)
+[论文库介绍：B01 · 反向传播](papers.md?id=B01&from=ai-timeline)
 
 ### 1998 · LeNet 与手写文字识别
 
@@ -94,7 +94,7 @@ Yann LeCun、Léon Bottou、Yoshua Bengio 与 Patrick Haffner 总结了卷积网
 
 [来源：IEEE，*Gradient-Based Learning Applied to Document Recognition*](https://doi.org/10.1109/5.726791)
 
-[论文库介绍：B02 · LeNet-5](paperweb/paper.html?id=B02)
+[论文库介绍：B02 · LeNet-5](papers.md?id=B02&from=ai-timeline)
 
 ### 2006 · 深层自编码器与逐层预训练
 
@@ -128,7 +128,7 @@ Alex Krizhevsky、Ilya Sutskever 与 Geoffrey Hinton 的卷积神经网络在 IL
 
 [来源：NeurIPS 论文](https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) · [Computer History Museum](https://computerhistory.org/stories/chatbots-decoded/)
 
-[论文库介绍：B03 · AlexNet](paperweb/paper.html?id=B03)
+[论文库介绍：B03 · AlexNet](papers.md?id=B03&from=ai-timeline)
 
 ### 2014 · 生成对抗网络（GAN）
 
@@ -138,7 +138,7 @@ Ian Goodfellow 等人提出生成对抗网络（GAN），用两个相互竞争�
 
 [来源：NeurIPS 2014 论文](https://proceedings.neurips.cc/paper/2014/hash/f033ed80deb0234979a61f95710dbe25-Abstract.html)
 
-[论文库介绍：B04 · GAN](paperweb/paper.html?id=B04)
+[论文库介绍：B04 · GAN](papers.md?id=B04&from=ai-timeline)
 
 ### 2015（会议发表于 2016）· ResNet
 
@@ -148,7 +148,7 @@ Kaiming He、Xiangyu Zhang、Shaoqing Ren 与 Jian Sun 提出残差学习框架�
 
 [来源：CVF Open Access 论文页](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
 
-[论文库介绍：B08 · ResNet](paperweb/paper.html?id=B08)
+[论文库介绍：B08 · ResNet](papers.md?id=B08&from=ai-timeline)
 
 ### 2016 · AlphaGo 将深度学习用于围棋
 
@@ -158,7 +158,7 @@ David Silver 等人在 *Nature* 发表 AlphaGo 研究，介绍如何结合深度
 
 [来源：*Nature* 原始论文](https://doi.org/10.1038/nature16961)
 
-[论文库介绍：B06 · AlphaGo](paperweb/paper.html?id=B06)
+[论文库介绍：B06 · AlphaGo](papers.md?id=B06&from=ai-timeline)
 
 </div>
 
@@ -176,7 +176,7 @@ Vaswani 等人在 NeurIPS 发表 *Attention Is All You Need*。当模型处理�
 
 [来源：NeurIPS 论文](https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html)
 
-[论文库介绍：B09 · Transformer](paperweb/paper.html?id=B09)
+[论文库介绍：B09 · Transformer](papers.md?id=B09&from=ai-timeline)
 
 ### 2020 · GPT-3 与少样本学习
 
@@ -186,7 +186,7 @@ Brown 等人在 NeurIPS 发表 GPT-3 研究。GPT-3 根据前文逐个预测下�
 
 [来源：NeurIPS 2020 论文](https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html)
 
-[论文库介绍：B11 · GPT-3](paperweb/paper.html?id=B11)
+[论文库介绍：B11 · GPT-3](papers.md?id=B11&from=ai-timeline)
 
 ### 2020 · 扩散生成模型
 
@@ -196,7 +196,7 @@ Ho、Jain 与 Abbeel 的 *Denoising Diffusion Probabilistic Models* 研究一种
 
 [来源：NeurIPS 2020 论文](https://proceedings.neurips.cc/paper/2020/file/4c5bcfec8584af0d967f1ab10179ca4b-Abstract.html)
 
-[论文库介绍：F12 · DDPM](paperweb/paper.html?id=F12)
+[论文库介绍：F12 · DDPM](papers.md?id=F12&from=ai-timeline)
 
 ### 2022 · ChatGPT 研究预览发布
 
@@ -206,7 +206,7 @@ OpenAI 于 2022 年 11 月 30 日发布 ChatGPT 研究预览。这是一个可�
 
 [来源：OpenAI 发布说明](https://openai.com/index/chatgpt/)
 
-[论文库介绍：B14 · InstructGPT（RLHF 技术背景）](paperweb/paper.html?id=B14)
+[论文库介绍：B14 · InstructGPT（RLHF 技术背景）](papers.md?id=B14&from=ai-timeline)
 
 ### 2023 · GPT-4 发布
 
@@ -216,7 +216,7 @@ OpenAI 于 2023 年 3 月发布 GPT-4。官方材料称它能接收文本和图�
 
 [来源：OpenAI GPT-4 研究介绍](https://openai.com/index/gpt-4-research/)
 
-[论文库介绍：B15 · GPT-4](paperweb/paper.html?id=B15)
+[论文库介绍：B15 · GPT-4](papers.md?id=B15&from=ai-timeline)
 
 </div>
 

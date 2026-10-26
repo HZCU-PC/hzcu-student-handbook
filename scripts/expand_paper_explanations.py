@@ -3,9 +3,11 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "docs/paperweb/data/papers.json"
-PAPERS_JS = ROOT / "docs/paperweb/data/papers.js"
-EMBEDDED_FILES = [ROOT / "docs/papers.md", ROOT / "docs/papers-shelf/index.html"]
+# 统一数据源：docs/papers.md 内嵌的 <script id="papers-json"> 是唯一的论文数据载体
+# （docs/paperweb 与 docs/papers-shelf 两套实现已删除）。
+# 本脚本把 EXTRA 中的扩写文本合并进该数据（幂等，不会重复追加）。
+DATA = ROOT / "docs/papers.md"
+PATTERN = r'(<script id="papers-json" type="application/json">)(.*?)(</script>)'
 
 # Each entry is written for a first-time reader: a concrete intuition, plain
 # language explanations of key ideas, and a measured statement of impact.
@@ -146,11 +148,15 @@ EXTRA = {
 }
 
 def main():
-    obj = json.loads(DATA.read_text(encoding="utf-8"))
-    missing = {p["id"] for p in obj["papers"]} - EXTRA.keys()
+    source = DATA.read_text(encoding="utf-8")
+    match = re.search(PATTERN, source, flags=re.S)
+    if not match:
+        raise SystemExit(f"Cannot find embedded paper data in {DATA}")
+    papers = json.loads(match.group(2))
+    missing = {p["id"] for p in papers} - EXTRA.keys()
     if missing:
         raise SystemExit(f"Missing explanations: {sorted(missing)}")
-    for p in obj["papers"]:
+    for p in papers:
         add = EXTRA[p["id"]]
         for key, text in zip(("solve", "method", "impact"), add):
             parts = p[key].split("\n\n")
@@ -158,26 +164,9 @@ def main():
             if text:
                 if text not in p[key]:
                     p[key] = p[key].rstrip() + "\n\n" + text
-    DATA.write_text(json.dumps(obj, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    by_id = {p["id"]: p for p in obj["papers"]}
-    for path in EMBEDDED_FILES:
-        source = path.read_text(encoding="utf-8")
-        pattern = r'(<script id="papers-json" type="application/json">)(.*?)(</script>)'
-        match = re.search(pattern, source, flags=re.S)
-        if not match:
-            raise SystemExit(f"Cannot find embedded paper data in {path}")
-        embedded = json.loads(match.group(2))
-        for paper in embedded:
-            full = by_id[paper["id"]]
-            for key in ("solve", "method", "impact"):
-                paper[key] = full[key]
-        replacement = match.group(1) + json.dumps(embedded, ensure_ascii=False, separators=(",", ":")) + match.group(3)
-        path.write_text(source[:match.start()] + replacement + source[match.end():], encoding="utf-8")
-    # The standalone paper reader consumes a generated JavaScript mirror.
-    js_obj = {"papers": obj["papers"]}
-    old = PAPERS_JS.read_text(encoding="utf-8")
-    suffix = old[old.find(", \"eras\":"):]
-    PAPERS_JS.write_text("window.DATA = " + json.dumps(js_obj, ensure_ascii=False, separators=(",", ":"))[:-1] + suffix + "\n", encoding="utf-8")
+    replacement = match.group(1) + json.dumps(papers, ensure_ascii=False, separators=(",", ":")) + match.group(3)
+    DATA.write_text(source[:match.start()] + replacement + source[match.end():], encoding="utf-8")
+    print(f"Updated {len(papers)} papers in {DATA}")
 
 if __name__ == "__main__":
     main()

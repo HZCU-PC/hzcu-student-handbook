@@ -9,6 +9,30 @@
   min-height: 60vh;
 }
 
+/* Keep the right-side table of contents in view while scrolling.
+   Material renders the secondary sidebar without an internal scroll
+   boundary, so a long TOC (e.g. the AI timeline with 26 entries) would
+   overflow the viewport and scroll away. Pin it and let it scroll inside. */
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    position: sticky;
+    top: 3.5rem;
+    align-self: flex-start;
+    max-height: calc(100vh - 4.5rem);
+  }
+  .md-sidebar--secondary .md-sidebar__scrollwrap {
+    overflow-y: auto;
+    padding-right: 0.25rem;
+  }
+  .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+    background: var(--md-default-fg-color--lighter);
+    border-radius: 0.15rem;
+  }
+}
+
 /* AI timeline topic: keep the timeline readable while inheriting Material colors. */
 .ai-timeline {
   --timeline-accent: var(--md-primary-fg-color, #459df5);
