@@ -606,3 +606,9 @@ body:has(.repos-page) .md-content {
 
 .repos-page .repos-search { padding: 16px 16px 0; }
 .repos-page .repos-search .search-box { margin: 0; }
+
+/* 左栏收窄、右栏加宽 */
+.repos-page .app { grid-template-columns: 208px 1fr; }
+
+.repos-page .region-sidebar { padding-left: 6px; padding-right: 6px; }
+.repos-page .recent-item { font-size: 12.5px; }
