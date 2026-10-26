@@ -55,9 +55,11 @@ extra_css:
   - stylesheets/extra.css
   - stylesheets/light-home.css
   - stylesheets/papers-workbench.css
+  - stylesheets/repos-workbench.css
 
 extra_javascript:
   - javascripts/papers-shelf.js
+  - javascripts/repos-shelf.js
 
 nav:
   - 首页 · 前言: index.md
@@ -65,7 +67,7 @@ nav:
       - 论文浏览: papers.md
       - 论文网站导航: paper-sites.md
       - AI发展时间线: ai-timeline.md
-  - 优质 GitHub 仓库介绍: repositories/index.html
+  - 优质 GitHub 仓库介绍: repositories.md
   - 地图 · 拍照: map.md
   - 食堂: dining.md
   - 校园风景: scenery.md
