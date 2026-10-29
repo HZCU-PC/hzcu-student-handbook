@@ -11,8 +11,14 @@
   --e2:0 3px 6px rgba(0,0,0,.10),0 3px 6px rgba(0,0,0,.06);
   --e3:0 10px 20px rgba(0,0,0,.10),0 6px 6px rgba(0,0,0,.08);
 }
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--primary);text-decoration:none}
+/* 防横向溢出用 clip 而非 hidden：clip 不会把 body 变成滚动容器，
+   因此不会破坏本页 .side 筛选栏及其它页面目录的 position:sticky 跟随。 */
+body:has(.papers-shelf){overflow-x:clip}
+/* 工作台样式只作用于 .papers-shelf 内容区，不再污染页面级的主题导航
+   （若挂在 body 上，会把左侧主导航链接染成主题主色并改动其字号行高）。
+   背景/前景/margin 由主题统一负责（--bg/--fg 本就映射到主题默认色）。 */
+.papers-shelf{font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.papers-shelf a{color:var(--primary);text-decoration:none}
 
 /* App bar */
 .appbar{display:none}
