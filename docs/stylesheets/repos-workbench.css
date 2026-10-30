@@ -595,12 +595,13 @@ body:has(.repos-page) .md-content__inner {
 }
 
 /* 让站点页面底色与仓库页一致 */
-body:has(.repos-page) {
+/* 仅深色主题下让站点底色与仓库页一致，浅色主题保持站点原样 */
+body:has(.repos-page)[data-md-color-scheme="slate"] {
   background: #1e1e1e;
 }
-body:has(.repos-page) .md-container,
-body:has(.repos-page) .md-main,
-body:has(.repos-page) .md-content {
+body:has(.repos-page)[data-md-color-scheme="slate"] .md-container,
+body:has(.repos-page)[data-md-color-scheme="slate"] .md-main,
+body:has(.repos-page)[data-md-color-scheme="slate"] .md-content {
   background: transparent;
 }
 
