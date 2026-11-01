@@ -1,7 +1,59 @@
 .repos-page{
-      --bg: #08080a;
-      --panel: #101013;
-      --panel-top: #15151a;
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --panel-top: #ffffff;
+      --line: rgba(16, 24, 40, 0.10);
+      --line-strong: rgba(16, 24, 40, 0.16);
+      --text: #15171f;
+      --muted: #5b6272;
+      --dim: #6e7587;
+      --accent: #3f6fe4;
+      --accent-soft: rgba(63, 111, 228, 0.10);
+      --sidebar-w: 240px;
+      --gap: 14px;
+      --pad: 16px;
+      --radius: 14px;
+      --fg-strong: #0f1218;
+      --fg-title: #161a24;
+      --fg-1: #1b1f2a;
+      --fg-2: #232833;
+      --fg-3: #2a303d;
+      --fg-hover: #151a24;
+      --fg-muted: #4b5262;
+      --fg-muted2: #4b5262;
+      --fg-desc: #5b6272;
+      --fg-kicker: #2a303d;
+      --fg-num: #3f6fe4;
+      --link: #3159c8;
+      --fg-avatar: #44507a;
+      --fg-chip: #2f56b8;
+      --fg-catnum: #24408f;
+      --star: #a8760a;
+      --surf-hover: rgba(16, 24, 40, 0.05);
+      --surf-hover-2: rgba(16, 24, 40, 0.06);
+      --surf-hover-3: rgba(16, 24, 40, 0.045);
+      --surf-1: rgba(16, 24, 40, 0.025);
+      --surf-2: rgba(16, 24, 40, 0.035);
+      --surf-3: rgba(16, 24, 40, 0.06);
+      --b-1: rgba(16, 24, 40, 0.08);
+      --b-2: rgba(16, 24, 40, 0.10);
+      --b-3: rgba(16, 24, 40, 0.09);
+      --b-4: rgba(16, 24, 40, 0.12);
+      --b-5: rgba(16, 24, 40, 0.12);
+      --scroll-hover: rgba(16, 24, 40, 0.22);
+      --avatar-bg: #eef1f7;
+      --inset: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      --shadow: 0 16px 36px -26px rgba(16, 24, 40, 0.45);
+      --title-grad: linear-gradient(100deg, #141a26 0%, #2b4a8f 55%, #3f6fe4 100%);
+      --card-grad: linear-gradient(180deg, #ffffff, #fbfcff);
+      --card-hover-grad: linear-gradient(180deg, rgba(63, 111, 228, 0.07), rgba(255, 255, 255, 0.9));
+    }
+
+    /* dark theme: keep the original palette */
+    body[data-md-color-scheme="slate"] .repos-page{
+      --bg: #1e1e1e;
+      --panel: #1e1e1e;
+      --panel-top: #1e1e1e;
       --line: rgba(255, 255, 255, 0.07);
       --line-strong: rgba(255, 255, 255, 0.12);
       --text: #f1f1f4;
@@ -9,11 +61,43 @@
       --dim: #62636d;
       --accent: #5b8cff;
       --accent-soft: rgba(91, 140, 255, 0.14);
-      --sidebar-w: 240px;
-      --gap: 14px;
-      --pad: 16px;
-      --radius: 14px;
-    }.repos-page *{ box-sizing: border-box; }.repos-page [hidden]{ display: none !important; }.repos-page, .repos-page{ height: 100%; }.repos-page{
+      --fg-strong: #ffffff;
+      --fg-title: #f4f4f8;
+      --fg-1: #eaeaef;
+      --fg-2: #e6e7ee;
+      --fg-3: #dcdee8;
+      --fg-hover: #e8e9f0;
+      --fg-muted: #a9aab6;
+      --fg-muted2: #9a9ca8;
+      --fg-desc: #8f909c;
+      --fg-kicker: #c9cbd8;
+      --fg-num: rgba(157, 183, 255, 0.85);
+      --link: #9db7ff;
+      --fg-avatar: #aab4d4;
+      --fg-chip: #a8bdf0;
+      --fg-catnum: #cfe0ff;
+      --star: #f5c451;
+      --surf-hover: rgba(255, 255, 255, 0.04);
+      --surf-hover-2: rgba(255, 255, 255, 0.045);
+      --surf-hover-3: rgba(255, 255, 255, 0.035);
+      --surf-1: rgba(255, 255, 255, 0.015);
+      --surf-2: rgba(255, 255, 255, 0.03);
+      --surf-3: rgba(255, 255, 255, 0.05);
+      --b-1: rgba(255, 255, 255, 0.06);
+      --b-2: rgba(255, 255, 255, 0.08);
+      --b-3: rgba(255, 255, 255, 0.07);
+      --b-4: rgba(255, 255, 255, 0.09);
+      --b-5: rgba(255, 255, 255, 0.1);
+      --scroll-hover: rgba(255, 255, 255, 0.18);
+      --avatar-bg: #1e1f26;
+      --inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+      --title-grad: linear-gradient(100deg, #ffffff 0%, #e6ecff 55%, #b9c9ff 100%);
+      --card-grad: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.01));
+      --card-hover-grad: linear-gradient(180deg, rgba(91, 140, 255, 0.07), rgba(255, 255, 255, 0.012));
+    }
+
+    .repos-page *{ box-sizing: border-box; }.repos-page [hidden]{ display: none !important; }.repos-page, .repos-page{ height: 100%; }.repos-page{
       margin: 0;
       background:
         radial-gradient(900px 500px at 6% -10%, rgba(91, 140, 255, 0.13), transparent 62%),
@@ -25,7 +109,7 @@
       overflow: hidden;
     }.repos-page ::selection{
       background: rgba(91, 140, 255, 0.35);
-      color: #fff;
+      color: var(--fg-strong);
     }.repos-page .app{
       height: 100vh;
       display: grid;
@@ -40,9 +124,7 @@
       background: linear-gradient(180deg, var(--panel-top), var(--panel) 140px);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 18px 40px -24px rgba(0, 0, 0, 0.75);
+      box-shadow: var(--inset), var(--shadow);
       min-width: 0;
       min-height: 0;
     }.repos-page .region-header{
@@ -67,7 +149,7 @@
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: 1px;
-      background: linear-gradient(100deg, #ffffff 0%, #e6ecff 55%, #b9c9ff 100%);
+      background: var(--title-grad);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -79,7 +161,7 @@
       line-height: 1.8;
       color: var(--muted);
     }.repos-page .site-intro .intro-kicker{
-      color: #c9cbd8;
+      color: var(--fg-kicker);
       font-weight: 600;
     }.repos-page .region-sidebar{
       grid-area: sidebar;
@@ -107,13 +189,13 @@
       font-weight: 700;
       letter-spacing: 0.4px;
       line-height: 1.3;
-      color: #ffffff;
+      color: var(--fg-strong);
       text-align: left;
       cursor: pointer;
       transition: background 0.16s ease;
-    }.repos-page .side-head:hover{ background: rgba(255, 255, 255, 0.04); }.repos-page .side-head:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }.repos-page .side-head .head-title{ flex: 1; min-width: 0; }.repos-page .side-head .reset-count{ margin-right: 4px; }.repos-page .side-block.collapsed .caret{ transform: rotate(-90deg); }.repos-page .side-block.collapsed .block-body{ display: none; }.repos-page .all-body{
+    }.repos-page .side-head:hover{ background: var(--surf-hover); }.repos-page .side-head:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }.repos-page .side-head .head-title{ flex: 1; min-width: 0; }.repos-page .side-head .reset-count{ margin-right: 4px; }.repos-page .side-block.collapsed .caret{ transform: rotate(-90deg); }.repos-page .side-block.collapsed .block-body{ display: none; }.repos-page .all-body{
       padding-left: 2px;
-      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 1px solid var(--b-1);
       margin-left: 8px;
     }.repos-page .recent-list{
       margin: 0 0 2px;
@@ -126,7 +208,7 @@
       border-radius: 7px;
       font-size: 13px;
       line-height: 1.5;
-      color: #a9aab6;
+      color: var(--fg-muted);
       text-decoration: none;
       white-space: nowrap;
       overflow: hidden;
@@ -134,8 +216,8 @@
       cursor: pointer;
       transition: background 0.16s ease, color 0.16s ease;
     }.repos-page .recent-item:hover, .repos-page .recent-item:focus-visible{
-      background: rgba(255, 255, 255, 0.045);
-      color: #ffffff;
+      background: var(--surf-hover-2);
+      color: var(--fg-strong);
       outline: none;
     }.repos-page .recent-item::before{
       content: "＋";
@@ -159,19 +241,19 @@
       font-size: 13.5px;
       font-weight: 650;
       letter-spacing: 0.2px;
-      color: #dcdee8;
+      color: var(--fg-3);
       text-align: left;
       cursor: pointer;
       transition: background 0.16s ease, color 0.16s ease;
-    }.repos-page .cat-toggle:hover{ background: rgba(255, 255, 255, 0.04); color: #fff; }.repos-page .cat-toggle:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }.repos-page .cat-toggle.active{
+    }.repos-page .cat-toggle:hover{ background: var(--surf-hover); color: var(--fg-strong); }.repos-page .cat-toggle:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }.repos-page .cat-toggle.active{
       background: linear-gradient(90deg, rgba(91, 140, 255, 0.2), rgba(91, 140, 255, 0.04));
-      color: #ffffff;
+      color: var(--fg-strong);
       box-shadow: inset 2px 0 0 0 var(--accent);
     }.repos-page .cat-num{
       flex: none;
       font-size: 11.5px;
       font-weight: 700;
-      color: rgba(157, 183, 255, 0.85);
+      color: var(--fg-num);
       font-variant-numeric: tabular-nums;
     }.repos-page .cat-name{ flex: 1; min-width: 0; }.repos-page .caret{
       flex: none;
@@ -191,23 +273,23 @@
       width: 100%;
       padding: 6px 10px 6px 14px;
       border: 0;
-      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 1px solid var(--b-2);
       border-radius: 0 7px 7px 0;
       background: none;
       font: inherit;
       font-size: 12.5px;
       line-height: 1.45;
-      color: #9a9ca8;
+      color: var(--fg-muted2);
       text-align: left;
       cursor: pointer;
       transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
     }.repos-page .sub-item:hover{
-      background: rgba(255, 255, 255, 0.035);
-      color: #e8e9f0;
+      background: var(--surf-hover-3);
+      color: var(--fg-hover);
       border-left-color: rgba(91, 140, 255, 0.5);
     }.repos-page .sub-item.active{
       background: rgba(91, 140, 255, 0.12);
-      color: #ffffff;
+      color: var(--fg-strong);
       border-left-color: var(--accent);
       font-weight: 600;
     }.repos-page .sub-item:focus-visible{ outline: 2px solid var(--accent); outline-offset: -1px; }.repos-page .sub-item .sub-n{
@@ -224,7 +306,7 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.4px;
-      color: #f4f4f8;
+      color: var(--fg-title);
     }.repos-page .cat-head .cat-num{
       display: inline-flex;
       align-items: center;
@@ -235,7 +317,7 @@
       background: linear-gradient(135deg, rgba(91, 140, 255, 0.3), rgba(168, 85, 247, 0.18));
       border: 1px solid rgba(91, 140, 255, 0.3);
       font-size: 12.5px;
-      color: #cfe0ff;
+      color: var(--fg-catnum);
     }.repos-page .cat-note{
       margin: 0 0 12px;
       padding: 0 10px;
@@ -255,7 +337,7 @@
       font-size: 14.5px;
       font-weight: 650;
       letter-spacing: 0.3px;
-      color: #e6e7ee;
+      color: var(--fg-2);
     }.repos-page .sub-head::before{
       content: "";
       width: 3px;
@@ -267,7 +349,7 @@
       margin-left: 2px;
       padding: 1px 7px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--surf-3);
       font-size: 11px;
       font-weight: 500;
       color: var(--dim);
@@ -286,15 +368,15 @@
       transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.4s ease;
       scroll-margin-top: 16px;
     }.repos-page .repo-item:hover{
-      background: rgba(255, 255, 255, 0.035);
-      border-color: rgba(255, 255, 255, 0.07);
+      background: var(--surf-hover-3);
+      border-color: var(--b-3);
     }.repos-page .repo-item::after{
       content: "↗";
       position: absolute;
       top: 13px;
       right: 16px;
       font-size: 13px;
-      color: #9db7ff;
+      color: var(--link);
       opacity: 0;
       transform: translate(-3px, 3px);
       transition: opacity 0.18s ease, transform 0.18s ease;
@@ -310,10 +392,10 @@
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.1px;
-      color: #eaeaef;
+      color: var(--fg-1);
       text-decoration: none;
       transition: color 0.15s ease;
-    }.repos-page .repo-name:hover{ color: #9db7ff; }.repos-page .repo-name:focus-visible{
+    }.repos-page .repo-name:hover{ color: var(--link); }.repos-page .repo-name:focus-visible{
       outline: 2px solid var(--accent);
       outline-offset: 3px;
       border-radius: 4px;
@@ -321,27 +403,27 @@
       margin: 5px 0 0;
       font-size: 13px;
       line-height: 1.6;
-      color: #8f909c;
+      color: var(--fg-desc);
     }.repos-page .repo-empty{
       margin: 0 10px;
       padding: 10px 12px;
-      border: 1px dashed rgba(255, 255, 255, 0.09);
+      border: 1px dashed var(--b-4);
       border-radius: 10px;
       font-size: 13px;
       line-height: 1.6;
       color: var(--dim);
-      background: rgba(255, 255, 255, 0.015);
+      background: var(--surf-1);
     }.repos-page .repo-list{ gap: 10px; }.repos-page .repo-item{
       display: flex;
       gap: 14px;
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.01));
+      background: var(--card-grad);
       transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
     }.repos-page .repo-item:hover{
       border-color: rgba(91, 140, 255, 0.35);
-      background: linear-gradient(180deg, rgba(91, 140, 255, 0.07), rgba(255, 255, 255, 0.012));
+      background: var(--card-hover-grad);
       transform: translateY(-1px);
     }.repos-page .repo-item::after{ display: none; }.repos-page .repo-avatar{
       position: relative;
@@ -353,13 +435,13 @@
       height: 42px;
       border-radius: 50%;
       border: 1px solid var(--line-strong);
-      background-color: #1e1f26;
+      background-color: var(--avatar-bg);
       background-image: var(--img, none);
       background-size: cover;
       background-position: center;
       font-size: 15px;
       font-weight: 700;
-      color: #aab4d4;
+      color: var(--fg-avatar);
       overflow: hidden;
       user-select: none;
     }.repos-page .avatar-letter{
@@ -375,7 +457,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      background: #1e1f26;
+      background: var(--avatar-bg);
     }.repos-page .repo-body{ flex: 1; min-width: 0; }.repos-page .repo-line{
       display: flex;
       align-items: baseline;
@@ -391,9 +473,9 @@
       flex: none;
       font-size: 12.5px;
       font-weight: 600;
-      color: #f5c451;
+      color: var(--star);
       font-variant-numeric: tabular-nums;
-    }.repos-page .repo-desc{ margin: 4px 0 0; font-size: 13px; line-height: 1.55; color: #8f909c; }.repos-page .repo-meta{
+    }.repos-page .repo-desc{ margin: 4px 0 0; font-size: 13px; line-height: 1.55; color: var(--fg-desc); }.repos-page .repo-meta{
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -407,7 +489,7 @@
       border-radius: 50%;
       background: var(--c, #8b8b90);
       box-shadow: 0 0 8px -2px var(--c, #8b8b90);
-    }.repos-page .meta-home{ color: #9db7ff; text-decoration: none; }.repos-page .meta-home:hover{ text-decoration: underline; }.repos-page .repo-topics{
+    }.repos-page .meta-home{ color: var(--link); text-decoration: none; }.repos-page .meta-home:hover{ text-decoration: underline; }.repos-page .repo-topics{
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -421,7 +503,7 @@
       background: rgba(91, 140, 255, 0.1);
       font-size: 11px;
       line-height: 1.5;
-      color: #a8bdf0;
+      color: var(--fg-chip);
     }.repos-page .search-box{
       display: flex;
       align-items: center;
@@ -431,7 +513,7 @@
       padding: 7px 10px;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--surf-2);
       transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
     }.repos-page .search-box:focus-within{
       border-color: rgba(91, 140, 255, 0.55);
@@ -462,23 +544,23 @@
       font-size: 12px;
       cursor: pointer;
       line-height: 1;
-    }.repos-page #searchClear:hover{ color: #ffffff; }.repos-page .search-box.has-value #searchClear{ display: block; }.repos-page .no-result{
+    }.repos-page #searchClear:hover{ color: var(--fg-strong); }.repos-page .search-box.has-value #searchClear{ display: block; }.repos-page .no-result{
       margin: 20px 10px;
       padding: 22px;
-      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border: 1px dashed var(--b-5);
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.015);
+      background: var(--surf-1);
       font-size: 13.5px;
       line-height: 1.7;
       color: var(--dim);
       text-align: center;
-    }.repos-page .no-result strong{ color: #c9cbd8; font-weight: 600; }.repos-page .region-sidebar::-webkit-scrollbar, .repos-page .region-main::-webkit-scrollbar{ width: 10px; }.repos-page .region-sidebar::-webkit-scrollbar-thumb, .repos-page .region-main::-webkit-scrollbar-thumb{
-      background: rgba(255, 255, 255, 0.1);
+    }.repos-page .no-result strong{ color: var(--fg-kicker); font-weight: 600; }.repos-page .region-sidebar::-webkit-scrollbar, .repos-page .region-main::-webkit-scrollbar{ width: 10px; }.repos-page .region-sidebar::-webkit-scrollbar-thumb, .repos-page .region-main::-webkit-scrollbar-thumb{
+      background: var(--b-5);
       border: 3px solid transparent;
       background-clip: padding-box;
       border-radius: 999px;
     }.repos-page .region-sidebar::-webkit-scrollbar-thumb:hover, .repos-page .region-main::-webkit-scrollbar-thumb:hover{
-      background: rgba(255, 255, 255, 0.18);
+      background: var(--scroll-hover);
       background-clip: padding-box;
     }.repos-page .region-sidebar::-webkit-scrollbar-track, .repos-page .region-main::-webkit-scrollbar-track{ background: transparent; }@media (max-width: 760px){.repos-page .app{
         grid-template-columns: 1fr;
@@ -529,8 +611,40 @@
     }
 
 /* ===== 站内嵌入适配（repos-page） ===== */
+/* 仓库页是双栏工作台，宽屏下铺满可用宽度，不留大片右侧空白 */
 body:has(.repos-page) .md-grid {
-  max-width: 88rem;
+  max-width: 100%;
+}
+/* 这一页没有目录，右侧的 TOC 栏只会白占 一列宽度，直接收掉 */
+body:has(.repos-page) .md-sidebar--secondary {
+  display: none;
+}
+@media screen and (min-width: 76.25em) {
+  body:has(.repos-page) .md-grid {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  /* 左栏与正文合成一块面板，中间不再留缝 */
+  .repos-page .app {
+    column-gap: 0;
+  }
+  .repos-page .region-sidebar {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+  .repos-page .region-main {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+}
+/* 超宽屏下卡片拉成一整行会太空，改成两列 */
+@media screen and (min-width: 100em) {
+  body:has(.repos-page) .repo-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
 }
 .repos-page {
   height: auto;
@@ -588,14 +702,8 @@ body:has(.repos-page) .md-content__inner {
 /* 视觉调整：去除背景气泡（radial 渐变光斑） */
 .repos-page { background: var(--bg); }
 
-.repos-page {
-  --bg: #1e1e1e;
-  --panel: #1e1e1e;
-  --panel-top: #1e1e1e;
-}
 
-/* 让站点页面底色与仓库页一致 */
-/* 仅深色主题下让站点底色与仓库页一致，浅色主题保持站点原样 */
+/* 让站点底色与仓库页一致：深色 / 浅色各自一套 */
 body:has(.repos-page)[data-md-color-scheme="slate"] {
   background: #1e1e1e;
 }
@@ -603,6 +711,21 @@ body:has(.repos-page)[data-md-color-scheme="slate"] .md-container,
 body:has(.repos-page)[data-md-color-scheme="slate"] .md-main,
 body:has(.repos-page)[data-md-color-scheme="slate"] .md-content {
   background: transparent;
+}
+body:has(.repos-page):not([data-md-color-scheme="slate"]) {
+  background: #f7f8fb;
+}
+body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-container,
+body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-main,
+body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-content {
+  background: transparent;
+}
+/* 侧栏标题条是 sticky 的，底色必须跟着页面底色，否则浅色下会出现一条白斑 */
+body:has(.repos-page)[data-md-color-scheme="slate"] .md-nav__title {
+  background-color: #1e1e1e;
+}
+body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-nav__title {
+  background-color: #f7f8fb;
 }
 
 .repos-page .repos-search { padding: 16px 16px 0; }
@@ -613,3 +736,21 @@ body:has(.repos-page)[data-md-color-scheme="slate"] .md-content {
 
 .repos-page .region-sidebar { padding-left: 6px; padding-right: 6px; }
 .repos-page .recent-item { font-size: 12.5px; }
+
+/* 给新生的选路提示（在页面正文里，不在 .repos-page 内部，所以用主题变量） */
+.repo-guide {
+  margin: 4px 0 18px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--md-primary-fg-color);
+  border-radius: 0 8px 8px 0;
+  background: var(--md-code-bg-color);
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: var(--md-default-fg-color--light);
+}
+
+
+/* 修复：上方的 208px 双栏规则写在移动端媒体查询之后，会覆盖 <=760px 的单栏设置 */
+@media (max-width: 760px) {
+  .repos-page .app { grid-template-columns: 1fr; }
+}
