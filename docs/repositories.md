@@ -2,6 +2,8 @@
 
 > 规矩立得住，才能不烧心：精选解决真实问题、文档能让人快速跑通、代码规范且持续维护的开源仓库——看得懂、跑得起来、敢放心依赖。
 
+<p class="repo-guide">不知道怎么挑？按 Ⅰ 装好工具 → Ⅱ 打好基础 → Ⅲ 用上 AI → Ⅳ 做点作品 的顺序走一遍，够用一整个学期；Ⅴ 留给做完作品之后的部署与进阶。</p>
+
 <div class="repos-page">
   <div class="repos-search">
     <div class="search-box" id="searchBox">
@@ -38,89 +40,79 @@
         <div class="side-block" id="allBlock">
           <button type="button" class="side-head" id="allToggle" aria-expanded="true" aria-controls="allBody">
             <span class="head-title">全部</span>
-            <span class="reset-count" id="resetCount">59 个仓库</span>
+            <span class="reset-count" id="resetCount">73 个仓库</span>
             <span class="caret">▾</span>
           </button>
           <div class="block-body all-body" id="allBody">
-        <!-- Ⅰ 打基础 -->
+        <!-- Ⅰ 装好工具 -->
+        <div class="side-group" data-cat="tools">
+          <button type="button" class="cat-toggle" data-cat="tools" aria-expanded="true">
+            <span class="cat-num">Ⅰ</span>
+            <span class="cat-name">装好工具</span>
+            <span class="caret">▾</span>
+          </button>
+          <ul class="sub-list">
+            <li><button type="button" class="sub-item" data-sub="editor">编辑器与命令行<span class="sub-n">2</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="devkit">装机必备工具<span class="sub-n">3</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="desktop">Windows 更好用<span class="sub-n">4</span></button></li>
+          </ul>
+        </div>
+
+        <!-- Ⅱ 打好基础 -->
         <div class="side-group" data-cat="foundation">
           <button type="button" class="cat-toggle" data-cat="foundation" aria-expanded="true">
-            <span class="cat-num">Ⅰ</span>
-            <span class="cat-name">打基础</span>
-            <span class="caret">▾</span>
-          </button>
-          <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="algo">算法与数据结构<span class="sub-n">4</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="system">计算机系统<span class="sub-n">3</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="lang">语言深入<span class="sub-n">6</span></button></li>
-          </ul>
-        </div>
-
-        <!-- Ⅱ 动手造 -->
-        <div class="side-group" data-cat="build">
-          <button type="button" class="cat-toggle" data-cat="build" aria-expanded="true">
             <span class="cat-num">Ⅱ</span>
-            <span class="cat-name">动手造</span>
+            <span class="cat-name">打好基础</span>
             <span class="caret">▾</span>
           </button>
           <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="wheels">从零造轮子<span class="sub-n">1</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="web">Web 全栈<span class="sub-n">5</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="data">数据与后端<span class="sub-n">2</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="algo">刷题与算法<span class="sub-n">4</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="system">计算机系统<span class="sub-n">3</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="lang">吃透一门语言<span class="sub-n">6</span></button></li>
           </ul>
         </div>
 
-        <!-- Ⅲ 用 AI -->
+        <!-- Ⅲ 用上 AI -->
         <div class="side-group" data-cat="ai">
           <button type="button" class="cat-toggle" data-cat="ai" aria-expanded="true">
             <span class="cat-num">Ⅲ</span>
-            <span class="cat-name">用 AI</span>
+            <span class="cat-name">用上 AI</span>
             <span class="caret">▾</span>
           </button>
           <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="agent">Agent 与编排<span class="sub-n">6</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="infer">本地推理<span class="sub-n">6</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="rag">RAG、记忆与评测<span class="sub-n">6</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="infer">本地跑模型<span class="sub-n">5</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="agent">AI 助手与 Agent<span class="sub-n">10</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="media">画图、配音与视频<span class="sub-n">8</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="rag">让 AI 读懂你的资料<span class="sub-n">6</span></button></li>
           </ul>
         </div>
 
-        <!-- Ⅳ 提效率 -->
-        <div class="side-group" data-cat="tools">
-          <button type="button" class="cat-toggle" data-cat="tools" aria-expanded="true">
+        <!-- Ⅳ 做点作品 -->
+        <div class="side-group" data-cat="build">
+          <button type="button" class="cat-toggle" data-cat="build" aria-expanded="true">
             <span class="cat-num">Ⅳ</span>
-            <span class="cat-name">提效率</span>
+            <span class="cat-name">做点作品</span>
             <span class="caret">▾</span>
           </button>
           <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="editor">编辑器与终端<span class="sub-n">2</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="devkit">开发工具链<span class="sub-n">3</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="desktop">桌面效率<span class="sub-n">5</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="web">做网站<span class="sub-n">9</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="data">数据库与后端<span class="sub-n">2</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="wheels">照着重写一个<span class="sub-n">1</span></button></li>
           </ul>
         </div>
 
-        <!-- Ⅴ 上线跑 -->
+        <!-- Ⅴ 上线与进阶 -->
         <div class="side-group" data-cat="ship">
           <button type="button" class="cat-toggle" data-cat="ship" aria-expanded="true">
             <span class="cat-num">Ⅴ</span>
-            <span class="cat-name">上线跑</span>
+            <span class="cat-name">上线与进阶</span>
             <span class="caret">▾</span>
           </button>
           <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="ops">容器与运维<span class="sub-n">1</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="selfhost">自托管与媒体<span class="sub-n">4</span></button></li>
-          </ul>
-        </div>
-
-        <!-- Ⅵ 长本事 -->
-        <div class="side-group" data-cat="grow">
-          <button type="button" class="cat-toggle" data-cat="grow" aria-expanded="true">
-            <span class="cat-num">Ⅵ</span>
-            <span class="cat-name">长本事</span>
-            <span class="caret">▾</span>
-          </button>
-          <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="interview">面试与系统设计<span class="sub-n">2</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="roadmap">学习路线与资源<span class="sub-n">3</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="ops">部署上线<span class="sub-n">1</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="selfhost">自己搭服务<span class="sub-n">4</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="interview">面试准备<span class="sub-n">2</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="roadmap">继续自学<span class="sub-n">3</span></button></li>
           </ul>
         </div>
           </div>
@@ -131,16 +123,148 @@
     <main class="region region-main" id="repos-main">
       <div class="no-result" id="noResult" hidden>没有匹配的仓库，换个关键词试试。</div>
 
-      <!-- ========== Ⅰ 打基础 ========== -->
-      <section class="cat" data-cat="foundation">
-        <h2 class="cat-head"><span class="cat-num">Ⅰ</span>打基础</h2>
-        <p class="cat-note">地基不牢，后面全是补丁。算法、系统、语言这三样，决定你能走多远。</p>
+      <!-- ========== Ⅰ 装好工具 ========== -->
+      <section class="cat" data-cat="tools">
+        <h2 class="cat-head"><span class="cat-num">Ⅰ</span>装好工具</h2>
+        <p class="cat-note">刚到手的电脑先别急着写代码：把编辑器和命令行装顺手，后面每一步都省事。</p>
 
-        <section class="sub" data-sub="algo">
-          <h3 class="sub-head">算法与数据结构<span class="sub-count">4</span></h3>
+<section class="sub" data-sub="editor">
+          <h3 class="sub-head">编辑器与命令行<span class="sub-count">2</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-microsoft-vscode">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/microsoft.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/microsoft/vscode" target="_blank" rel="noopener">microsoft/vscode</a>
+                  <span class="repo-stars">★ 194.3k</span>
+                </div>
+                <p class="repo-desc">VS Code 源码仓库（Code - OSS）。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 45.3k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://code.visualstudio.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>editor</li><li>electron</li><li>microsoft</li><li>typescript</li><li>visual-studio-code</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-microsoft-terminal">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/microsoft.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/microsoft/terminal" target="_blank" rel="noopener">microsoft/terminal</a>
+                  <span class="repo-stars">★ 105.2k</span>
+                </div>
+                <p class="repo-desc">多标签、分屏、GPU 渲染的现代终端。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 9.7k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>cmd</li><li>command-line</li><li>console</li><li>contributions-welcome</li><li>good-first-issue</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="sub" data-sub="devkit">
+          <h3 class="sub-head">装机必备工具<span class="sub-count">3</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-devtoys-app-devtoys">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/DevToys-app.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/DevToys-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/DevToys-app/DevToys" target="_blank" rel="noopener">DevToys-app/DevToys</a>
+                  <span class="repo-stars">★ 32.1k</span>
+                </div>
+                <p class="repo-desc">开发者转换、格式化、正则与哈希工具箱。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 1.8k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://devtoys.app/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blazor</li><li>cross-platform</li><li>csharp</li><li>desktop</li><li>desktop-app</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-usebruno-bruno">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">U</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/usebruno.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/usebruno.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/usebruno/bruno" target="_blank" rel="noopener">usebruno/bruno</a>
+                  <span class="repo-stars">★ 47.8k</span>
+                </div>
+                <p class="repo-desc">离线、Git 友好的 API 客户端。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 3k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://www.usebruno.com/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>api-client</li><li>api-testing</li><li>automation</li><li>developer-tools</li><li>git</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-n8n-io-n8n">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/n8n-io.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/n8n-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener">n8n-io/n8n</a>
+                  <span class="repo-stars">★ 208.5k</span>
+                </div>
+                <p class="repo-desc">可视化工作流自动化平台，可写 JS/Python 节点，支持自托管。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 61.2k</span><a class="meta-home" href="https://n8n.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>apis</li><li>automation</li><li>cli</li><li>data-flow</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="sub" data-sub="desktop">
+          <h3 class="sub-head">Windows 更好用<span class="sub-count">4</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-microsoft-powertoys">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/microsoft.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/microsoft/PowerToys" target="_blank" rel="noopener">microsoft/PowerToys</a>
+                  <span class="repo-stars">★ 139.9k</span>
+                </div>
+                <p class="repo-desc">微软 Windows 效率工具集，含窗口布局、批量重命名等。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#555555"></i>C</span><span class="meta-item">⑂ 8.6k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>advanced-paste</li><li>color-picker</li><li>command-palette</li><li>desktop</li><li>fancyzones</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-flow-launcher-flow-launcher">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Flow-Launcher.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Flow-Launcher.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/Flow-Launcher/Flow.Launcher" target="_blank" rel="noopener">Flow-Launcher/Flow.Launcher</a>
+                  <span class="repo-stars">★ 15.9k</span>
+                </div>
+                <p class="repo-desc">快速启动与文件搜索工具。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 663</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://flowlauncher.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>alfred</li><li>application-launcher</li><li>desktop</li><li>finder</li><li>flow-launcher</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-sharex-sharex">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/ShareX.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/ShareX.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/ShareX/ShareX" target="_blank" rel="noopener">ShareX/ShareX</a>
+                  <span class="repo-stars">★ 40.4k</span>
+                </div>
+                <p class="repo-desc">截图、录屏、OCR 与上传一体化。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 4k</span><span class="meta-item">GNU General Public License v3.0</span><a class="meta-home" href="https://getsharex.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>avalonia</li><li>capture</li><li>color-picker</li><li>csharp</li><li>dropbox</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-keepassxreboot-keepassxc">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/keepassxreboot.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/keepassxreboot.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/keepassxreboot/keepassxc" target="_blank" rel="noopener">keepassxreboot/keepassxc</a>
+                  <span class="repo-stars">★ 29.5k</span>
+                </div>
+                <p class="repo-desc">离线密码管理器，支持浏览器插件与 TOTP。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 2k</span><a class="meta-home" href="https://keepassxc.org/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>cross-platform</li><li>hacktoberfest</li><li>keepass</li><li>keepassxc</li><li>linux</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+      
+      </section>
+
+      <!-- ========== Ⅱ 打好基础 ========== -->
+      <section class="cat" data-cat="foundation">
+        <h2 class="cat-head"><span class="cat-num">Ⅱ</span>打好基础</h2>
+        <p class="cat-note">课内要考、面试要问的硬功夫：刷题、看懂计算机怎么跑、把一门语言吃透。</p>
+
+<section class="sub" data-sub="algo">
+          <h3 class="sub-head">刷题与算法<span class="sub-count">4</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-krahets-hello-algo">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://github.com/krahets.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/krahets.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/krahets.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/krahets/hello-algo" target="_blank" rel="noopener">krahets/hello-algo</a>
@@ -152,7 +276,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-labuladong-fucking-algorithm">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://github.com/labuladong.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/labuladong.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/labuladong.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/labuladong/fucking-algorithm" target="_blank" rel="noopener">labuladong/fucking-algorithm</a>
@@ -164,7 +288,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-youngyangyang04-leetcode-master">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">Y</span><img class="avatar-img" src="https://github.com/youngyangyang04.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">Y</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/youngyangyang04.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/youngyangyang04.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/youngyangyang04/leetcode-master" target="_blank" rel="noopener">youngyangyang04/leetcode-master</a>
@@ -176,7 +300,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-thealgorithms-python">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://github.com/TheAlgorithms.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/TheAlgorithms.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/TheAlgorithms.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/TheAlgorithms/Python" target="_blank" rel="noopener">TheAlgorithms/Python</a>
@@ -189,12 +313,11 @@
             </li>
           </ul>
         </section>
-
         <section class="sub" data-sub="system">
           <h3 class="sub-head">计算机系统<span class="sub-count">3</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-mit-pdos-xv6-riscv">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/mit-pdos.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/mit-pdos.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/mit-pdos.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/mit-pdos/xv6-riscv" target="_blank" rel="noopener">mit-pdos/xv6-riscv</a>
@@ -205,7 +328,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-cmu-db-bustub">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://github.com/cmu-db.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/cmu-db.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/cmu-db.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/cmu-db/bustub" target="_blank" rel="noopener">cmu-db/bustub</a>
@@ -217,7 +340,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-cfenollosa-os-tutorial">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://github.com/cfenollosa.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/cfenollosa.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/cfenollosa.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/cfenollosa/os-tutorial" target="_blank" rel="noopener">cfenollosa/os-tutorial</a>
@@ -229,12 +352,11 @@
             </li>
           </ul>
         </section>
-
         <section class="sub" data-sub="lang">
-          <h3 class="sub-head">语言深入<span class="sub-count">6</span></h3>
+          <h3 class="sub-head">吃透一门语言<span class="sub-count">6</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-rust-lang-rustlings">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://github.com/rust-lang.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/rust-lang.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/rust-lang.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/rust-lang/rustlings" target="_blank" rel="noopener">rust-lang/rustlings</a>
@@ -246,7 +368,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-type-challenges-type-challenges">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://github.com/type-challenges.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/type-challenges.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/type-challenges.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/type-challenges/type-challenges" target="_blank" rel="noopener">type-challenges/type-challenges</a>
@@ -258,7 +380,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-exercism-exercism">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">E</span><img class="avatar-img" src="https://github.com/exercism.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">E</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/exercism.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/exercism.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/exercism/exercism" target="_blank" rel="noopener">exercism/exercism</a>
@@ -269,7 +391,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-rust-lang-book">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://github.com/rust-lang.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/rust-lang.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/rust-lang.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/rust-lang/book" target="_blank" rel="noopener">rust-lang/book</a>
@@ -281,7 +403,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-jackfrued-python-100-days">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">J</span><img class="avatar-img" src="https://github.com/jackfrued.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">J</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/jackfrued.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/jackfrued.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">jackfrued/Python-100-Days</a>
@@ -292,7 +414,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-getify-you-dont-know-js">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://github.com/getify.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/getify.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/getify.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener">getify/You-Dont-Know-JS</a>
@@ -305,18 +427,540 @@
             </li>
           </ul>
         </section>
+
+      
       </section>
 
-      <!-- ========== Ⅱ 动手造 ========== -->
-      <section class="cat" data-cat="build">
-        <h2 class="cat-head"><span class="cat-num">Ⅱ</span>动手造</h2>
-        <p class="cat-note">看懂不等于会写。把东西从零造一遍，才知道每一层在解决什么问题。</p>
+      <!-- ========== Ⅲ 用上 AI ========== -->
+      <section class="cat" data-cat="ai">
+        <h2 class="cat-head"><span class="cat-num">Ⅲ</span>用上 AI</h2>
+        <p class="cat-note">不用先学会训练模型：把 AI 当工具，帮你看资料、写脚本、搭助手。</p>
 
+
+<section class="sub" data-sub="infer">
+          <h3 class="sub-head">本地跑模型<span class="sub-count">5</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-open-webui-open-webui">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/open-webui.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/open-webui.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">open-webui/open-webui</a>
+                  <span class="repo-stars">★ 156.7k</span>
+                </div>
+                <p class="repo-desc">自托管 ChatGPT 式界面，接入 Ollama 或任意 OpenAI 兼容 API。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 22.8k</span><a class="meta-home" href="https://openwebui.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>llm</li><li>llm-ui</li><li>llm-webui</li><li>llms</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-ollama-ollama">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/ollama.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/ollama.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama/ollama</a>
+                  <span class="repo-stars">★ 184.7k</span>
+                </div>
+                <p class="repo-desc">一条命令在本地跑开源模型，提供 OpenAI 兼容 API。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 18.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://ollama.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>deepseek</li><li>gemma</li><li>gemma3</li><li>glm</li><li>go</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-vllm-project-vllm">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">V</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/vllm-project.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/vllm-project.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vllm-project/vllm</a>
+                  <span class="repo-stars">★ 95.4k</span>
+                </div>
+                <p class="repo-desc">高吞吐推理服务，支持 PagedAttention 与连续批处理。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 23.9k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://vllm.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>amd</li><li>blackwell</li><li>cuda</li><li>deepseek</li><li>deepseek-v3</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-sgl-project-sglang">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/sgl-project.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/sgl-project.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">sgl-project/sglang</a>
+                  <span class="repo-stars">★ 38.1k</span>
+                </div>
+                <p class="repo-desc">高性能 Serving 框架，适合高并发与结构化生成。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 9.9k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://sglang.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>attention</li><li>blackwell</li><li>cuda</li><li>deepseek</li><li>diffusion</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-huggingface-transformers">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">H</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/huggingface.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/huggingface.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">huggingface/transformers</a>
+                  <span class="repo-stars">★ 168.1k</span>
+                </div>
+                <p class="repo-desc">模型定义、推理与训练的标准库。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 35k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://huggingface.co/transformers" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>audio</li><li>deep-learning</li><li>deepseek</li><li>gemma</li><li>glm</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="sub" data-sub="agent">
+          <h3 class="sub-head">AI 助手与 Agent<span class="sub-count">10</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-deepseek-ai-deepseek-harness">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/deepseek-ai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/deepseek-ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noopener">deepseek-ai/deepseek-harness</a>
+                  <span class="repo-stars">★ 266k</span>
+                </div>
+                <p class="repo-desc">DeepSeek 开源的 Agent 框架，模型、工具与 Agent Loop 全部插件化，自带编码 Agent 和终端界面。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 32.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://deepseek.com/harness" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-agents</li><li>cordis</li><li>dsh</li><li>dsh-plugin</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-openclaw-openclaw">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/openclaw.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/openclaw.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">openclaw/openclaw</a>
+                  <span class="repo-stars">★ 393k</span>
+                </div>
+                <p class="repo-desc">本地个人 AI 助手，网关接入 20+ 聊天平台，提供多端客户端。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 82.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://openclaw.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>assistant</li><li>crustacean</li><li>molty</li><li>openclaw</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-nousresearch-hermes-agent">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/NousResearch.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/NousResearch.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">NousResearch/hermes-agent</a>
+                  <span class="repo-stars">★ 256.9k</span>
+                </div>
+                <p class="repo-desc">通用 AI Agent，模型可自由切换，内置定时任务与多种沙盒。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 56.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>ai-agent</li><li>ai-agents</li><li>anthropic</li><li>chatgpt</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-langgenius-dify">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/langgenius.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/langgenius.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/langgenius/dify" target="_blank" rel="noopener">langgenius/dify</a>
+                  <span class="repo-stars">★ 159.5k</span>
+                </div>
+                <p class="repo-desc">低代码 LLM 应用开发平台，可视化编排工作流、RAG 与 Agent。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 25.2k</span><a class="meta-home" href="https://dify.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agent</li><li>agentic-ai</li><li>agentic-framework</li><li>agentic-workflow</li><li>ai</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-langchain-ai-langgraph">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/langchain-ai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/langchain-ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">langchain-ai/langgraph</a>
+                  <span class="repo-stars">★ 43.9k</span>
+                </div>
+                <p class="repo-desc">图/状态机编排有状态 Agent，适合复杂分支与人工审核。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 7.5k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://docs.langchain.com/oss/python/langgraph/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agents</li><li>ai</li><li>ai-agents</li><li>chatgpt</li><li>deepagents</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-openai-openai-agents-python">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/openai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/openai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">openai/openai-agents-python</a>
+                  <span class="repo-stars">★ 30.3k</span>
+                </div>
+                <p class="repo-desc">轻量 Agent 框架，内置 handoff、guardrails 与 tracing。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 4.9k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agents</li><li>ai</li><li>framework</li><li>harness</li><li>llm</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-modelcontextprotocol-servers">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/modelcontextprotocol.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/modelcontextprotocol.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">modelcontextprotocol/servers</a>
+                  <span class="repo-stars">★ 91.5k</span>
+                </div>
+                <p class="repo-desc">MCP 官方参考服务器，让模型连接文件、Git、数据库等工具。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 11.9k</span><a class="meta-home" href="https://modelcontextprotocol.io" target="_blank" rel="noopener">官网</a></div>
+              </div>
+            </li>
+            <li class="repo-item" id="r-openai-codex">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/openai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/openai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/openai/codex" target="_blank" rel="noopener">openai/codex</a>
+                  <span class="repo-stars">★ 131.7k</span>
+                </div>
+                <p class="repo-desc">终端里的编码 Agent，Rust 写的，装完就能让它读仓库、改代码、跑测试。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 20.8k</span><span class="meta-item">Apache-2.0</span></div>
+                <ul class="repo-topics"><li>coding-agent</li><li>cli</li><li>rust</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-google-gemini-cli">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/google-gemini.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/google-gemini.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">google-gemini/gemini-cli</a>
+                  <span class="repo-stars">★ 108.6k</span>
+                </div>
+                <p class="repo-desc">Google 的终端 Agent，接 Gemini，开源可改，支持 MCP 工具。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 14.9k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://geminicli.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-agents</li><li>cli</li><li>gemini</li><li>mcp</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-farion1231-cc-switch">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/farion1231.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/farion1231.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener">farion1231/cc-switch</a>
+                  <span class="repo-stars">★ 150.3k</span>
+                </div>
+                <p class="repo-desc">桌面小工具：给 Claude Code、Codex、DSH 等切换 API 供应商和配置，不用手改 JSON。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 9.9k</span><span class="meta-item">MIT</span><a class="meta-home" href="https://ccswitch.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>claude-code</li><li>codex</li><li>deepseek-harness</li><li>provider-management</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="sub" data-sub="media">
+          <h3 class="sub-head">画图、配音与视频<span class="sub-count">8</span></h3>
+          <ul class="repo-list">
+<li class="repo-item" id="r-comfy-org-comfyui">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Comfy-Org.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Comfy-Org.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/Comfy-Org/ComfyUI" target="_blank" rel="noopener">Comfy-Org/ComfyUI</a>
+                  <span class="repo-stars">★ 142.8k</span>
+                </div>
+                <p class="repo-desc">节点式扩散模型推理界面，本地运行 SD、Flux 等模型。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 16.8k</span><span class="meta-item">GNU General Public License v3.0</span><a class="meta-home" href="https://www.comfy.org/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>comfy</li><li>comfyui</li><li>python</li><li>pytorch</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-automatic1111-stable-diffusion-webui">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">A</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/AUTOMATIC1111.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/AUTOMATIC1111.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank" rel="noopener">AUTOMATIC1111/stable-diffusion-webui</a>
+                  <span class="repo-stars">★ 165.2k</span>
+                </div>
+                <p class="repo-desc">本地跑 Stable Diffusion 的经典网页界面：打字出图、图生图、放大修复，插件生态最全。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 32.5k</span><span class="meta-item">AGPL-3.0</span></div>
+                <ul class="repo-topics"><li>stable-diffusion</li><li>text2image</li><li>img2img</li><li>web</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-black-forest-labs-flux">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">B</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/black-forest-labs.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/black-forest-labs.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/black-forest-labs/flux" target="_blank" rel="noopener">black-forest-labs/flux</a>
+                  <span class="repo-stars">★ 26k</span>
+                </div>
+                <p class="repo-desc">FLUX.1 系列的官方推理仓库，开源权重出图质量和提示词理解都比早期模型强一截。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 1.9k</span><span class="meta-item">Apache-2.0</span></div>
+                <ul class="repo-topics"><li>flux</li><li>text-to-image</li><li>diffusion</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-xinntao-real-esrgan">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">X</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/xinntao.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/xinntao.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/xinntao/Real-ESRGAN" target="_blank" rel="noopener">xinntao/Real-ESRGAN</a>
+                  <span class="repo-stars">★ 37.3k</span>
+                </div>
+                <p class="repo-desc">老照片、动漫截图、糊掉的视频都能放大变清晰，命令行一条命令就能跑。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 4.5k</span><span class="meta-item">BSD-3-Clause</span></div>
+                <ul class="repo-topics"><li>super-resolution</li><li>image-restoration</li><li>esrgan</li></ul>
+              </div>
+            </li>
+<li class="repo-item" id="r-rvc-boss-gpt-sovits">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/RVC-Boss.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/RVC-Boss.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/RVC-Boss/GPT-SoVITS" target="_blank" rel="noopener">RVC-Boss/GPT-SoVITS</a>
+                  <span class="repo-stars">★ 64.2k</span>
+                </div>
+                <p class="repo-desc">录 1 分钟声音就能克隆音色，中文 TTS 与 AI 配音的入门首选。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 6.8k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>text-to-speech</li><li>tts</li><li>voice-clone</li><li>vits</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-2noise-chattts">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/2noise.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/2noise.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/2noise/ChatTTS" target="_blank" rel="noopener">2noise/ChatTTS</a>
+                  <span class="repo-stars">★ 40k</span>
+                </div>
+                <p class="repo-desc">面向日常对话的中文语音合成，停顿和语气自然，适合给视频配音。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 4.2k</span><span class="meta-item">AGPL-3.0</span><a class="meta-home" href="https://2noise.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>tts</li><li>text-to-speech</li><li>chinese</li></ul>
+              </div>
+            </li>
+<li class="repo-item" id="r-wan-video-wan2-2">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">W</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Wan-Video.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Wan-Video.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/Wan-Video/Wan2.2" target="_blank" rel="noopener">Wan-Video/Wan2.2</a>
+                  <span class="repo-stars">★ 18.3k</span>
+                </div>
+                <p class="repo-desc">阿里开源的视频生成模型，文字或图片生成几秒短片，2.2 版画质和镜头运动更强。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 2.4k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://wan.video" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>aigc</li><li>video-generation</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-tencent-hunyuan-hunyuanvideo">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Tencent-Hunyuan.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Tencent-Hunyuan.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/Tencent-Hunyuan/HunyuanVideo" target="_blank" rel="noopener">Tencent-Hunyuan/HunyuanVideo</a>
+                  <span class="repo-stars">★ 12.7k</span>
+                </div>
+                <p class="repo-desc">腾讯混元的开源视频生成模型，13B 参数，人物动作和镜头运动比早期方案稳。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 1.4k</span><a class="meta-home" href="https://aivideo.hunyuan.tencent.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>video-generation</li><li>diffusion-transformer</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sub" data-sub="rag">
+          <h3 class="sub-head">让 AI 读懂你的资料<span class="sub-count">6</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-firecrawl-firecrawl">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/firecrawl.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/firecrawl.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener">firecrawl/firecrawl</a>
+                  <span class="repo-stars">★ 195.2k</span>
+                </div>
+                <p class="repo-desc">把网页和文档抓成 LLM 可用的 Markdown 数据。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 10.3k</span><span class="meta-item">GNU Affero General Public License v3.0</span><a class="meta-home" href="https://firecrawl.dev" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>ai-agents</li><li>ai-crawler</li><li>ai-scraping</li><li>ai-search</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-run-llama-llama-index">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/run-llama.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/run-llama.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">run-llama/llama_index</a>
+                  <span class="repo-stars">★ 52.7k</span>
+                </div>
+                <p class="repo-desc">文档解析、索引、RAG 与 Agent 工作流的工具箱。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 8.4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://developers.llamaindex.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agents</li><li>application</li><li>data</li><li>fine-tuning</li><li>framework</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-mem0ai-mem0">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/mem0ai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/mem0ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/mem0ai/mem0" target="_blank" rel="noopener">mem0ai/mem0</a>
+                  <span class="repo-stars">★ 67.8k</span>
+                </div>
+                <p class="repo-desc">可插拔的长期记忆层，适合聊天助手与个人 Agent。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 8k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://mem0.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agentic-memory</li><li>agentic-memory-system</li><li>agents</li><li>ai</li><li>ai-agents</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-langfuse-langfuse">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/langfuse.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/langfuse.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/langfuse/langfuse" target="_blank" rel="noopener">langfuse/langfuse</a>
+                  <span class="repo-stars">★ 36.4k</span>
+                </div>
+                <p class="repo-desc">Trace、Eval 与 Prompt 管理，可开源自托管。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 4.1k</span><a class="meta-home" href="https://langfuse.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>analytics</li><li>autogen</li><li>evaluation</li><li>langchain</li><li>large-language-models</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-promptfoo-promptfoo">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/promptfoo.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/promptfoo.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener">promptfoo/promptfoo</a>
+                  <span class="repo-stars">★ 26.4k</span>
+                </div>
+                <p class="repo-desc">声明式评测、红队测试与 CI，支持多模型对比。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 2.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://promptfoo.dev" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ci</li><li>ci-cd</li><li>cicd</li><li>evaluation</li><li>evaluation-framework</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-berriai-litellm">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">B</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/BerriAI.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/BerriAI.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">BerriAI/litellm</a>
+                  <span class="repo-stars">★ 62k</span>
+                </div>
+                <p class="repo-desc">统一 100+ 模型 API，支持成本追踪、fallback 与预算。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 12.7k</span><a class="meta-home" href="https://docs.litellm.ai/docs/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-gateway</li><li>anthropic</li><li>azure-openai</li><li>bedrock</li><li>gateway</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+      
+      </section>
+
+      <!-- ========== Ⅳ 做点作品 ========== -->
+      <section class="cat" data-cat="build">
+        <h2 class="cat-head"><span class="cat-num">Ⅳ</span>做点作品</h2>
+        <p class="cat-note">光看不算会：做出能跑、能发给同学看的东西，从网页后端到照着造一遍 Redis。</p>
+
+<section class="sub" data-sub="web">
+          <h3 class="sub-head">做网站<span class="sub-count">9</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-react-react">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/react.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/react.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/react/react" target="_blank" rel="noopener">react/react</a>
+                  <span class="repo-stars">★ 251.8k</span>
+                </div>
+                <p class="repo-desc">声明式 UI 库，前端最主流的框架。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 51.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://react.dev" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>declarative</li><li>frontend</li><li>javascript</li><li>library</li><li>react</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-vercel-next-js">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">V</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/vercel.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/vercel.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/vercel/next.js" target="_blank" rel="noopener">vercel/next.js</a>
+                  <span class="repo-stars">★ 143.2k</span>
+                </div>
+                <p class="repo-desc">React 全栈框架，支持 App Router、SSR 与 Server Actions。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 34.5k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://nextjs.org" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blog</li><li>browser</li><li>compiler</li><li>components</li><li>hybrid</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-shadcn-ui-ui">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/shadcn-ui.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/shadcn-ui.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener">shadcn-ui/ui</a>
+                  <span class="repo-stars">★ 126.5k</span>
+                </div>
+                <p class="repo-desc">可直接复制进项目的 Tailwind 组件库。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 13k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://ui.shadcn.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>base-ui</li><li>components</li><li>gen-ui</li><li>generative-ai</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-supabase-supabase">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/supabase.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/supabase.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/supabase/supabase" target="_blank" rel="noopener">supabase/supabase</a>
+                  <span class="repo-stars">★ 113.9k</span>
+                </div>
+                <p class="repo-desc">Postgres + Auth + Storage + Realtime + Edge Functions。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 16.7k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://supabase.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai</li><li>alternative</li><li>auth</li><li>database</li><li>deno</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-pocketbase-pocketbase">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/pocketbase.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/pocketbase.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/pocketbase/pocketbase" target="_blank" rel="noopener">pocketbase/pocketbase</a>
+                  <span class="repo-stars">★ 61.6k</span>
+                </div>
+                <p class="repo-desc">单文件后端：SQLite + Auth + Realtime + 管理后台。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 3.7k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://pocketbase.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>authentication</li><li>backend</li><li>golang</li><li>realtime</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-hexojs-hexo">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">H</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/hexojs.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/hexojs.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">hexojs/hexo</a>
+                  <span class="repo-stars">★ 41.8k</span>
+                </div>
+                <p class="repo-desc">中文圈最常见的静态博客框架，一条命令建站，配合 GitHub Pages 就能免费托管。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://hexo.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blog</li><li>static-site-generator</li><li>nodejs</li><li>hexo</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-gohugoio-hugo">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/gohugoio.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/gohugoio.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">gohugoio/hugo</a>
+                  <span class="repo-stars">★ 90.3k</span>
+                </div>
+                <p class="repo-desc">构建最快的静态站点生成器，几千篇文章也是秒级，模板多，适合一直写下去。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 8.4k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://gohugo.io" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blog-engine</li><li>static-site-generator</li><li>go</li><li>hugo</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-withastro-astro">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">A</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/withastro.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/withastro.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/withastro/astro" target="_blank" rel="noopener">withastro/astro</a>
+                  <span class="repo-stars">★ 63.6k</span>
+                </div>
+                <p class="repo-desc">内容站框架，写 Markdown 就是博客，需要交互时再嵌组件，静态托管即可。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#ff5a03"></i>TypeScript</span><span class="meta-item">⑂ 3.9k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://astro.build" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blog</li><li>static-site-generator</li><li>islands</li><li>astro</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-halo-dev-halo">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">H</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/halo-dev.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/halo-dev.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/halo-dev/halo" target="_blank" rel="noopener">halo-dev/halo</a>
+                  <span class="repo-stars">★ 40.1k</span>
+                </div>
+                <p class="repo-desc">带后台的开源建站工具，装好就能写文章；需要一台服务器，适合不想碰代码的人。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#6c3fc5"></i>Java</span><span class="meta-item">⑂ 10.3k</span><span class="meta-item">GPL-3.0</span><a class="meta-home" href="https://www.halo.run" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>blog</li><li>cms</li><li>blog-engine</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="sub" data-sub="data">
+          <h3 class="sub-head">数据库与后端<span class="sub-count">2</span></h3>
+          <ul class="repo-list">
+            <li class="repo-item" id="r-duckdb-duckdb">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/duckdb.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/duckdb.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/duckdb/duckdb" target="_blank" rel="noopener">duckdb/duckdb</a>
+                  <span class="repo-stars">★ 42.5k</span>
+                </div>
+                <p class="repo-desc">嵌入式 OLAP 数据库，一条 SQL 直接查 Parquet/CSV。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="http://www.duckdb.org" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>analytics</li><li>database</li><li>embedded-database</li><li>olap</li><li>sql</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-pola-rs-polars">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/pola-rs.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/pola-rs.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/pola-rs/polars" target="_blank" rel="noopener">pola-rs/polars</a>
+                  <span class="repo-stars">★ 40.2k</span>
+                </div>
+                <p class="repo-desc">Rust 实现的 DataFrame，惰性执行、多线程。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 3.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://docs.pola.rs" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>arrow</li><li>dataframe</li><li>dataframe-library</li><li>dataframes</li><li>out-of-core</li></ul>
+              </div>
+            </li>
+          </ul>
+        </section>
         <section class="sub" data-sub="wheels">
-          <h3 class="sub-head">从零造轮子<span class="sub-count">1</span></h3>
+          <h3 class="sub-head">照着重写一个<span class="sub-count">1</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-codecrafters-io-build-your-own-x">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://github.com/codecrafters-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/codecrafters-io.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/codecrafters-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/codecrafters-io/build-your-own-x" target="_blank" rel="noopener">codecrafters-io/build-your-own-x</a>
@@ -330,496 +974,19 @@
           </ul>
         </section>
 
-        <section class="sub" data-sub="web">
-          <h3 class="sub-head">Web 全栈<span class="sub-count">5</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-react-react">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://github.com/react.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/react/react" target="_blank" rel="noopener">react/react</a>
-                  <span class="repo-stars">★ 251.8k</span>
-                </div>
-                <p class="repo-desc">声明式 UI 库，前端最主流的框架。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 51.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://react.dev" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>declarative</li><li>frontend</li><li>javascript</li><li>library</li><li>react</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-vercel-next-js">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">V</span><img class="avatar-img" src="https://github.com/vercel.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/vercel/next.js" target="_blank" rel="noopener">vercel/next.js</a>
-                  <span class="repo-stars">★ 143.2k</span>
-                </div>
-                <p class="repo-desc">React 全栈框架，支持 App Router、SSR 与 Server Actions。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 34.5k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://nextjs.org" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>blog</li><li>browser</li><li>compiler</li><li>components</li><li>hybrid</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-shadcn-ui-ui">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://github.com/shadcn-ui.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener">shadcn-ui/ui</a>
-                  <span class="repo-stars">★ 126.5k</span>
-                </div>
-                <p class="repo-desc">可直接复制进项目的 Tailwind 组件库。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 13k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://ui.shadcn.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>base-ui</li><li>components</li><li>gen-ui</li><li>generative-ai</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-supabase-supabase">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://github.com/supabase.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/supabase/supabase" target="_blank" rel="noopener">supabase/supabase</a>
-                  <span class="repo-stars">★ 113.9k</span>
-                </div>
-                <p class="repo-desc">Postgres + Auth + Storage + Realtime + Edge Functions。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 16.7k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://supabase.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>alternative</li><li>auth</li><li>database</li><li>deno</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-pocketbase-pocketbase">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://github.com/pocketbase.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/pocketbase/pocketbase" target="_blank" rel="noopener">pocketbase/pocketbase</a>
-                  <span class="repo-stars">★ 61.6k</span>
-                </div>
-                <p class="repo-desc">单文件后端：SQLite + Auth + Realtime + 管理后台。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 3.7k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://pocketbase.io" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>authentication</li><li>backend</li><li>golang</li><li>realtime</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="sub" data-sub="data">
-          <h3 class="sub-head">数据与后端<span class="sub-count">2</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-duckdb-duckdb">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://github.com/duckdb.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/duckdb/duckdb" target="_blank" rel="noopener">duckdb/duckdb</a>
-                  <span class="repo-stars">★ 42.5k</span>
-                </div>
-                <p class="repo-desc">嵌入式 OLAP 数据库，一条 SQL 直接查 Parquet/CSV。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="http://www.duckdb.org" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>analytics</li><li>database</li><li>embedded-database</li><li>olap</li><li>sql</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-pola-rs-polars">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://github.com/pola-rs.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/pola-rs/polars" target="_blank" rel="noopener">pola-rs/polars</a>
-                  <span class="repo-stars">★ 40.2k</span>
-                </div>
-                <p class="repo-desc">Rust 实现的 DataFrame，惰性执行、多线程。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 3.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://docs.pola.rs" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>arrow</li><li>dataframe</li><li>dataframe-library</li><li>dataframes</li><li>out-of-core</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
+      
       </section>
 
-      <!-- ========== Ⅲ 用 AI ========== -->
-      <section class="cat" data-cat="ai">
-        <h2 class="cat-head"><span class="cat-num">Ⅲ</span>用 AI</h2>
-        <p class="cat-note">这一代开发者绕不开的能力：会调、会跑、会评估，而不是只会聊天。</p>
-
-        <section class="sub" data-sub="agent">
-          <h3 class="sub-head">Agent 与编排<span class="sub-count">6</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-openclaw-openclaw">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://github.com/openclaw.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">openclaw/openclaw</a>
-                  <span class="repo-stars">★ 393k</span>
-                </div>
-                <p class="repo-desc">本地个人 AI 助手，网关接入 20+ 聊天平台，提供多端客户端。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 82.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://openclaw.ai" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>assistant</li><li>crustacean</li><li>molty</li><li>openclaw</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-nousresearch-hermes-agent">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://github.com/NousResearch.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">NousResearch/hermes-agent</a>
-                  <span class="repo-stars">★ 256.9k</span>
-                </div>
-                <p class="repo-desc">通用 AI Agent，模型可自由切换，内置定时任务与多种沙盒。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 56.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://hermes-agent.nousresearch.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>ai-agent</li><li>ai-agents</li><li>anthropic</li><li>chatgpt</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-langgenius-dify">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://github.com/langgenius.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/langgenius/dify" target="_blank" rel="noopener">langgenius/dify</a>
-                  <span class="repo-stars">★ 159.5k</span>
-                </div>
-                <p class="repo-desc">低代码 LLM 应用开发平台，可视化编排工作流、RAG 与 Agent。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 25.2k</span><a class="meta-home" href="https://dify.ai" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>agent</li><li>agentic-ai</li><li>agentic-framework</li><li>agentic-workflow</li><li>ai</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-langchain-ai-langgraph">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://github.com/langchain-ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">langchain-ai/langgraph</a>
-                  <span class="repo-stars">★ 43.9k</span>
-                </div>
-                <p class="repo-desc">图/状态机编排有状态 Agent，适合复杂分支与人工审核。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 7.5k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://docs.langchain.com/oss/python/langgraph/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>agents</li><li>ai</li><li>ai-agents</li><li>chatgpt</li><li>deepagents</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-openai-openai-agents-python">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://github.com/openai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">openai/openai-agents-python</a>
-                  <span class="repo-stars">★ 30.3k</span>
-                </div>
-                <p class="repo-desc">轻量 Agent 框架，内置 handoff、guardrails 与 tracing。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 4.9k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>agents</li><li>ai</li><li>framework</li><li>harness</li><li>llm</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-modelcontextprotocol-servers">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/modelcontextprotocol.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">modelcontextprotocol/servers</a>
-                  <span class="repo-stars">★ 91.5k</span>
-                </div>
-                <p class="repo-desc">MCP 官方参考服务器，让模型连接文件、Git、数据库等工具。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 11.9k</span><a class="meta-home" href="https://modelcontextprotocol.io" target="_blank" rel="noopener">官网</a></div>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="sub" data-sub="infer">
-          <h3 class="sub-head">本地推理<span class="sub-count">6</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-open-webui-open-webui">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://github.com/open-webui.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">open-webui/open-webui</a>
-                  <span class="repo-stars">★ 156.7k</span>
-                </div>
-                <p class="repo-desc">自托管 ChatGPT 式界面，接入 Ollama 或任意 OpenAI 兼容 API。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 22.8k</span><a class="meta-home" href="https://openwebui.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>llm</li><li>llm-ui</li><li>llm-webui</li><li>llms</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-comfy-org-comfyui">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://github.com/Comfy-Org.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/Comfy-Org/ComfyUI" target="_blank" rel="noopener">Comfy-Org/ComfyUI</a>
-                  <span class="repo-stars">★ 142.8k</span>
-                </div>
-                <p class="repo-desc">节点式扩散模型推理界面，本地运行 SD、Flux 等模型。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 16.8k</span><span class="meta-item">GNU General Public License v3.0</span><a class="meta-home" href="https://www.comfy.org/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>comfy</li><li>comfyui</li><li>python</li><li>pytorch</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-ollama-ollama">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://github.com/ollama.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">ollama/ollama</a>
-                  <span class="repo-stars">★ 184.7k</span>
-                </div>
-                <p class="repo-desc">一条命令在本地跑开源模型，提供 OpenAI 兼容 API。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 18.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://ollama.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>deepseek</li><li>gemma</li><li>gemma3</li><li>glm</li><li>go</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-vllm-project-vllm">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">V</span><img class="avatar-img" src="https://github.com/vllm-project.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vllm-project/vllm</a>
-                  <span class="repo-stars">★ 95.4k</span>
-                </div>
-                <p class="repo-desc">高吞吐推理服务，支持 PagedAttention 与连续批处理。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 23.9k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://vllm.ai" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>amd</li><li>blackwell</li><li>cuda</li><li>deepseek</li><li>deepseek-v3</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-sgl-project-sglang">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://github.com/sgl-project.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">sgl-project/sglang</a>
-                  <span class="repo-stars">★ 38.1k</span>
-                </div>
-                <p class="repo-desc">高性能 Serving 框架，适合高并发与结构化生成。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 9.9k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://sglang.io" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>attention</li><li>blackwell</li><li>cuda</li><li>deepseek</li><li>diffusion</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-huggingface-transformers">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">H</span><img class="avatar-img" src="https://github.com/huggingface.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">huggingface/transformers</a>
-                  <span class="repo-stars">★ 168.1k</span>
-                </div>
-                <p class="repo-desc">模型定义、推理与训练的标准库。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 35k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://huggingface.co/transformers" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>audio</li><li>deep-learning</li><li>deepseek</li><li>gemma</li><li>glm</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="sub" data-sub="rag">
-          <h3 class="sub-head">RAG、记忆与评测<span class="sub-count">6</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-firecrawl-firecrawl">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://github.com/firecrawl.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener">firecrawl/firecrawl</a>
-                  <span class="repo-stars">★ 195.2k</span>
-                </div>
-                <p class="repo-desc">把网页和文档抓成 LLM 可用的 Markdown 数据。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 10.3k</span><span class="meta-item">GNU Affero General Public License v3.0</span><a class="meta-home" href="https://firecrawl.dev" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>ai-agents</li><li>ai-crawler</li><li>ai-scraping</li><li>ai-search</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-run-llama-llama-index">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">R</span><img class="avatar-img" src="https://github.com/run-llama.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">run-llama/llama_index</a>
-                  <span class="repo-stars">★ 52.7k</span>
-                </div>
-                <p class="repo-desc">文档解析、索引、RAG 与 Agent 工作流的工具箱。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 8.4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://developers.llamaindex.ai" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>agents</li><li>application</li><li>data</li><li>fine-tuning</li><li>framework</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-mem0ai-mem0">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/mem0ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/mem0ai/mem0" target="_blank" rel="noopener">mem0ai/mem0</a>
-                  <span class="repo-stars">★ 67.8k</span>
-                </div>
-                <p class="repo-desc">可插拔的长期记忆层，适合聊天助手与个人 Agent。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 8k</span><span class="meta-item">Apache License 2.0</span><a class="meta-home" href="https://mem0.ai" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>agentic-memory</li><li>agentic-memory-system</li><li>agents</li><li>ai</li><li>ai-agents</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-langfuse-langfuse">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://github.com/langfuse.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/langfuse/langfuse" target="_blank" rel="noopener">langfuse/langfuse</a>
-                  <span class="repo-stars">★ 36.4k</span>
-                </div>
-                <p class="repo-desc">Trace、Eval 与 Prompt 管理，可开源自托管。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 4.1k</span><a class="meta-home" href="https://langfuse.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>analytics</li><li>autogen</li><li>evaluation</li><li>langchain</li><li>large-language-models</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-promptfoo-promptfoo">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://github.com/promptfoo.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener">promptfoo/promptfoo</a>
-                  <span class="repo-stars">★ 26.4k</span>
-                </div>
-                <p class="repo-desc">声明式评测、红队测试与 CI，支持多模型对比。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 2.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://promptfoo.dev" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ci</li><li>ci-cd</li><li>cicd</li><li>evaluation</li><li>evaluation-framework</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-berriai-litellm">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">B</span><img class="avatar-img" src="https://github.com/BerriAI.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">BerriAI/litellm</a>
-                  <span class="repo-stars">★ 62k</span>
-                </div>
-                <p class="repo-desc">统一 100+ 模型 API，支持成本追踪、fallback 与预算。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 12.7k</span><a class="meta-home" href="https://docs.litellm.ai/docs/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai-gateway</li><li>anthropic</li><li>azure-openai</li><li>bedrock</li><li>gateway</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- ========== Ⅳ 提效率 ========== -->
-      <section class="cat" data-cat="tools">
-        <h2 class="cat-head"><span class="cat-num">Ⅳ</span>提效率</h2>
-        <p class="cat-note">工具不决定上限，但决定你每天浪费多少时间。</p>
-
-        <section class="sub" data-sub="editor">
-          <h3 class="sub-head">编辑器与终端<span class="sub-count">2</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-microsoft-vscode">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/microsoft/vscode" target="_blank" rel="noopener">microsoft/vscode</a>
-                  <span class="repo-stars">★ 194.3k</span>
-                </div>
-                <p class="repo-desc">VS Code 源码仓库（Code - OSS）。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 45.3k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://code.visualstudio.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>editor</li><li>electron</li><li>microsoft</li><li>typescript</li><li>visual-studio-code</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-microsoft-terminal">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/microsoft/terminal" target="_blank" rel="noopener">microsoft/terminal</a>
-                  <span class="repo-stars">★ 105.2k</span>
-                </div>
-                <p class="repo-desc">多标签、分屏、GPU 渲染的现代终端。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 9.7k</span><span class="meta-item">MIT License</span></div>
-                <ul class="repo-topics"><li>cmd</li><li>command-line</li><li>console</li><li>contributions-welcome</li><li>good-first-issue</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="sub" data-sub="devkit">
-          <h3 class="sub-head">开发工具链<span class="sub-count">3</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-devtoys-app-devtoys">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://github.com/DevToys-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/DevToys-app/DevToys" target="_blank" rel="noopener">DevToys-app/DevToys</a>
-                  <span class="repo-stars">★ 32.1k</span>
-                </div>
-                <p class="repo-desc">开发者转换、格式化、正则与哈希工具箱。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 1.8k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://devtoys.app/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>blazor</li><li>cross-platform</li><li>csharp</li><li>desktop</li><li>desktop-app</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-usebruno-bruno">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">U</span><img class="avatar-img" src="https://github.com/usebruno.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/usebruno/bruno" target="_blank" rel="noopener">usebruno/bruno</a>
-                  <span class="repo-stars">★ 47.8k</span>
-                </div>
-                <p class="repo-desc">离线、Git 友好的 API 客户端。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f1e05a"></i>JavaScript</span><span class="meta-item">⑂ 3k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://www.usebruno.com/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>api-client</li><li>api-testing</li><li>automation</li><li>developer-tools</li><li>git</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-n8n-io-n8n">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://github.com/n8n-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener">n8n-io/n8n</a>
-                  <span class="repo-stars">★ 208.5k</span>
-                </div>
-                <p class="repo-desc">可视化工作流自动化平台，可写 JS/Python 节点，支持自托管。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 61.2k</span><a class="meta-home" href="https://n8n.io" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>ai</li><li>apis</li><li>automation</li><li>cli</li><li>data-flow</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="sub" data-sub="desktop">
-          <h3 class="sub-head">桌面效率<span class="sub-count">5</span></h3>
-          <ul class="repo-list">
-            <li class="repo-item" id="r-microsoft-powertoys">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://github.com/microsoft.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/microsoft/PowerToys" target="_blank" rel="noopener">microsoft/PowerToys</a>
-                  <span class="repo-stars">★ 139.9k</span>
-                </div>
-                <p class="repo-desc">微软 Windows 效率工具集，含窗口布局、批量重命名等。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#555555"></i>C</span><span class="meta-item">⑂ 8.6k</span><span class="meta-item">MIT License</span></div>
-                <ul class="repo-topics"><li>advanced-paste</li><li>color-picker</li><li>command-palette</li><li>desktop</li><li>fancyzones</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-clash-verge-rev-clash-verge-rev">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://github.com/clash-verge-rev.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/clash-verge-rev/clash-verge-rev" target="_blank" rel="noopener">clash-verge-rev/clash-verge-rev</a>
-                  <span class="repo-stars">★ 153.8k</span>
-                </div>
-                <p class="repo-desc">基于 Tauri 的 Clash 桌面客户端，支持订阅与规则管理。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 11k</span><span class="meta-item">GNU General Public License v3.0</span><a class="meta-home" href="https://www.clashverge.dev" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>clash</li><li>clash-meta</li><li>clash-verge</li><li>linux</li><li>mac</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-flow-launcher-flow-launcher">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://github.com/Flow-Launcher.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/Flow-Launcher/Flow.Launcher" target="_blank" rel="noopener">Flow-Launcher/Flow.Launcher</a>
-                  <span class="repo-stars">★ 15.9k</span>
-                </div>
-                <p class="repo-desc">快速启动与文件搜索工具。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 663</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://flowlauncher.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>alfred</li><li>application-launcher</li><li>desktop</li><li>finder</li><li>flow-launcher</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-sharex-sharex">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://github.com/ShareX.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/ShareX/ShareX" target="_blank" rel="noopener">ShareX/ShareX</a>
-                  <span class="repo-stars">★ 40.4k</span>
-                </div>
-                <p class="repo-desc">截图、录屏、OCR 与上传一体化。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#178600"></i>C#</span><span class="meta-item">⑂ 4k</span><span class="meta-item">GNU General Public License v3.0</span><a class="meta-home" href="https://getsharex.com" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>avalonia</li><li>capture</li><li>color-picker</li><li>csharp</li><li>dropbox</li></ul>
-              </div>
-            </li>
-            <li class="repo-item" id="r-keepassxreboot-keepassxc">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://github.com/keepassxreboot.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
-              <div class="repo-body">
-                <div class="repo-line">
-                  <a class="repo-name" href="https://github.com/keepassxreboot/keepassxc" target="_blank" rel="noopener">keepassxreboot/keepassxc</a>
-                  <span class="repo-stars">★ 29.5k</span>
-                </div>
-                <p class="repo-desc">离线密码管理器，支持浏览器插件与 TOTP。</p>
-                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#f34b7d"></i>C++</span><span class="meta-item">⑂ 2k</span><a class="meta-home" href="https://keepassxc.org/" target="_blank" rel="noopener">官网</a></div>
-                <ul class="repo-topics"><li>cross-platform</li><li>hacktoberfest</li><li>keepass</li><li>keepassxc</li><li>linux</li></ul>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- ========== Ⅴ 上线跑 ========== -->
+      <!-- ========== Ⅴ 上线与进阶 ========== -->
       <section class="cat" data-cat="ship">
-        <h2 class="cat-head"><span class="cat-num">Ⅴ</span>上线跑</h2>
-        <p class="cat-note">只在 localhost 跑通不算本事，能部署、能维护才算。</p>
+        <h2 class="cat-head"><span class="cat-num">Ⅴ</span>上线与进阶</h2>
+        <p class="cat-note">作品做完之后：怎么部署给别人访问，以及自建服务、面试和往后自学。</p>
 
-        <section class="sub" data-sub="ops">
-          <h3 class="sub-head">容器与运维<span class="sub-count">1</span></h3>
+<section class="sub" data-sub="ops">
+          <h3 class="sub-head">部署上线<span class="sub-count">1</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-k3s-io-k3s">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://github.com/k3s-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/k3s-io.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/k3s-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/k3s-io/k3s" target="_blank" rel="noopener">k3s-io/k3s</a>
@@ -832,12 +999,11 @@
             </li>
           </ul>
         </section>
-
         <section class="sub" data-sub="selfhost">
-          <h3 class="sub-head">自托管与媒体<span class="sub-count">4</span></h3>
+          <h3 class="sub-head">自己搭服务<span class="sub-count">4</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-immich-app-immich">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">I</span><img class="avatar-img" src="https://github.com/immich-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">I</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/immich-app.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/immich-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/immich-app/immich" target="_blank" rel="noopener">immich-app/immich</a>
@@ -849,7 +1015,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-paperless-ngx-paperless-ngx">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://github.com/paperless-ngx.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/paperless-ngx.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/paperless-ngx.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/paperless-ngx/paperless-ngx" target="_blank" rel="noopener">paperless-ngx/paperless-ngx</a>
@@ -861,7 +1027,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-dani-garcia-vaultwarden">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://github.com/dani-garcia.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/dani-garcia.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/dani-garcia.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener">dani-garcia/vaultwarden</a>
@@ -873,7 +1039,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-jellyfin-jellyfin">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">J</span><img class="avatar-img" src="https://github.com/jellyfin.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">J</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/jellyfin.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/jellyfin.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/jellyfin/jellyfin" target="_blank" rel="noopener">jellyfin/jellyfin</a>
@@ -886,18 +1052,11 @@
             </li>
           </ul>
         </section>
-      </section>
-
-      <!-- ========== Ⅵ 长本事 ========== -->
-      <section class="cat" data-cat="grow">
-        <h2 class="cat-head"><span class="cat-num">Ⅵ</span>长本事</h2>
-        <p class="cat-note">技术会过时，学习方法和视野不会。</p>
-
         <section class="sub" data-sub="interview">
-          <h3 class="sub-head">面试与系统设计<span class="sub-count">2</span></h3>
+          <h3 class="sub-head">面试准备<span class="sub-count">2</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-snailclimb-javaguide">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://github.com/Snailclimb.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Snailclimb.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Snailclimb.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">Snailclimb/JavaGuide</a>
@@ -909,7 +1068,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-donnemartin-system-design-primer">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://github.com/donnemartin.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/donnemartin.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/donnemartin.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">donnemartin/system-design-primer</a>
@@ -922,12 +1081,11 @@
             </li>
           </ul>
         </section>
-
         <section class="sub" data-sub="roadmap">
-          <h3 class="sub-head">学习路线与资源<span class="sub-count">3</span></h3>
+          <h3 class="sub-head">继续自学<span class="sub-count">3</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-f-prompts-chat">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://github.com/f.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/f.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/f.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/f/prompts.chat" target="_blank" rel="noopener">f/prompts.chat</a>
@@ -939,7 +1097,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-public-apis-public-apis">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://github.com/public-apis.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/public-apis.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/public-apis.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis/public-apis</a>
@@ -951,7 +1109,7 @@
               </div>
             </li>
             <li class="repo-item" id="r-datatalksclub-data-engineering-zoomcamp">
-              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://github.com/DataTalksClub.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/DataTalksClub.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/DataTalksClub.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
               <div class="repo-body">
                 <div class="repo-line">
                   <a class="repo-name" href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener">DataTalksClub/data-engineering-zoomcamp</a>
@@ -964,7 +1122,10 @@
             </li>
           </ul>
         </section>
+
+      
       </section>
+
     </main>
   </div>
 </div>
