@@ -1,7 +1,8 @@
 """Regenerate the paper card HTML from the embedded papers JSON.
 
-The JSON block is read-only for this tool. Existing ``.shot`` inner HTML is
-preserved by paper id so screenshots are never decoded or rewritten.
+The JSON block is read-only for this tool. Existing inline ``shotimg`` (base64) is
+preserved by paper id. JPEG first-page captures in ``docs/assets/paper-thumbs/``
+take precedence over SVG placeholders when regenerating.
 """
 from __future__ import annotations
 
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "docs" / "papers.md"
 BACKUP_DIR = ROOT / "backups"
 BACKUP_PATH = BACKUP_DIR / "papers.md.gen.bak"
+THUMB_DIR = ROOT / "docs" / "assets" / "paper-thumbs"
 JSON_RE = re.compile(
     r'(<script id="papers-json" type="application/json">)(.*?)(</script>)', re.S
 )
@@ -82,6 +84,48 @@ def cite_span(paper: dict) -> str:
     return f'<span class="{cls}">{badge(paper)}</span>'
 
 
+def file_shotimg_inner(paper: dict) -> str | None:
+    pid = paper["id"]
+    path = THUMB_DIR / f"{pid}.jpg"
+    if not path.is_file():
+        return None
+    alt = esc(paper.get("zh") or "论文第一页")
+    src = esc(f"../assets/paper-thumbs/{pid}.jpg")
+    return (
+        f'<img class="shotimg" src="{src}" alt="{alt}" '
+        f'loading="lazy" decoding="async">'
+    )
+
+
+def shot_html(paper: dict, shots: dict[str, str]) -> str:
+    pid = paper["id"]
+    preserved = shots.get(pid)
+    if preserved is not None:
+        # Normalize only the badge text; preserve the image/base64 bytes and
+        # all other shot markup exactly as it appeared in the source.
+        if "shotimg" in preserved:
+            if "data:image" in preserved:
+                if CITE_RE.search(preserved):
+                    preserved = CITE_RE.sub(cite_span(paper), preserved, count=1)
+                    preserved = SMALL_RE.sub("", preserved)
+                elif SMALL_RE.search(preserved):
+                    preserved = SMALL_RE.sub(
+                        f'<small>{badge(paper)}</small>', preserved, count=1
+                    )
+                return f'<div class="shot">{preserved}</div>'
+            file_img = file_shotimg_inner(paper)
+            if file_img:
+                return f'<div class="shot">{file_img}{cite_span(paper)}</div>'
+    file_img = file_shotimg_inner(paper)
+    if file_img:
+        return f'<div class="shot">{file_img}{cite_span(paper)}</div>'
+    if preserved is not None and "thumb-svg" in preserved:
+        body = CITE_RE.sub("", preserved)
+        body = SMALL_RE.sub("", body)
+        return f'<div class="shot">{body.strip()}{cite_span(paper)}</div>'
+    return f'<div class="shot">{svg_thumb_inner(paper)}{cite_span(paper)}</div>'
+
+
 def _chunks(text: str, size: int, max_lines: int = 2) -> list[str]:
     text = (text or "").strip()
     if not text:
@@ -135,28 +179,6 @@ def svg_thumb_inner(paper: dict) -> str:
         + "".join(bars)
         + "</svg>"
     )
-
-
-def shot_html(paper: dict, shots: dict[str, str]) -> str:
-    pid = paper["id"]
-    preserved = shots.get(pid)
-    if preserved is not None:
-        # Normalize only the badge text; preserve the image/base64 bytes and
-        # all other shot markup exactly as it appeared in the source.
-        if "shotimg" in preserved:
-            if CITE_RE.search(preserved):
-                preserved = CITE_RE.sub(cite_span(paper), preserved, count=1)
-                preserved = SMALL_RE.sub("", preserved)
-            elif SMALL_RE.search(preserved):
-                preserved = SMALL_RE.sub(
-                    f'<small>{badge(paper)}</small>', preserved, count=1
-                )
-            return f'<div class="shot">{preserved}</div>'
-        if "thumb-svg" in preserved:
-            body = CITE_RE.sub("", preserved)
-            body = SMALL_RE.sub("", body)
-            return f'<div class="shot">{body.strip()}{cite_span(paper)}</div>'
-    return f'<div class="shot">{svg_thumb_inner(paper)}{cite_span(paper)}</div>'
 
 
 def render_card(paper: dict, shots: dict[str, str], field_styles: dict[str, str]) -> str:
