@@ -2,16 +2,37 @@
 (function () {
   function init() {
 
-const DATA = JSON.parse(document.getElementById('papers-json').textContent);
+const jsonEl = document.getElementById('papers-json');
+if (!jsonEl) return;
+const grid = document.getElementById('grid');
+if (!grid) return;
+
+const DATA = JSON.parse(jsonEl.textContent);
 const BY = Object.fromEntries(DATA.map(p => [p.id, p]));
+/** 旧时间线/书签编号 → WB id（勿用 number 字段直查，B01≠WB-B01） */
+const LEGACY_QUERY_ID = {
+  B01: 'WB-A01', B02: 'WB-B01', B03: 'WB-B02', B04: 'WB-E01',
+  B06: 'WB-D02', B08: 'WB-B05', B09: 'WB-A09', B11: 'WB-A12',
+  B14: 'WB-A22', B15: 'WB-A26', F12: 'WB-E03',
+};
+function resolvePaperId(raw) {
+  if (!raw) return null;
+  const u = String(raw).trim().toUpperCase();
+  if (BY[u]) return u;
+  const legacy = LEGACY_QUERY_ID[u];
+  if (legacy && BY[legacy]) return legacy;
+  const wb = u.startsWith('WB-') ? u : 'WB-' + u;
+  if (BY[wb]) return wb;
+  return null;
+}
 /* 来源页（如 ai-timeline）：从时间线深链进入时，关闭介绍后自动返回该页。 */
 const FROM = new URLSearchParams(location.search).get('from');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
   c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-const grid = document.getElementById('grid');
 const cards = [...grid.querySelectorAll('.card')];
 const countEl = document.getElementById('count');
+const emptyEl = document.getElementById('empty');
 const SHOT = {};
 cards.forEach(c => { SHOT[c.dataset.id] = c.querySelector('.shot').innerHTML; });
 
@@ -39,8 +60,8 @@ function apply() {
   });
   grid.innerHTML = '';
   list.forEach(c => grid.appendChild(c));
-  countEl.innerHTML = '<b>' + list.length + '</b> / 45 篇';
-  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+  countEl.innerHTML = '<b>' + list.length + '</b> / ' + DATA.length + ' 篇';
+  if (emptyEl) emptyEl.style.display = list.length ? 'none' : 'block';
   ORDER = list.map(c => BY[c.dataset.id]);
   const on = new Set(list.map(c => c.dataset.id));
   document.querySelectorAll('.tl-dot').forEach(d => {
@@ -169,7 +190,8 @@ const q0 = new URLSearchParams(location.search).get('q');
 if (q0) { qEl.value = q0; state.q = q0; }
 apply();
 const deep = new URLSearchParams(location.search).get('id');
-if (deep && BY[deep.toUpperCase()]) open(deep.toUpperCase());
+const deepId = resolvePaperId(deep);
+if (deepId) open(deepId);
 
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
