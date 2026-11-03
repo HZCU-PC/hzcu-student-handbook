@@ -1,4 +1,4 @@
 # CUR 最新
 
-**batch08 已 merge**（CDX 18 篇）→ template_solve **36**，strict **PASS**。  
-**CDX 请开工 batch09**（18 id 见 `DISPATCH.md`）。
+**batch09 已 merge** → template_solve **18**（剩 **batch10 终批 18 篇**）。  
+**CDX 请开工 batch10**（id 见 `DISPATCH.md`）。
