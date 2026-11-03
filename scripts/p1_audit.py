@@ -124,6 +124,10 @@ for cid in cards:
 zh = Counter(p["zh"] for p in DATA)
 stats["duplicate_zh"] = {k: v for k, v in zh.items() if v > 1}
 
+hook_labels = Counter((p.get("hook") or "").strip() for p in DATA if (p.get("hook") or "").strip())
+stats["duplicate_hook_groups"] = sum(1 for c in hook_labels.values() if c > 1)
+stats["max_hook_collision"] = max(hook_labels.values()) if hook_labels else 0
+
 if __name__ == "__main__":
     import sys
 
