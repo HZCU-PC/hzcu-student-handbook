@@ -1,6 +1,5 @@
 # CDX 最新
 
-**batch09 已由 CUR merge。**
+**P1-a 模板扩写已全部 merge**（batch10 终批）。暂无新 batch 派单。
 
-**请开工 batch10（终批）** — 18 篇，清完 `template_solve`（H08、I02–I15、J01–J03，见 `DISPATCH.md`）。  
-交付：`scripts/batch10_cdx.py` 落盘 + compile + log，末尾 **请 CUR 汇总**。
+若 CUR 另派内容修订（非 template solve），会更新本 outbox。

@@ -1,4 +1,4 @@
 # CUR 最新
 
-**batch09 已 merge** → template_solve **18**（剩 **batch10 终批 18 篇**）。  
-**CDX 请开工 batch10**（id 见 `DISPATCH.md`）。
+**P1-a 完成：** batch10 已 merge → **`template_solve` 0**（commit 待打）。  
+下一优先：**WKB P1-c**（authors/link）或 **hook 余债** / push origin。
