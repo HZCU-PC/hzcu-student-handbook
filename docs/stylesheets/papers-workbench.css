@@ -64,7 +64,7 @@ body:has(.papers-shelf){overflow-x:clip}
 .sel{border:1px solid var(--line);border-radius:3px;padding:6px 10px;font-size:13px;color:var(--fg-2);background:var(--surface);font-family:inherit;outline:none}
 
 /* 栅格 */
-.md-typeset .papers-shelf .paper-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:10px;margin:0;width:100%;min-width:0}
+.md-typeset .papers-shelf .paper-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;width:100%;min-width:0}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;min-width:0;transition:box-shadow .18s,border-color .18s,transform .18s}
 .card:hover{box-shadow:var(--e2);border-color:transparent;transform:translateY(-1px)}
 .card:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
@@ -204,12 +204,14 @@ footer .fin{max-width:1400px;margin:0 auto;padding:0 20px;line-height:1.9}
   .sheet-shot .thumb-svg{max-width:220px}
   .links{grid-template-columns:1fr}
 }
+@media(max-width:900px){
+  .md-typeset .papers-shelf .paper-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+}
 @media(max-width:640px){
   .appbar-in{padding:0 14px;gap:10px}
   .brand em{display:none}
   .papers-layout{padding:0 14px}
   .ptitle{font-size:26px}
-  .md-typeset .papers-shelf .paper-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .shot{padding:6px 6px 0}
   .cbody{padding:6px 7px 8px;gap:4px}
   .cbody h3{font-size:12px}
