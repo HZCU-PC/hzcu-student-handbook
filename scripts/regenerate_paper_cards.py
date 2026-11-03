@@ -82,6 +82,61 @@ def cite_span(paper: dict) -> str:
     return f'<span class="{cls}">{badge(paper)}</span>'
 
 
+def _chunks(text: str, size: int, max_lines: int = 2) -> list[str]:
+    text = (text or "").strip()
+    if not text:
+        return [""]
+    out = []
+    for i in range(0, min(len(text), size * max_lines), size):
+        out.append(text[i : i + size])
+    return out or [""]
+
+
+def svg_thumb_inner(paper: dict) -> str:
+    """Paper-style SVG preview (matches papers-workbench.css .thumb-svg)."""
+    accent = esc(paper.get("color") or "#546E7A")
+    venue = esc((paper.get("venue") or "Paper")[:38])
+    yr = esc(str(paper.get("year") or ""))
+    title_src = (paper.get("en") or paper.get("zh") or "").strip()
+    if title_src == (paper.get("zh") or "").strip() and len(title_src) > 40:
+        title_src = title_src[:40]
+    lines = _chunks(title_src, 34, 2)
+    y_title = 72
+    title_nodes = []
+    for line in lines:
+        title_nodes.append(
+            f'<text class="p-title" x="24" y="{y_title}">{esc(line)}</text>'
+        )
+        y_title += 15
+    zh = esc((paper.get("zh") or "")[:22])
+    authors = (paper.get("authors") or "").strip()
+    if "作者信息见原论文" in authors:
+        authors = (paper.get("org") or "")[:48]
+    au = esc(authors[:58])
+    y_meta = y_title + 4
+    fig_y = y_meta + 22
+    bars = []
+    for i, w in enumerate((210, 235, 185, 220, 165)):
+        bars.append(
+            f'<rect class="p-bar" x="24" y="{fig_y + 128 + i * 9}" '
+            f'width="{w}" height="5" rx="1"/>'
+        )
+    return (
+        '<svg class="thumb-svg" viewBox="0 0 300 424" xmlns="http://www.w3.org/2000/svg" '
+        'role="img" aria-hidden="true">'
+        '<rect class="p-bg" width="300" height="424"/>'
+        '<line class="p-rule" x1="24" y1="44" x2="276" y2="44"/>'
+        f'<text class="p-venue" x="24" y="34" fill="{accent}">{venue}</text>'
+        f'<text class="p-yr" x="276" y="34" text-anchor="end">{yr}</text>'
+        + "".join(title_nodes)
+        + f'<text class="p-zh" x="24" y="{y_meta}">{zh}</text>'
+        + f'<text class="p-au" x="24" y="{y_meta + 14}">{au}</text>'
+        + f'<rect class="p-fig" x="24" y="{fig_y}" width="252" height="112" rx="3"/>'
+        + "".join(bars)
+        + "</svg>"
+    )
+
+
 def shot_html(paper: dict, shots: dict[str, str]) -> str:
     pid = paper["id"]
     preserved = shots.get(pid)
@@ -97,13 +152,11 @@ def shot_html(paper: dict, shots: dict[str, str]) -> str:
                     f'<small>{badge(paper)}</small>', preserved, count=1
                 )
             return f'<div class="shot">{preserved}</div>'
-        # Existing placeholders are regenerated from JSON so they cannot
-        # retain a stale or duplicate badge.
-    suffix = paper.get("number") or pid.removeprefix("WB-")
-    return (
-        f'<div class="shot paper-placeholder"><span>{esc(suffix)}</span>'
-        f'<small>{badge(paper)}</small></div>'
-    )
+        if "thumb-svg" in preserved:
+            body = CITE_RE.sub("", preserved)
+            body = SMALL_RE.sub("", body)
+            return f'<div class="shot">{body.strip()}{cite_span(paper)}</div>'
+    return f'<div class="shot">{svg_thumb_inner(paper)}{cite_span(paper)}</div>'
 
 
 def render_card(paper: dict, shots: dict[str, str], field_styles: dict[str, str]) -> str:
