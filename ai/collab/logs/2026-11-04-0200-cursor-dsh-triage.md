@@ -32,4 +32,5 @@
 ## 核验
 
 - `p1_audit.py`：`placeholder_prose` **7**
-- `mkdocs --strict` → `site-test` 无 `papers.md.gen.bak`
+- `mkdocs --strict` → `site-test` **74** 文件，无 `papers.md.gen.bak`
+- **git：** `9fbc826` docs(papers): P1 论文页 JSON 扩写 batch03-07 与协作工具链
