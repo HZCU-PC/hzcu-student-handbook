@@ -7,14 +7,14 @@
 | 代号 | 状态 | 任务 |
 |---|---|---|
 | **CDX** | 🟡 | **batch08**（18 篇模板 id，见下） |
-| **CUR** | — | 空洞 **7 篇**待专批（见 audit `placeholder_prose_ids`） |
+| **CUR** | — | hollow-7 **已 merge** |
 | WKB | 待命 | P1-c |
 | DSH | ✅ 抽验 | 见 `logs/2026-11-04-0200-cursor-dsh-triage.md` |
 
 ## audit
 
-- template_solve **54** · template_hook **54** · badge **0**
-- **placeholder_prose 7**（A41 A48 A53 B21 C04 D16 G01）— **不会**被 batch 模板守卫选中，须专批
+- template_solve **54** · template_hook **49** · badge **0**
+- **placeholder_prose 0**（hollow-7：`logs/2026-11-04-0215-cursor-hollow7.md`）
 - thin_content **43**（<60 字/字段，含早期短文；`--thin` 列出）
 - regenerate 备份 → `backups/papers.md.gen.bak`（勿再放 `docs/`）
 
