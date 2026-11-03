@@ -13,7 +13,7 @@
 
 ## audit
 
-- template_solve **54** · template_hook **49** · badge **0**
+- template_solve **54** · template_hook **17** · badge **0** · duplicate_hook_groups **6**
 - **placeholder_prose 0**（hollow-7：`logs/2026-11-04-0215-cursor-hollow7.md`）
 - thin_content **43**（<60 字/字段，含早期短文；`--thin` 列出）
 - regenerate 备份 → `backups/papers.md.gen.bak`（勿再放 `docs/`）
