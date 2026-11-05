@@ -2,18 +2,98 @@
 (function () {
   function init() {
 
-const DATA = JSON.parse(document.getElementById('papers-json').textContent);
+const jsonEl = document.getElementById('papers-json');
+if (!jsonEl) return;
+const grid = document.getElementById('grid');
+if (!grid) return;
+
+const DATA = JSON.parse(jsonEl.textContent);
 const BY = Object.fromEntries(DATA.map(p => [p.id, p]));
+/** 旧时间线/书签编号 → WB id（勿用 number 字段直查，B01≠WB-B01） */
+const LEGACY_QUERY_ID = {
+  B01: 'WB-A01', B02: 'WB-B01', B03: 'WB-B02', B04: 'WB-E01',
+  B06: 'WB-D02', B08: 'WB-B05', B09: 'WB-A09', B11: 'WB-A12',
+  B14: 'WB-A22', B15: 'WB-A26', F12: 'WB-E03',
+};
+function resolvePaperId(raw) {
+  if (!raw) return null;
+  const u = String(raw).trim().toUpperCase();
+  if (BY[u]) return u;
+  const legacy = LEGACY_QUERY_ID[u];
+  if (legacy && BY[legacy]) return legacy;
+  const wb = u.startsWith('WB-') ? u : 'WB-' + u;
+  if (BY[wb]) return wb;
+  return null;
+}
 /* 来源页（如 ai-timeline）：从时间线深链进入时，关闭介绍后自动返回该页。 */
 const FROM = new URLSearchParams(location.search).get('from');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
   c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-const grid = document.getElementById('grid');
 const cards = [...grid.querySelectorAll('.card')];
 const countEl = document.getElementById('count');
+const emptyEl = document.getElementById('empty');
 const SHOT = {};
 cards.forEach(c => { SHOT[c.dataset.id] = c.querySelector('.shot').innerHTML; });
+
+function svgEsc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function chunkText(text, size, maxLines) {
+  text = String(text || '').trim();
+  if (!text) return [''];
+  const out = [];
+  for (let i = 0; i < Math.min(text.length, size * maxLines); i += size) out.push(text.slice(i, i + size));
+  return out.length ? out : [''];
+}
+function buildThumbSvg(p) {
+  const accent = svgEsc(p.color || '#546E7A');
+  const venue = svgEsc((p.venue || 'Paper').slice(0, 38));
+  const yr = svgEsc(String(p.year || ''));
+  let titleSrc = (p.en || p.zh || '').trim();
+  const lines = chunkText(titleSrc, 34, 2);
+  let yTitle = 72;
+  let titleNodes = '';
+  lines.forEach(line => {
+    titleNodes += `<text class="p-title" x="24" y="${yTitle}">${svgEsc(line)}</text>`;
+    yTitle += 15;
+  });
+  const zh = svgEsc((p.zh || '').slice(0, 22));
+  let authors = (p.authors || '').trim();
+  if (authors.indexOf('作者信息见原论文') >= 0) authors = (p.org || '').slice(0, 48);
+  const au = svgEsc(authors.slice(0, 58));
+  const yMeta = yTitle + 4;
+  const figY = yMeta + 22;
+  const bars = [210, 235, 185, 220, 165].map((w, i) =>
+    `<rect class="p-bar" x="24" y="${figY + 128 + i * 9}" width="${w}" height="5" rx="1"/>`
+  ).join('');
+  return `<svg class="thumb-svg" viewBox="0 0 300 424" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">` +
+    `<rect class="p-bg" width="300" height="424"/>` +
+    `<line class="p-rule" x1="24" y1="44" x2="276" y2="44"/>` +
+    `<text class="p-venue" x="24" y="34" fill="${accent}">${venue}</text>` +
+    `<text class="p-yr" x="276" y="34" text-anchor="end">${yr}</text>` +
+    titleNodes +
+    `<text class="p-zh" x="24" y="${yMeta}">${zh}</text>` +
+    `<text class="p-au" x="24" y="${yMeta + 14}">${au}</text>` +
+    `<rect class="p-fig" x="24" y="${figY}" width="252" height="112" rx="3"/>` +
+    bars + `</svg>`;
+}
+function citeHtml(p) {
+  const cls = (p.crank || 0) >= 4 ? 'cite hot' : 'cite';
+  return `<span class="${cls}">${esc(p.citations || '')}</span>`;
+}
+function upgradePlaceholderShots() {
+  cards.forEach(c => {
+    const shot = c.querySelector('.shot');
+    if (!shot || !shot.classList.contains('paper-placeholder')) return;
+    const p = BY[c.dataset.id];
+    if (!p) return;
+    shot.classList.remove('paper-placeholder');
+    shot.innerHTML = buildThumbSvg(p) + citeHtml(p);
+    SHOT[c.dataset.id] = shot.innerHTML;
+  });
+}
+upgradePlaceholderShots();
 
 let state = { field: 'all', kind: 'all', country: 'all', org: 'all', q: '' };
 let ORDER = [], NAV = { prev: null, next: null };
@@ -39,8 +119,8 @@ function apply() {
   });
   grid.innerHTML = '';
   list.forEach(c => grid.appendChild(c));
-  countEl.innerHTML = '<b>' + list.length + '</b> / 45 篇';
-  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+  countEl.innerHTML = '<b>' + list.length + '</b> / ' + DATA.length + ' 篇';
+  if (emptyEl) emptyEl.style.display = list.length ? 'none' : 'block';
   ORDER = list.map(c => BY[c.dataset.id]);
   const on = new Set(list.map(c => c.dataset.id));
   document.querySelectorAll('.tl-dot').forEach(d => {
@@ -169,7 +249,8 @@ const q0 = new URLSearchParams(location.search).get('q');
 if (q0) { qEl.value = q0; state.q = q0; }
 apply();
 const deep = new URLSearchParams(location.search).get('id');
-if (deep && BY[deep.toUpperCase()]) open(deep.toUpperCase());
+const deepId = resolvePaperId(deep);
+if (deepId) open(deepId);
 
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
