@@ -1,6 +1,7 @@
-/* 学期安排页：按本机日期算出「本周第几周 / 距考试 / 距寒假」。
-   数据来自页面上的 data-* 属性（由 scripts/gen_semester_schedule.py 写入），
-   所以换学年只要重新生成页面，这段脚本不用改。 */
+/* 学期安排页：按本机日期算出「本周第几周 / 距考试 / 距寒假」，
+   并把今天的格子、当前周的进度条段落点亮。
+   所有日期来自页面上的 data-* 属性（由 scripts/gen_semester_schedule.py 写入），
+   换学年只要重新生成页面，这段脚本不用改。 */
 (function () {
   "use strict";
 
@@ -20,61 +21,164 @@
     return Math.round((startOfDay(to) - startOfDay(from)) / DAY);
   }
 
-  function render() {
-    var box = document.querySelector(".semester-progress");
-    if (!box) return;
+  function addDays(d, n) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+  }
 
-    var start = parseDate(box.dataset.weeksStart);
-    var total = Number(box.dataset.weeksTotal || 0);
-    var exam = parseDate(box.dataset.examStart);
-    var brk = parseDate(box.dataset.winterBreak);
+  function iso(d) {
+    var m = d.getMonth() + 1;
+    var day = d.getDate();
+    return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
+  }
+
+  function shortDate(d) {
+    return d.getMonth() + 1 + "/" + d.getDate();
+  }
+
+  function each(list, fn) {
+    Array.prototype.forEach.call(list, fn);
+  }
+
+  function setText(root, key, value) {
+    var el = root && root.querySelector('[data-sp="' + key + '"]');
+    if (el) el.textContent = value;
+  }
+
+  function render() {
+    var cal = document.querySelector(".semester-cal");
+    var rail = document.querySelector(".semester-rail");
+    var cfgEl = cal || rail;
+    if (!cfgEl || !cfgEl.dataset.weeksStart) return;
+
+    var start = parseDate(cfgEl.dataset.weeksStart);
+    var total = Number(cfgEl.dataset.weeksTotal || 0);
+    var exam = parseDate(cfgEl.dataset.examStart);
+    var brk = parseDate(cfgEl.dataset.winterBreak);
     if (!start || !total) return;
 
-    var weekEl = box.querySelector(".sp-week");
-    var examEl = box.querySelector(".sp-exam");
-    var brkEl = box.querySelector(".sp-break");
     var today = startOfDay(new Date());
     var diff = daysBetween(start, today);
     var week = Math.floor(diff / 7) + 1;
+    var before = diff < 0;
+    var after = week > total;
+    var inTerm = !before && !after;
+    var examWeek = exam ? Math.floor(daysBetween(start, exam) / 7) + 1 : 0;
 
-    if (diff < 0) {
-      if (weekEl) weekEl.textContent = "未开学";
-      if (examEl && exam) examEl.textContent = daysBetween(today, exam);
-      if (brkEl && brk) brkEl.textContent = daysBetween(today, brk);
-      return;
-    }
-
-    if (week > total) {
-      if (weekEl) weekEl.textContent = "已结束";
-      box.querySelectorAll(".sp-exam, .sp-break").forEach(function (el) {
-        var wrap = el.parentNode;
-        if (wrap) wrap.textContent = "本学期已结束";
+    /* ---------- 进度条 ---------- */
+    if (rail) {
+      each(rail.querySelectorAll(".semester-bar i"), function (el, i) {
+        var n = i + 1;
+        el.classList.toggle("is-past", !before && (after || n < week));
+        el.classList.toggle("is-now", inTerm && n === week);
+        el.classList.toggle("is-exam", examWeek > 0 && n >= examWeek);
       });
-      return;
+
+      if (before) {
+        setText(rail, "week", "未开学");
+        setText(rail, "range", "距开学 " + Math.abs(diff) + " 天");
+      } else if (after) {
+        setText(rail, "week", "已结束");
+        setText(rail, "range", "共 " + total + " 周");
+      } else {
+        var from = addDays(start, (week - 1) * 7);
+        setText(rail, "week", "第 " + week + " 周");
+        setText(rail, "range", shortDate(from) + " — " + shortDate(addDays(from, 6)));
+      }
+
+      if (exam) {
+        var toExam = daysBetween(today, exam);
+        setText(rail, "to-exam", toExam > 0 ? String(toExam) : "已开始");
+        var wrap = rail.querySelector('[data-sp="to-exam"]');
+        if (wrap && toExam <= 0 && wrap.parentNode) wrap.parentNode.classList.add("is-on");
+      }
+
+      if (brk) {
+        var toBreak = daysBetween(today, brk);
+        setText(rail, "to-break", toBreak > 0 ? String(toBreak) : "已开始");
+      }
     }
 
-    if (weekEl) weekEl.textContent = String(week);
+    /* ---------- 今天的格子 ---------- */
+    var key = iso(today);
+    each(document.querySelectorAll(".sg-cd[data-date]"), function (el) {
+      el.classList.toggle("is-today", el.dataset.date === key);
+    });
 
-    if (examEl && exam) {
-      var toExam = daysBetween(today, exam);
-      examEl.textContent = toExam > 0 ? String(toExam) : "已开始";
-    }
+    /* ---------- 周次速查里高亮本周 ---------- */
+    each(document.querySelectorAll(".semester-lookup tr[data-row-week]"), function (tr) {
+      tr.classList.toggle("is-now", inTerm && Number(tr.dataset.rowWeek) === week);
+    });
 
-    if (brkEl && brk) {
-      var toBreak = daysBetween(today, brk);
-      brkEl.textContent = toBreak > 0 ? String(toBreak) : "已开始";
-    }
-
-    // 落在考试周里时，把进度条标成强调态
-    if (exam && today >= startOfDay(exam)) {
-      box.classList.add("is-exam");
+    /* ---------- 底部读数 ---------- */
+    var readout = document.querySelector(".semester-readout");
+    if (readout) {
+      if (before) {
+        readout.textContent = "距开学 " + Math.abs(diff) + " 天";
+      } else if (after) {
+        readout.textContent = "本学期已结束";
+      } else {
+        var monday = addDays(start, (week - 1) * 7);
+        readout.innerHTML =
+          "第 <b>" + week + "</b> 周 · " + shortDate(monday) + " — " + shortDate(addDays(monday, 6));
+      }
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", render);
-  } else {
+  /* ---------- 悬停看任意一周 ---------- */
+  function bindHover() {
+    var cal = document.querySelector(".semester-cal");
+    if (!cal) return;
+    var readout = cal.querySelector(".semester-readout");
+    var grid = cal.querySelector(".semester-grid");
+    if (!readout || !grid) return;
+
+    function clear() {
+      each(grid.querySelectorAll(".is-hl"), function (el) {
+        el.classList.remove("is-hl");
+      });
+      each(grid.querySelectorAll(".sg-wn.on"), function (el) {
+        el.classList.remove("on");
+      });
+      render(); // 复位读数（顺便把本周的状态重新点亮）
+    }
+
+    cal.addEventListener("mouseover", function (e) {
+      var cell = e.target.closest("[data-col]");
+      if (!cell) return;
+      var col = cell.dataset.col;
+      var date = parseDate(cell.dataset.date || "");
+      if (!date) return;
+
+      each(grid.querySelectorAll(".is-hl"), function (el) {
+        el.classList.remove("is-hl");
+      });
+      each(grid.querySelectorAll('[data-col="' + col + '"]'), function (el) {
+        if (el.classList.contains("sg-cd")) el.classList.add("is-hl");
+      });
+      each(grid.querySelectorAll(".sg-wn"), function (el) {
+        el.classList.toggle("on", el.dataset.col === col);
+      });
+
+      var monday = addDays(date, -((date.getDay() + 6) % 7));
+      var label = cell.dataset.week ? "第 " + cell.dataset.week + " 周" : cell.dataset.colLabel;
+      readout.innerHTML =
+        "<b>" + (label || "") + "</b>" +
+        (label ? " · " : "") +
+        shortDate(monday) + " — " + shortDate(addDays(monday, 6));
+    });
+
+    cal.addEventListener("mouseleave", clear);
+  }
+
+  function boot() {
     render();
+    bindHover();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
   }
 
   // Material 的即时导航会替换内容区，需要重新计算

@@ -4,3 +4,4 @@ site/
 .DS_Store
 __pycache__/
 .dsh-preview/
+mkdocs_*/

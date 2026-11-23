@@ -7,6 +7,10 @@
 
 数据来源：浙大城市学院 2026—2027 学年校历（第一学期 / 秋冬学期）。
 官方原文由学校公众号发布，本页只做搬运与整理；日期以教务处最新通知为准。
+
+页面结构：概览数据带 → 学期进度条 → 整月校历网格（事件写在格子里）→ 关键节点
+→ 周次速查（折叠）→ 节奏建议 → 维护说明。样式在 docs/stylesheets/semester.css，
+「本周第几周 / 今天高亮」由 docs/javascripts/semester-progress.js 按本机日期算。
 """
 
 from __future__ import annotations
@@ -23,6 +27,8 @@ DATA = {
     "exam_end": "2027-01-20",
     "winter_break": "2027-01-21",
     "spring_start": "2027-02-22",  # 第二学期开课（日期以官方通知为准）
+    "grid_start": "2026-08-31",    # 网格首列星期一（让 9/1 落在完整的月份里）
+    "grid_end": "2027-01-31",      # 网格末列星期日（1 月排满）
     "events": [
         ("2026-08-28", None, "本科生、研究生新生报到注册", ""),
         ("2026-08-29", "2026-09-13", "新生始业教育、军训", "专升本新生不参加军训"),
@@ -42,18 +48,33 @@ DATA = {
 
 WEEKDAY_CN = "一二三四五六日"
 
-# SVG 里用的颜色（与 palette.css 同族，但写死，保证图片单独打开也正确）
-C_BG = "#ffffff"
-C_FRAME = "#f7f8fb"
-C_LINE = "#e6eaf2"
-C_TEXT = "#15171f"
-C_MUTED = "#5b6272"
-C_DIM = "#6e7587"
-C_ACCENT = "#3f6fe4"
-C_ACCENT_SOFT = "#eaefff"
-C_WARN = "#a8760a"
-C_WARN_SOFT = "#fdf3dc"
-C_WEEKEND = "#f2f4f9"
+# 格子里的短标签：日期区间 -> (文字, 类型)
+# 类型决定底色：hol=放假（琥珀）、exam=停课考试（墨）、mid=期中（浅墨），
+# 其余（make 补课 / start 开课 / info 军训、运动会）只给文字，不铺底。
+MARKS = [
+    ("2026-08-29", "2026-09-13", "军训", "info"),
+    ("2026-09-14", None, "开课", "start"),
+    ("2026-09-20", None, "补课", "make"),
+    ("2026-09-25", "2026-09-27", "中秋", "hol"),
+    ("2026-10-01", "2026-10-07", "国庆", "hol"),
+    ("2026-10-10", None, "补课", "make"),
+    ("2026-10-30", "2026-10-31", "运动会", "info"),
+    ("2026-11-09", "2026-11-15", "期中", "mid"),
+    ("2027-01-01", None, "元旦", "hol"),
+    ("2027-01-12", "2027-01-20", "考试", "exam"),
+    ("2027-01-21", "2027-01-31", "寒假", "hol"),
+]
+
+# 周次速查表里的备注
+WEEK_NOTES = {
+    2: ("中秋节调休", "hol"),
+    3: ("国庆节调休", "hol"),
+    4: ("国庆节调休", "hol"),
+    7: ("校运动会", "info"),
+    9: ("期中考试（不停课）", "mid"),
+    18: ("考试周", "exam"),
+    19: ("考试周", "exam"),
+}
 
 
 def d(s: str) -> dt.date:
@@ -100,148 +121,235 @@ def weeks() -> list[dict]:
     return out
 
 
+# ---------------------------------------------------------------- 网格辅助
+
+
 def day_marks() -> dict[dt.date, tuple[str, str]]:
-    """日期 -> (短标签, 类型)。类型：holiday / make / exam / break / event"""
+    """日期 -> (短标签, 类型)。"""
     marks: dict[dt.date, tuple[str, str]] = {}
-    for start, end, title, _note in DATA["events"]:
-        s = d(start)
-        e = d(end) if end else s
-        if "军训" in title or "报到" in title:
-            label, kind = "军训", "event"
-        elif "中秋" in title:
-            label, kind = "中秋", "holiday"
-        elif "国庆" in title:
-            label, kind = "国庆", "holiday"
-        elif "元旦" in title:
-            label, kind = "元旦", "holiday"
-        elif "运动会" in title:
-            label, kind = "运动会", "event"
-        elif "期中" in title:
-            label, kind = "期中", "exam"
-        elif "停课考试" in title:
-            label, kind = "考试", "exam"
-        elif "寒假" in title:
-            label, kind = "寒假", "break"
-        elif "上双周" in title or "上单周" in title:
-            label, kind = "补课", "make"
-        else:
-            continue
-        cur = s
-        while cur <= e:
+    for start, end, label, kind in MARKS:
+        cur = d(start)
+        last = d(end) if end else cur
+        while cur <= last:
             marks[cur] = (label, kind)
             cur += dt.timedelta(days=1)
     return marks
 
 
-def build_svg() -> str:
-    """把校历画成 SVG：横轴 19 个教学周，纵轴周一到周日。"""
-    cell_w, cell_h = 54, 38
-    lab_w, month_h, head_h = 78, 24, 30
-    n = DATA["weeks_total"]
-    width = lab_w + n * cell_w
-    height = month_h + head_h + 7 * cell_h + 30
-    start = d(DATA["weeks_start"])
-    marks = day_marks()
+def grid_columns() -> list[dt.date]:
+    """每一列的星期一。"""
+    start, end = d(DATA["grid_start"]), d(DATA["grid_end"])
+    n = (end - start).days // 7 + 1
+    return [start + dt.timedelta(weeks=i) for i in range(n)]
+
+
+def week_no(monday: dt.date) -> int | None:
+    n = (monday - d(DATA["weeks_start"])).days // 7 + 1
+    return n if 1 <= n <= DATA["weeks_total"] else None
+
+
+def col_label(monday: dt.date) -> str:
+    """不属于第 1—19 周的列，给个说法给悬停读数用。"""
+    if monday < d(DATA["weeks_start"]):
+        return "开学前"
+    return "寒假"
+
+
+# ---------------------------------------------------------------- 各区块
+
+
+def build_stats() -> str:
+    ws = d(DATA["weeks_start"])
     exam_s, exam_e = d(DATA["exam_start"]), d(DATA["exam_end"])
-
-    out: list[str] = []
-    add = out.append
-    add(
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif">'
-    )
-    add(f'<rect width="{width}" height="{height}" fill="{C_BG}"/>')
-    add(
-        f'<text x="12" y="16" font-size="11" fill="{C_MUTED}" letter-spacing="1">'
-        f'浙大城市学院 {DATA["academic_year"]} 学年{DATA["term"]} · 第 1—{n} 周</text>'
-    )
-
-    # 月份分组
-    monday_months = []
-    for i in range(n):
-        ws = start + dt.timedelta(weeks=i)
-        monday_months.append(ws.month)
-    group_start = 0
-    for i in range(1, n + 1):
-        if i == n or monday_months[i] != monday_months[group_start]:
-            x = lab_w + group_start * cell_w
-            w = (i - group_start) * cell_w
-            year = (start + dt.timedelta(weeks=group_start)).year
-            add(
-                f'<text x="{x + w / 2:.1f}" y="19" font-size="11" fill="{C_DIM}" '
-                f'text-anchor="middle">{year} 年 {monday_months[group_start]} 月</text>'
-            )
-            if group_start:
-                add(
-                    f'<line x1="{x}" y1="4" x2="{x}" y2="{month_h - 4}" '
-                    f'stroke="{C_LINE}" stroke-width="1"/>'
-                )
-            group_start = i
-
-    top = month_h
-    # 周次表头
-    add(
-        f'<rect x="{lab_w}" y="{top}" width="{n * cell_w}" height="{head_h}" fill="{C_FRAME}"/>'
-    )
-    for i in range(n):
-        x = lab_w + i * cell_w
-        add(
-            f'<text x="{x + cell_w / 2:.1f}" y="{top + head_h / 2 + 4:.1f}" font-size="11" '
-            f'fill="{C_MUTED}" text-anchor="middle">{i + 1}</text>'
-        )
-    add(
-        f'<text x="{lab_w - 10}" y="{top + head_h / 2 + 4:.1f}" font-size="10" fill="{C_DIM}" '
-        f'text-anchor="end">周次</text>'
-    )
-
-    body_top = top + head_h
-    for row, wd in enumerate("一二三四五六日"):
-        y = body_top + row * cell_h
-        add(
-            f'<text x="{lab_w - 10}" y="{y + cell_h / 2 + 4:.1f}" font-size="11" fill="{C_MUTED}" '
-            f'text-anchor="end">周{WEEKDAY_CN[row]}</text>'
-        )
-        for i in range(n):
-            x = lab_w + i * cell_w
-            day = start + dt.timedelta(weeks=i, days=row)
-            label, kind = marks.get(day, ("", ""))
-            fill = C_BG
-            if kind in ("holiday", "break"):
-                fill = C_ACCENT_SOFT
-            elif kind == "exam":
-                fill = C_WARN_SOFT
-            elif row >= 5:
-                fill = C_WEEKEND
-            add(
-                f'<rect x="{x}" y="{y}" width="{cell_w}" height="{cell_h}" fill="{fill}" '
-                f'stroke="{C_LINE}" stroke-width="1"/>'
-            )
-            add(
-                f'<text x="{x + cell_w / 2:.1f}" y="{y + 15:.1f}" font-size="10.5" fill="{C_TEXT}" '
-                f'text-anchor="middle">{day.day}</text>'
-            )
-            if label:
-                color = C_WARN if kind in ("exam", "make") else C_ACCENT
-                add(
-                    f'<text x="{x + cell_w / 2:.1f}" y="{y + 29:.1f}" font-size="9" fill="{color}" '
-                    f'text-anchor="middle">{label}</text>'
-                )
-
-    # 图例
-    ly = body_top + 7 * cell_h + 20
+    teach = DATA["weeks_total"] - 2
     items = [
-        (C_ACCENT_SOFT, C_ACCENT, "放假 / 寒假"),
-        (C_WARN_SOFT, C_WARN, f"考试（{short(exam_s)}—{short(exam_e)}）"),
-        (C_WEEKEND, C_MUTED, "周末"),
+        ("is-key", "正式上课", short(ws), "第 1 周 · 周一"),
+        ("", "教学周", f"{teach} 周", "另有 2 周停课考试"),
+        ("", "考试周", short(exam_s), f"至 {short(exam_e)}，共 9 天"),
+        ("", "寒假", short(d(DATA["winter_break"])), "春节 2 月 6 日"),
     ]
-    lx = lab_w
-    for fill, color, text in items:
-        add(f'<rect x="{lx}" y="{ly - 9}" width="12" height="12" fill="{fill}" stroke="{C_LINE}"/>')
-        add(f'<text x="{lx + 18}" y="{ly + 1}" font-size="10" fill="{color}">{text}</text>')
-        lx += 24 + len(text) * 10
+    cells = "".join(
+        f'<div class="semester-stat {cls}"><span>{label}</span><b>{value}</b><i>{hint}</i></div>'.replace(
+            'semester-stat "', 'semester-stat"'
+        )
+        for cls, label, value, hint in items
+    )
+    return f'<div class="semester-stats">{cells}</div>'
 
-    add("</svg>")
-    return "\n".join(out)
+
+def build_rail() -> str:
+    n = DATA["weeks_total"]
+    exam_week = (d(DATA["exam_start"]) - d(DATA["weeks_start"])).days // 7 + 1
+    segs = []
+    for i in range(1, n + 1):
+        cls = ' class="is-exam"' if i >= exam_week else ""
+        segs.append(f"<i{cls}></i>")
+
+    # 月份刻度：按教学周分组
+    groups = [(1, 3, "9 月"), (4, 4, "10 月"), (8, 4, "11 月"), (12, 5, "12 月"), (17, 3, "1 月")]
+    months = "".join(
+        f'<span style="grid-column:{s} / span {w}">{t}</span>' for s, w, t in groups
+    )
+
+    attrs = (
+        f'data-weeks-start="{DATA["weeks_start"]}" data-weeks-total="{n}" '
+        f'data-exam-start="{DATA["exam_start"]}" data-winter-break="{DATA["winter_break"]}"'
+    )
+    return (
+        f'<div class="semester-rail" {attrs}>'
+        '<div class="semester-rail__top">'
+        '<div class="semester-rail__now">'
+        '<b data-sp="week">—</b><em data-sp="range">—</em>'
+        f'<span>· 共 {n} 周</span>'
+        "</div>"
+        '<div class="semester-rail__facts">'
+        '<div><span class="lab">距考试周</span><b><span data-sp="to-exam">—</span><small>天</small></b></div>'
+        '<div><span class="lab">距寒假</span><b><span data-sp="to-break">—</span><small>天</small></b></div>'
+        "</div>"
+        "</div>"
+        f'<div class="semester-bar">{"".join(segs)}</div>'
+        f'<div class="semester-bar__months">{months}</div>'
+        "</div>"
+    )
+
+
+def build_calendar() -> str:
+    marks = day_marks()
+    cols = grid_columns()
+    total_cols = len(cols)
+    first_day = d(DATA["grid_start"])
+    last_day = d(DATA["grid_end"])
+
+    # 月份分组：看每列的星期天落在哪个月
+    groups: list[tuple[int, int, str]] = []
+    i = 0
+    while i < total_cols:
+        sunday = cols[i] + dt.timedelta(days=6)
+        j = i
+        while j + 1 < total_cols and (cols[j + 1] + dt.timedelta(days=6)).month == sunday.month:
+            j += 1
+        label = f"{sunday.year} 年 {sunday.month} 月" if (i == 0 or sunday.month == 1) else f"{sunday.month} 月"
+        groups.append((i, j - i + 1, label))
+        i = j + 1
+
+    months = "".join(
+        f'<span style="grid-column:{s + 2} / span {w}">{t}</span>' for s, w, t in groups
+    )
+
+    head = ['<div class="sg-label"></div>']
+    for k, monday in enumerate(cols, start=1):
+        n = week_no(monday)
+        head.append(f'<div class="sg-wn" data-col="{k}">{n or ""}</div>')
+
+    body: list[str] = []
+    for wd in range(7):
+        body.append(f'<div class="sg-label">{WEEKDAY_CN[wd]}</div>')
+        for k, monday in enumerate(cols, start=1):
+            day = monday + dt.timedelta(days=wd)
+            label, kind = marks.get(day, ("", ""))
+            n = week_no(monday)
+            cls = [f"is-{kind}"] if kind else []
+            if wd >= 5 and kind not in ("hol", "exam", "mid"):
+                cls.append("is-we")
+            if day < d("2026-09-01") or day > last_day:
+                cls.append("is-out")
+
+            attrs = [f'data-col="{k}"', f'data-date="{day.isoformat()}"']
+            if n:
+                attrs.append(f'data-week="{n}"')
+            else:
+                attrs.append(f'data-col-label="{col_label(monday)}"')
+
+            tip = f"{day.isoformat()} 周{WEEKDAY_CN[wd]}"
+            if label:
+                tip += f" · {label}"
+            attrs.append(f'title="{tip}"')
+
+            em = ""
+            if label:
+                long_cls = ' class="is-long"' if len(label) > 2 else ""
+                em = f"<em{long_cls}>{label}</em>"
+            klass = (" ".join(cls)).strip()
+            body.append(
+                f'<div class="sg-cd{(" " + klass) if klass else ""}" {" ".join(attrs)}>'
+                f"<b>{day.day}</b>{em}</div>"
+            )
+
+    attrs = (
+        f'data-weeks-start="{DATA["weeks_start"]}" data-weeks-total="{DATA["weeks_total"]}" '
+        f'data-exam-start="{DATA["exam_start"]}" data-winter-break="{DATA["winter_break"]}"'
+    )
+    return (
+        f'<div class="semester-cal" {attrs}>'
+        '<div class="semester-cal__scroll"><div class="sg-wrap">'
+        f'<div class="semester-grid" style="--cols:{total_cols}">'
+        f'<div class="sg sg--months">{months}</div>'
+        f'<div class="sg sg--head">{"".join(head)}</div>'
+        f'<div class="sg sg--body">{"".join(body)}</div>'
+        "</div></div></div>"
+        '<div class="semester-cal__foot">'
+        '<div class="semester-readout">—</div>'
+        '<span class="semester-hint">左右滑动查看全部月份</span>'
+        '<div class="semester-legend">'
+        '<span><i class="sw-hol"></i>放假</span>'
+        '<span><i class="sw-exam"></i>停课考试</span>'
+        '<span><i class="sw-mid"></i>期中</span>'
+        '<span><i class="sw-make"></i>补课</span>'
+        '<span><i class="sw-we"></i>周末</span>'
+        '<span><i class="sw-today"></i>今天</span>'
+        "</div></div></div>"
+    )
+
+
+def build_events() -> str:
+    rows = []
+    for start, end, title, note in DATA["events"]:
+        s = d(start)
+        if end:
+            e = d(end)
+            date = f'{short(s)}<span class="dash">–</span>{short(e)}'
+        else:
+            date = f'{short(s)}<span class="wd">周{WEEKDAY_CN[s.weekday()]}</span>'
+        n = f'<span class="note">{note}</span>' if note else ""
+        rows.append(f"<li><time>{date}</time><p><b>{title}</b>{n}</p></li>")
+    return f'<ul class="semester-events">{"".join(rows)}</ul>'
+
+
+def build_lookup() -> str:
+    rows = []
+    for w in weeks():
+        n = w["n"]
+        note, kind = WEEK_NOTES.get(n, ("", ""))
+        chip = f'<em class="tag-{kind}">{note}</em>' if note else ""
+        rows.append(
+            f'<tr data-row-week="{n}"><td>{n}</td>'
+            f'<td>{short(w["start"])} — {short(w["end"])}</td><td>{chip}</td></tr>'
+        )
+    total = DATA["weeks_total"]
+    return (
+        '<details class="semester-lookup">'
+        f"<summary>周次速查表<span>{total} 周，含考试周</span></summary>"
+        "<table><thead><tr><th>周次</th><th>日期（周一 — 周日）</th><th>备注</th></tr></thead>"
+        f'<tbody>{"".join(rows)}</tbody></table>'
+        "</details>"
+    )
+
+
+def build_official() -> str:
+    rel = "assets/semester/calendar-2026-2027-1.jpg"
+    path = Path(__file__).resolve().parents[1] / "docs" / rel
+    if path.exists():
+        return (
+            '<figure class="semester-figure">'
+            f'<img src="../{rel}" alt="浙大城市学院 {DATA["academic_year"]} 学年校历原图" loading="lazy">'
+            "<figcaption>教务处发布的校历原图（含作息时间表）</figcaption>"
+            "</figure>"
+        )
+    return (
+        '<p class="semester-todo">学校发布的校历原图还没补。把教务处的校历长图存成 '
+        f"<code>docs/{rel}</code>（文件名别改）后重跑 "
+        "<code>python scripts/gen_semester_schedule.py</code>，这里会自动换成图片。</p>"
+    )
 
 
 def build() -> str:
@@ -252,15 +360,14 @@ def build() -> str:
     exam_s, exam_e = d(DATA["exam_start"]), d(DATA["exam_end"])
     teach_weeks = DATA["weeks_total"] - 2
 
-
     a("<!-- 本文件由 scripts/gen_semester_schedule.py 生成，改数据请改脚本后重跑 -->")
     a("")
     a("# 学期安排")
     a("")
     a(
-        f"这一页把 {DATA['academic_year']} 学年{DATA['term']}的关键时间点、周次对照和校历原图"
-        "放在一起：报到和军训什么时候结束、哪天正式上课、什么时候期中、考试周几号到几号、"
-        "寒假从哪天开始——需要快速查某个日期属于第几周，看中间那张周次表就行。"
+        f"这一页把 {DATA['academic_year']} 学年{DATA['term']}的周次、假期和考试放在一起："
+        "报到和军训什么时候结束、哪天正式上课、什么时候期中、考试周几号到几号、寒假从哪天开始。"
+        "想知道某个日期是第几周，看中间的校历网格；想知道这学期还剩什么，看关键节点。"
     )
     a("")
     a(
@@ -269,121 +376,48 @@ def build() -> str:
     )
     a("")
 
-    # ---- 概览卡片 ----
-    a("## 一眼看懂")
+    # ---- 01 概览 ----
+    a("## 学期概览 {: .sp-h2 }")
     a("")
-    a('<div class="semester-cards" markdown>')
-    a("")
-    a(f'<div class="semester-card">')
-    a(f'<span class="semester-card__label">学期起止</span>')
-    a(f'<span class="semester-card__value">{short(ws)} — {short(exam_e)}</span>')
-    a(f'<span class="semester-card__hint">共 {DATA["weeks_total"]} 周，含考试周</span>')
-    a("</div>")
-    a("")
-    a(f'<div class="semester-card">')
-    a(f'<span class="semester-card__label">正式上课</span>')
-    a(f'<span class="semester-card__value">{short(ws)}</span>')
-    a(f'<span class="semester-card__hint">第 1 周星期一</span>')
-    a("</div>")
-    a("")
-    a(f'<div class="semester-card">')
-    a(f'<span class="semester-card__label">教学 / 考试</span>')
-    a(f'<span class="semester-card__value">{teach_weeks} + 2 周</span>')
-    a(f'<span class="semester-card__hint">前 {teach_weeks} 周上课，最后 2 周停课考试</span>')
-    a("</div>")
-    a("")
-    a(f'<div class="semester-card">')
-    a(f'<span class="semester-card__label">寒假开始</span>')
-    a(f'<span class="semester-card__value">{short(d(DATA["winter_break"]))}</span>')
-    a(f'<span class="semester-card__hint">春节 {fmt(d("2027-02-06")).replace(" ", "")}</span>')
-    a("</div>")
-    a("")
-    a("</div>")
+    a(build_stats())
     a("")
 
-    # ---- 当前进度 ----
-    a("## 现在第几周")
+    # ---- 02 进度 ----
+    a("## 学期进度 {: .sp-h2 }")
+    a("")
+    a(build_rail())
+    a("")
+
+    # ---- 03 网格 ----
+    a("## 校历网格 {: .sp-h2 }")
     a("")
     a(
-        f'<div class="semester-progress" data-weeks-start="{DATA["weeks_start"]}" '
-        f'data-weeks-total="{DATA["weeks_total"]}" data-exam-start="{DATA["exam_start"]}" '
-        f'data-winter-break="{DATA["winter_break"]}">'
+        "每周一列、周一到周日为行，按整月排到 9/1—1/31；格子里的小字是当天的安排，"
+        "底色只说明那天上不上课。"
     )
-    a('<span>本周是第 <b class="sp-week">—</b> 周</span>')
-    a('<span>距考试周开始还有 <b class="sp-exam">—</b> 天</span>')
-    a('<span>距寒假还有 <b class="sp-break">—</b> 天</span>')
-    a("</div>")
     a("")
-    a("（上面三个数字由浏览器按本机日期算，学期结束后会显示为已结束。）")
+    a(build_calendar())
     a("")
 
-    # ---- 关键节点 ----
-    a("## 关键节点")
+    # ---- 04 关键节点 ----
+    a("## 关键节点 {: .sp-h2 }")
     a("")
-    a("| 日期 | 事项 | 说明 |")
-    a("| --- | --- | --- |")
-    for start, end, title, note in DATA["events"]:
-        a(f"| {span(start, end)} | {title} | {note or '—'} |")
+    a(build_events())
     a("")
 
-    # ---- 周次表 ----
-    a("## 周次对照表")
+    # ---- 05 周次速查 ----
+    a("## 周次速查 {: .sp-h2 }")
     a("")
     a(
         f"第 1 周从 {fmt(ws)}（星期一）算起，每周一到周日。"
         f"第 {teach_weeks} 周之后是考试周（{short(exam_s)}—{short(exam_e)}）。"
     )
     a("")
-    a("| 周次 | 开始 | 结束 | 备注 |")
-    a("| --- | --- | --- | --- |")
-    for w in weeks():
-        a(
-            f"| 第 {w['n']} 周 | {fmt(w['start'])} | {fmt(w['end'])} | {w['note'] or '—'} |"
-        )
+    a(build_lookup())
     a("")
 
-    # ---- 校历图 ----
-    a("## 校历图")
-    a("")
-    a(
-        "下面这张是按本页数据画出来的：横轴是教学周，纵轴是周一到周日，"
-        "放假的格子、考试周的格子都自带底色，比翻长图快。"
-    )
-    a("")
-    a('<figure class="semester-figure">')
-    a(
-        '  <img src="../assets/semester/calendar-2026-2027-1.svg" '
-        'alt="浙大城市学院 2026—2027 学年第一学期校历（教学周网格）" loading="lazy">'
-    )
-    a("  <figcaption>2026—2027 学年第一学期教学周网格（由 scripts/gen_semester_schedule.py 生成）</figcaption>")
-    a("</figure>")
-    a("")
-
-    official_rel = "assets/semester/calendar-2026-2027-1.jpg"
-    official_path = Path(__file__).resolve().parents[1] / "docs" / official_rel
-    a("### 学校发布的原图")
-    a("")
-    if official_path.exists():
-        a('<figure class="semester-figure">')
-        a(
-            f'  <img src="../{official_rel}" '
-            'alt="浙大城市学院 2026—2027 学年第一学期校历原图" loading="lazy">'
-        )
-        a("  <figcaption>教务处发布的校历原图（含作息时间表）</figcaption>")
-        a("</figure>")
-    else:
-        a('<figure class="semester-figure semester-figure--empty">')
-        a("  <b>原图待补。</b>")
-        a(
-            f"  把教务处的校历长图存成 <code>docs/{official_rel}</code>"
-            "（文件名别改）后重跑 <code>python scripts/gen_semester_schedule.py</code>，"
-            "这里会自动换成图片。"
-        )
-        a("</figure>")
-    a("")
-
-    # ---- 节奏建议 ----
-    a("## 一学期大致怎么过")
+    # ---- 学期节奏（原样保留） ----
+    a("## 一学期大致怎么过 {: .sp-h2 .is-plain }")
     a("")
     a("| 阶段 | 时间 | 该做什么 |")
     a("| --- | --- | --- |")
@@ -391,7 +425,7 @@ def build() -> str:
         f"| 开课前的准备 | {short(d('2026-08-28'))} 前后 | 查课表、确认宿舍和缴费、把教材和证件备齐；新生按学院安排参加始业教育和军训。 |"
     )
     a(
-        f"| 前半学期 | 第 1—8 周 | 课程密度最大的时候，先跟上作业节奏；需要退课、改选的，注意教务处的选课窗口。 |"
+        "| 前半学期 | 第 1—8 周 | 课程密度最大的时候，先跟上作业节奏；需要退课、改选的，注意教务处的选课窗口。 |"
     )
     a(
         f"| 期中 | 第 9 周（{short(d('2026-11-09'))}—{short(d('2026-11-15'))}） | 期中考试不停课，考试和正常上课会叠在一起，提前把复习塞进周末。 |"
@@ -407,12 +441,14 @@ def build() -> str:
     )
     a("")
 
-    # ---- 维护说明 ----
-    a("## 这一页怎么维护")
+    # ---- 维护说明（原样保留） ----
+    a("## 这一页怎么维护 {: .sp-h2 .is-plain }")
     a("")
     a("- 所有日期写在 `scripts/gen_semester_schedule.py` 顶部的 `DATA` 里，改完运行 `python scripts/gen_semester_schedule.py` 重新生成本页；")
-    a("- 新增节点就往 `events` 里加一行 `(开始日期, 结束日期或 None, 事项, 说明)`，周次表和「关键节点」会一起更新；")
+    a("- 新增节点就往 `events` 里加一行 `(开始日期, 结束日期或 None, 事项, 说明)`，关键节点和周次速查会一起更新；格子里的短标签在 `MARKS` 里加一行 `(开始日期, 结束日期或 None, 标签, 类型)`；")
     a("- 下一学年开学后，把 `DATA` 换成新学年数据即可，页面结构不用动。")
+    a("")
+    a(build_official())
     a("")
     return "\n".join(lines)
 
@@ -422,11 +458,6 @@ def main() -> None:
     target = root / "docs" / "semester.md"
     target.write_text(build(), encoding="utf-8")
     print(f"wrote {target} ({target.stat().st_size} bytes)")
-
-    svg = root / "docs" / "assets" / "semester" / "calendar-2026-2027-1.svg"
-    svg.parent.mkdir(parents=True, exist_ok=True)
-    svg.write_text(build_svg(), encoding="utf-8")
-    print(f"wrote {svg} ({svg.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":
