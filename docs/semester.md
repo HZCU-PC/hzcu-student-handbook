@@ -90,13 +90,20 @@
 | 第 18 周 | 2027 年 1 月 11 日 | 2027 年 1 月 17 日 | 考试周 |
 | 第 19 周 | 2027 年 1 月 18 日 | 2027 年 1 月 24 日 | 考试周 |
 
-## 校历原图
+## 校历图
 
-学校发的校历长图（含作息时间表）体积大、字小，手机上不好看清，所以这里用上面的表格做常规查询；要对照原图时看下面这张。
+下面这张是按本页数据画出来的：横轴是教学周，纵轴是周一到周日，放假的格子、考试周的格子都自带底色，比翻长图快。
+
+<figure class="semester-figure">
+  <img src="../assets/semester/calendar-2026-2027-1.svg" alt="浙大城市学院 2026—2027 学年第一学期校历（教学周网格）" loading="lazy">
+  <figcaption>2026—2027 学年第一学期教学周网格（由 scripts/gen_semester_schedule.py 生成）</figcaption>
+</figure>
+
+### 学校发布的原图
 
 <figure class="semester-figure semester-figure--empty">
-  <b>校历原图待补。</b>
-  把校历长图存为 <code>docs/assets/semester/calendar-2026-2027-1.jpg</code> 后重新运行 <code>python scripts/gen_semester_schedule.py</code>，这里会自动换成图片；图片缺失时页面只显示这一块说明，不影响其余内容。
+  <b>原图待补。</b>
+  把教务处的校历长图存成 <code>docs/assets/semester/calendar-2026-2027-1.jpg</code>（文件名别改）后重跑 <code>python scripts/gen_semester_schedule.py</code>，这里会自动换成图片。
 </figure>
 
 ## 一学期大致怎么过

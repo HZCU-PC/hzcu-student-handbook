@@ -170,3 +170,10 @@
   background: #232323;
   border-color: rgba(255, 255, 255, 0.16);
 }
+
+/* 自动生成的校历网格：撑满正文宽度，保证手机上也能读到日期 */
+.semester-figure img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+}
