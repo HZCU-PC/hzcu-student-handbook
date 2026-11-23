@@ -167,3 +167,65 @@
 .md-content__inner {
   max-width: 100%;
 }
+
+
+/* 培养方案知识地图：内嵌工作台撑满内容区 */
+.km-sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+body:has(.km-embed) .md-grid{max-width:100%}
+body:has(.km-embed) .md-sidebar--secondary{display:none}
+body:has(.km-embed) .md-main__inner{margin-top:0}
+body:has(.km-embed) .md-content{padding:0}
+body:has(.km-embed) .md-content__inner{max-width:none;margin:0;padding:0}
+body:has(.km-embed) .md-footer{display:none}
+.km-embed{
+  width:100%;height:calc(100vh - 56px);min-height:720px;
+  background:#f7f8fb;
+}
+.km-frame{display:block;width:100%;height:100%;border:0;background:#f7f8fb}
+body[data-md-color-scheme="slate"] .km-embed,
+body[data-md-color-scheme="slate"] .km-frame{background:#1e1e1e}
+@media (max-width:760px){
+  .km-embed{height:calc(100dvh - 56px);min-height:640px}
+}
+
+
+/* 培养方案详解首页：知识地图入口卡片 */
+.km-entry{
+  display:flex;align-items:center;gap:1.2rem;
+  margin:1rem 0 1.4rem;padding:1.1rem 1.2rem;
+  border:1px solid var(--md-default-fg-color--lightest);
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(31,95,168,.09),rgba(123,77,255,.055));
+}
+.km-entry-copy{flex:1;min-width:0}
+.km-entry-kicker{
+  display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;
+  color:var(--md-primary-fg-color);
+}
+.km-entry h2{font-size:1.15rem;line-height:1.4;margin:.2rem 0 .3rem;color:var(--md-default-fg-color)}
+.km-entry p{margin:0;font-size:.85rem;line-height:1.65;color:var(--md-default-fg-color--light)}
+.km-entry-link{
+  flex:none;display:inline-flex;align-items:center;gap:.3rem;
+  padding:.55rem .95rem;border-radius:999px;
+  background:var(--md-primary-fg-color);color:#fff!important;
+  font-size:.8rem;font-weight:600;text-decoration:none;
+}
+.km-entry-link:hover{filter:brightness(.94)}
+@media (max-width:600px){
+  .km-entry{flex-direction:column;align-items:flex-start;gap:.8rem}
+}
+
+.km-entry-mark{
+  flex:none;width:50px;height:50px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,#003f88 0%,#0b5cab 56%,#1d77ce 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);
+}
+.km-entry-mark img{width:36px;height:39px;object-fit:contain}
+@media (max-width:600px){
+  .km-entry-mark{width:42px;height:42px;border-radius:11px}
+  .km-entry-mark img{width:30px;height:33px}
+}

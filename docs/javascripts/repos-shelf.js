@@ -15,6 +15,9 @@
       const searchCount = document.getElementById('searchCount');
       const noResult = document.getElementById('noResult');
 
+      // 仓库页之外的页面也会全局加载本脚本；没有工作台根节点时直接退出。
+      if (!main || !sideNav) return;
+
       const cats = Array.from(main.querySelectorAll('.cat'));
       const subs = Array.from(main.querySelectorAll('.sub'));
       const catToggles = Array.from(sideNav.querySelectorAll('.cat-toggle'));
