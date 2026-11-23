@@ -1,0 +1,172 @@
+/* ==========================================================================
+   学期安排页（docs/semester.md）专用样式
+   配色沿用 palette.css 的 --hz-* 令牌，与 repositories 工作台同一套色值。
+   ========================================================================== */
+
+/* ---------- 概览卡片 ---------- */
+.semester-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.semester-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem 1rem;
+  background: var(--hz-card-grad, linear-gradient(180deg,#ffffff,#fbfcff));
+  border: 1px solid var(--hz-line, rgba(16,24,40,.10));
+  border-radius: var(--hz-radius, 14px);
+  box-shadow: var(--hz-inset, inset 0 1px 0 rgba(255,255,255,.9)), var(--hz-shadow, 0 16px 36px -26px rgba(16,24,40,.45));
+}
+
+.semester-card__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hz-dim, #6e7587);
+}
+
+.semester-card__value {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--hz-text-strong, #0f1218);
+  letter-spacing: -0.01em;
+}
+
+.semester-card__hint {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--hz-muted, #5b6272);
+}
+
+/* 第一张卡（学期起止）强调主色，作为视觉锚点 */
+.semester-card:first-child {
+  border-color: var(--hz-accent, #3f6fe4);
+  box-shadow: var(--hz-inset, inset 0 1px 0 rgba(255,255,255,.9)), 0 0 0 1px var(--hz-accent-soft, rgba(63,111,228,.10)), var(--hz-shadow, 0 16px 36px -26px rgba(16,24,40,.45));
+}
+
+.semester-card:first-child .semester-card__value {
+  color: var(--hz-accent-dark, #3159c8);
+}
+
+/* ---------- 当前进度条 ---------- */
+.semester-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--hz-muted, #5b6272);
+  background: var(--hz-accent-wash, rgba(63,111,228,.06));
+  border: 1px solid var(--hz-line, rgba(16,24,40,.10));
+  border-left: 3px solid var(--hz-accent, #3f6fe4);
+  border-radius: var(--hz-radius-sm, 10px);
+}
+
+.semester-progress b {
+  color: var(--hz-accent-dark, #3159c8);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 校历原图 ---------- */
+.semester-figure {
+  margin: 1.25rem 0 1.5rem;
+  text-align: center;
+}
+
+.semester-figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--hz-line, rgba(16,24,40,.10));
+  border-radius: var(--hz-radius, 14px);
+  box-shadow: var(--hz-inset, inset 0 1px 0 rgba(255,255,255,.9)), var(--hz-shadow, 0 16px 36px -26px rgba(16,24,40,.45));
+}
+
+.semester-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--hz-dim, #6e7587);
+}
+
+/* ---------- 表格：本页表格偏宽，收紧一点密度（只作用于本页） ---------- */
+.md-content__inner:has(.semester-cards) table {
+  font-size: 0.78rem;
+}
+
+.md-content__inner:has(.semester-cards) table th,
+.md-content__inner:has(.semester-cards) table td {
+  padding: 0.4rem 0.6rem;
+}
+
+/* 日期列不折行；窄屏交给 Material 的横向滚动容器 */
+@media screen and (min-width: 60em) {
+  .md-content__inner:has(.semester-cards) table td:first-child {
+    white-space: nowrap;
+  }
+}
+
+/* 缺图时的占位块 */
+.semester-figure--empty {
+  padding: 1.1rem 1.2rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--hz-muted, #5b6272);
+  text-align: left;
+  background: var(--hz-surface-1, rgba(16,24,40,.025));
+  border: 1px dashed var(--hz-line-strong, rgba(16,24,40,.16));
+  border-radius: var(--hz-radius, 14px);
+}
+
+.semester-figure--empty code {
+  background: var(--hz-avatar, #eef1f7);
+}
+
+@media (max-width: 600px) {
+  .semester-card__value {
+    font-size: 1.2rem;
+  }
+
+  .semester-progress {
+    font-size: 0.8rem;
+    gap: 0.35rem 0.9rem;
+  }
+}
+
+/* ---------- 深色模式回退 ----------
+   若 palette.css（PR #17）尚未合并，--hz-* 令牌不存在，这里用 Material 的
+   slate 方案给一份近似取值；palette.css 存在时它的深色令牌优先。 */
+[data-md-color-scheme="slate"] .semester-card {
+  background: #262626;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .semester-card:first-child {
+  border-color: #5b8cff;
+}
+
+[data-md-color-scheme="slate"] .semester-card__label { color: #9b9ca8; }
+[data-md-color-scheme="slate"] .semester-card__value { color: #f1f1f4; }
+[data-md-color-scheme="slate"] .semester-card:first-child .semester-card__value { color: #85aaff; }
+[data-md-color-scheme="slate"] .semester-card__hint { color: #8f909c; }
+
+[data-md-color-scheme="slate"] .semester-progress {
+  color: #9b9ca8;
+  background: rgba(91, 140, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.10);
+  border-left-color: #5b8cff;
+}
+
+[data-md-color-scheme="slate"] .semester-progress b { color: #85aaff; }
+
+[data-md-color-scheme="slate"] .semester-figure--empty {
+  color: #9b9ca8;
+  background: #232323;
+  border-color: rgba(255, 255, 255, 0.16);
+}
