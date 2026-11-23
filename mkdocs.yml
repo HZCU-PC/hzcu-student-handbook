@@ -74,6 +74,7 @@ nav:
   - 学期安排: semester.md
   - 培养方案详解:
       - 学年总览: curriculum/index.md
+      - 培养方案知识地图: curriculum/knowledge-map.md
       - 大一: curriculum/year-1.md
       - 大二: curriculum/year-2.md
       - 大三: curriculum/year-3.md
