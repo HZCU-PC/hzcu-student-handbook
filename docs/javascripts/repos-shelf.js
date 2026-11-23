@@ -1,6 +1,9 @@
-﻿(function () {
+(function () {
       const main = document.getElementById('repos-main');
       const sideNav = document.getElementById('sideNav');
+      // 本脚本被全站加载，只有 repositories 页才有这两个容器：
+      // 其它页面直接退出，避免 main/sideNav 为 null 时抛错中断后续脚本。
+      if (!main || !sideNav) return;
       const resetCount = document.getElementById('resetCount');
       const recentBlock = document.getElementById('recentBlock');
       const recentToggle = document.getElementById('recentToggle');

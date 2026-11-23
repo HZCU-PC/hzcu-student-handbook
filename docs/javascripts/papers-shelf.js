@@ -2,7 +2,11 @@
 (function () {
   function init() {
 
-const DATA = JSON.parse(document.getElementById('papers-json').textContent);
+/* 本脚本被全站加载，只有论文页才有 #papers-json；
+   其它页面找不到数据源就直接退出，避免 JSON.parse(null) 抛错。 */
+const dataEl = document.getElementById('papers-json');
+if (!dataEl) return;
+const DATA = JSON.parse(dataEl.textContent);
 const BY = Object.fromEntries(DATA.map(p => [p.id, p]));
 /* 来源页（如 ai-timeline）：从时间线深链进入时，关闭介绍后自动返回该页。 */
 const FROM = new URLSearchParams(location.search).get('from');

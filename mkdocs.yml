@@ -59,10 +59,12 @@ extra_css:
   - stylesheets/light-home.css
   - stylesheets/papers-workbench.css
   - stylesheets/repos-workbench.css
+  - stylesheets/semester.css
 
 extra_javascript:
   - javascripts/papers-shelf.js
   - javascripts/repos-shelf.js
+  - javascripts/semester-progress.js
 
 nav:
   - 首页 · 前言: index.md
