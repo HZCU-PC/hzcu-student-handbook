@@ -1,0 +1,482 @@
+/* ==========================================================================
+   全站配色：统一取自「repositories 工作台」页面的取色结果
+   （repos-workbench.css 的 .repos-page 变量块，浅色 #f7f8fb / #ffffff / #3f6fe4，
+     深色 #1e1e1e / #5b8cff / #f5c451）。
+
+   本文件是唯一的颜色来源：
+     - 第一步定义 --hz-* 设计令牌（浅/深两套，值与原页逐字一致）；
+     - 第二步把这些令牌映射到 Material 的主题变量，导航、搜索、正文、
+       表格、代码、页脚等“其他位置”自动继承同一套颜色；
+     - 第三步给通用 Markdown 组件补上与工作台卡片一致的圆角、描边和阴影。
+
+   其它样式表（light-home.css / papers-workbench.css / extra.css）通过
+   var(--hz-*) 取值，不再各自维护色值。
+   ========================================================================== */
+
+/* ---------- 1. 设计令牌：浅色（复制自 repositories 页面） ---------- */
+:root {
+  /* 底色与面板 */
+  --hz-bg: #f7f8fb;
+  --hz-panel: #ffffff;
+  --hz-panel-top: #ffffff;
+  --hz-panel-2: #fbfcff;
+
+  /* 描边 */
+  --hz-line: rgba(16, 24, 40, 0.10);
+  --hz-line-strong: rgba(16, 24, 40, 0.16);
+
+  /* 文字 */
+  --hz-text: #15171f;
+  --hz-text-strong: #0f1218;
+  --hz-muted: #5b6272;
+  --hz-dim: #6e7587;
+
+  /* 主色 */
+  --hz-accent: #3f6fe4;
+  --hz-accent-light: #6f93ea;
+  --hz-accent-dark: #3159c8;
+  --hz-accent-deep: #2b4a8f;
+  --hz-accent-soft: rgba(63, 111, 228, 0.10);
+  --hz-accent-wash: rgba(63, 111, 228, 0.06);
+  --hz-link: #3159c8;
+
+  /* 强调色（星标、徽章） */
+  --hz-star: #a8760a;
+
+  /* 面层与悬停 */
+  --hz-surface-1: rgba(16, 24, 40, 0.025);
+  --hz-surface-2: rgba(16, 24, 40, 0.035);
+  --hz-surface-3: rgba(16, 24, 40, 0.06);
+  --hz-hover: rgba(16, 24, 40, 0.05);
+  --hz-scroll-hover: rgba(16, 24, 40, 0.22);
+  --hz-avatar: #eef1f7;
+
+  /* 形状与光影 */
+  --hz-radius: 14px;
+  --hz-radius-sm: 10px;
+  --hz-shadow: 0 16px 36px -26px rgba(16, 24, 40, 0.45);
+  --hz-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --hz-card-grad: linear-gradient(180deg, #ffffff, #fbfcff);
+  --hz-title-grad: linear-gradient(100deg, #141a26 0%, #2b4a8f 55%, #3f6fe4 100%);
+
+  /* 页面环境光（工作台背景的两团径向渐变） */
+  --hz-ambient:
+    radial-gradient(900px 500px at 6% -10%, rgba(91, 140, 255, 0.13), transparent 62%),
+    radial-gradient(700px 420px at 100% 0%, rgba(168, 85, 247, 0.08), transparent 60%);
+}
+
+/* ---------- 2. 设计令牌：深色（复制自工作台的 slate 变量块） ---------- */
+body[data-md-color-scheme="slate"] {
+  --hz-bg: #1e1e1e;
+  --hz-panel: #1e1e1e;
+  --hz-panel-top: #1e1e1e;
+  --hz-panel-2: #232323;
+
+  --hz-line: rgba(255, 255, 255, 0.07);
+  --hz-line-strong: rgba(255, 255, 255, 0.12);
+
+  --hz-text: #f1f1f4;
+  --hz-text-strong: #ffffff;
+  --hz-muted: #9b9ca8;
+  --hz-dim: #8f909c;
+
+  --hz-accent: #5b8cff;
+  --hz-accent-light: #85aaff;
+  --hz-accent-dark: #3f6fe4;
+  --hz-accent-deep: #b9c9ff;
+  --hz-accent-soft: rgba(91, 140, 255, 0.14);
+  --hz-accent-wash: rgba(91, 140, 255, 0.07);
+  --hz-link: #9db7ff;
+
+  --hz-star: #f5c451;
+
+  --hz-surface-1: rgba(255, 255, 255, 0.015);
+  --hz-surface-2: rgba(255, 255, 255, 0.03);
+  --hz-surface-3: rgba(255, 255, 255, 0.05);
+  --hz-hover: rgba(255, 255, 255, 0.04);
+  --hz-scroll-hover: rgba(255, 255, 255, 0.18);
+  --hz-avatar: #1e1f26;
+
+  --hz-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+  --hz-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --hz-card-grad: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.01));
+  --hz-title-grad: linear-gradient(100deg, #ffffff 0%, #e6ecff 55%, #b9c9ff 100%);
+
+  --hz-ambient:
+    radial-gradient(900px 500px at 6% -10%, rgba(91, 140, 255, 0.10), transparent 62%),
+    radial-gradient(700px 420px at 100% 0%, rgba(168, 85, 247, 0.07), transparent 60%);
+}
+
+/* ---------- 3. 映射到 Material 主题变量（浅色） ----------
+   body[...] 选择器比 Material 自己的 [data-md-color-scheme=...] /
+   [data-md-color-primary=...] 高一级，稳定覆盖主题调色板。 */
+body[data-md-color-scheme="default"] {
+  --md-default-bg-color: var(--hz-bg);
+  --md-default-bg-color--light: rgba(247, 248, 251, 0.54);
+  --md-default-bg-color--lighter: rgba(247, 248, 251, 0.26);
+  --md-default-bg-color--lightest: rgba(247, 248, 251, 0.07);
+
+  --md-default-fg-color: var(--hz-text);
+  --md-default-fg-color--light: var(--hz-muted);
+  --md-default-fg-color--lighter: var(--hz-dim);
+  --md-default-fg-color--lightest: var(--hz-line);
+
+  --md-primary-fg-color: var(--hz-accent);
+  --md-primary-fg-color--light: var(--hz-accent-light);
+  --md-primary-fg-color--dark: var(--hz-accent-dark);
+  --md-primary-fg-color--transparent: var(--hz-accent-soft);
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+
+  --md-accent-fg-color: var(--hz-accent-dark);
+  --md-accent-fg-color--transparent: var(--hz-accent-soft);
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: rgba(255, 255, 255, 0.7);
+
+  --md-typeset-color: var(--hz-text);
+  --md-typeset-a-color: var(--hz-link);
+
+  --md-code-fg-color: #232833;
+  --md-code-bg-color: var(--hz-avatar);
+
+  --md-footer-bg-color: #ffffff;
+  --md-footer-bg-color--dark: #ffffff;
+  --md-footer-fg-color: var(--hz-muted);
+  --md-footer-fg-color--light: var(--hz-dim);
+  --md-footer-fg-color--lighter: var(--hz-line-strong);
+
+  --md-typeset-mark-color: rgba(63, 111, 228, 0.18);
+  --md-typeset-kbd-color: #ffffff;
+  --md-typeset-kbd-accent-color: var(--hz-accent-soft);
+  --md-typeset-kbd-border-color: var(--hz-line);
+
+  --md-shadow-z1: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.04);
+  --md-shadow-z2: 0 6px 16px -10px rgba(16, 24, 40, 0.28);
+  --md-shadow-z3: var(--hz-shadow);
+}
+
+/* ---------- 4. 映射到 Material 主题变量（深色） ---------- */
+body[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--hz-bg);
+  --md-default-fg-color: var(--hz-text);
+  --md-default-fg-color--light: var(--hz-muted);
+  --md-default-fg-color--lighter: var(--hz-dim);
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.10);
+
+  --md-primary-fg-color: var(--hz-accent);
+  --md-primary-fg-color--light: var(--hz-accent-light);
+  --md-primary-fg-color--dark: var(--hz-accent-dark);
+  --md-primary-fg-color--transparent: var(--hz-accent-soft);
+  --md-primary-bg-color: #ffffff;
+
+  --md-accent-fg-color: var(--hz-accent-light);
+  --md-accent-fg-color--transparent: var(--hz-accent-soft);
+
+  --md-typeset-a-color: var(--hz-link);
+  --md-code-fg-color: #e6e7ee;
+  --md-code-bg-color: #262626;
+
+  --md-footer-bg-color: #151515;
+  --md-footer-bg-color--dark: #151515;
+  --md-footer-fg-color: var(--hz-muted);
+  --md-footer-fg-color--light: var(--hz-dim);
+}
+
+/* ---------- 5. 全站外壳：底色、环境光、导航、搜索 ---------- */
+body[data-md-color-scheme] {
+  background-color: var(--hz-bg);
+  /* 工作台同款环境光（两团径向渐变），滚动时固定 */
+  background-image: var(--hz-ambient);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* 顶栏：工作台的面板渐变 + 底部细线 */
+.md-header {
+  color: var(--hz-text);
+  background: var(--hz-card-grad);
+  border-bottom: 1px solid var(--hz-line);
+  box-shadow: none;
+}
+
+.md-header[data-md-state="shadow"],
+.md-header--shadow {
+  box-shadow: 0 8px 20px -18px rgba(16, 24, 40, 0.45);
+}
+
+.md-header__title,
+.md-header__topic,
+.md-header__button {
+  color: var(--hz-text);
+}
+
+.md-header__button.md-logo :is(img, svg) {
+  fill: var(--hz-accent);
+  color: var(--hz-accent);
+}
+
+.md-header .md-icon,
+.md-header__button .md-icon {
+  color: var(--hz-muted);
+}
+
+.md-header__button:hover {
+  color: var(--hz-accent);
+  opacity: 1;
+}
+
+/* 顶部标签栏（本站在线版未启用，保留同样配色以免以后打开时跑色） */
+.md-tabs {
+  color: var(--hz-muted);
+  background: var(--hz-panel);
+  border-bottom: 1px solid var(--hz-line);
+}
+
+.md-tabs__link {
+  opacity: 0.85;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: var(--hz-accent);
+  opacity: 1;
+}
+
+/* 搜索框：工作台的圆角输入框 + 主色焦点环 */
+.md-search__form {
+  background: var(--hz-surface-2);
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-radius-sm);
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.md-search__form:hover {
+  background: var(--hz-surface-3);
+  border-color: var(--hz-line-strong);
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background: var(--hz-panel);
+  border-color: var(--hz-accent);
+  box-shadow: 0 0 0 3px var(--hz-accent-soft);
+}
+
+.md-search__input {
+  color: var(--hz-text);
+}
+
+.md-search__input::placeholder {
+  color: var(--hz-dim);
+}
+
+.md-search__icon {
+  color: var(--hz-muted);
+}
+
+.md-search__output {
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-radius-sm);
+  box-shadow: var(--hz-shadow);
+}
+
+.md-search-result__meta {
+  background: var(--hz-surface-2);
+  color: var(--hz-muted);
+}
+
+.md-search-result__item {
+  box-shadow: none;
+}
+
+.md-search-result__link:hover {
+  background: var(--hz-accent-wash);
+}
+
+.md-search-result mark {
+  color: var(--hz-accent-dark);
+  background: transparent;
+}
+
+/* 左侧导航：与工作台侧栏的选项样式对齐 */
+.md-nav__title {
+  color: var(--hz-text);
+  box-shadow: none;
+}
+
+.md-nav__link {
+  border-radius: 6px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.md-nav__link:is(:focus, :hover) {
+  color: var(--hz-accent-dark);
+  background: var(--hz-surface-1);
+}
+
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+  color: var(--hz-accent-dark);
+  font-weight: 600;
+}
+
+.md-nav__item .md-nav__link--active {
+  background: var(--hz-accent-soft);
+}
+
+/* 页脚：白面板 + 顶部细线（与工作台面板一致） */
+body[data-md-color-scheme] .md-footer {
+  color: var(--hz-muted);
+  background: var(--hz-panel);
+  border-top: 1px solid var(--hz-line);
+}
+
+.md-footer-meta {
+  background: var(--hz-panel);
+}
+
+.md-copyright,
+.md-copyright__highlight {
+  color: var(--hz-dim);
+}
+
+.md-footer a {
+  color: var(--hz-link);
+}
+
+/* 滚动条 */
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb,
+.md-nav__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--hz-line-strong);
+  border-radius: 999px;
+}
+
+.md-sidebar__scrollwrap:hover::-webkit-scrollbar-thumb {
+  background: var(--hz-scroll-hover);
+}
+
+/* ---------- 6. 正文组件：沿用工作台卡片的面与描边 ---------- */
+.md-typeset h1,
+.md-typeset h2 {
+  color: var(--hz-text-strong);
+}
+
+.md-typeset h1 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset hr {
+  border-bottom-color: var(--hz-line);
+}
+
+.md-typeset blockquote {
+  color: var(--hz-muted);
+  border-left: 3px solid var(--hz-accent);
+  background: var(--hz-surface-1);
+  border-radius: 0 var(--hz-radius-sm) var(--hz-radius-sm) 0;
+}
+
+.md-typeset table:not([class]) {
+  overflow: hidden;
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-radius-sm);
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th {
+  color: var(--hz-text-strong);
+  background: var(--hz-surface-2);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--hz-accent-wash);
+}
+
+.md-typeset code {
+  border-radius: 4px;
+  background: var(--hz-avatar);
+  box-shadow: none;
+}
+
+.md-typeset pre > code {
+  border: 1px solid var(--hz-line);
+  border-radius: var(--hz-radius-sm);
+}
+
+.md-typeset .highlighttable .linenodiv pre,
+.md-typeset .highlight span.filename {
+  color: var(--hz-muted);
+  background: var(--hz-surface-2);
+  border-color: var(--hz-line);
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--hz-line);
+  border-left: 3px solid var(--hz-accent);
+  border-radius: var(--hz-radius-sm);
+  background: var(--hz-card-grad);
+  box-shadow: var(--hz-inset);
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background: var(--hz-accent-soft);
+}
+
+.md-typeset .footnote {
+  color: var(--hz-muted);
+}
+
+.md-typeset .md-button {
+  color: var(--hz-accent-dark);
+  border-color: var(--hz-line-strong);
+  border-radius: 999px;
+}
+
+.md-typeset .md-button--primary {
+  color: #ffffff;
+  background: var(--hz-accent);
+  border-color: var(--hz-accent);
+}
+
+.md-typeset .md-button:hover {
+  color: var(--hz-accent-dark);
+  background: var(--hz-accent-soft);
+  border-color: var(--hz-accent);
+}
+
+.md-typeset .md-button--primary:hover {
+  color: #ffffff;
+  background: var(--hz-accent-dark);
+  border-color: var(--hz-accent-dark);
+}
+
+/* 返回顶部按钮 */
+.md-top {
+  color: var(--hz-accent-dark);
+  background: var(--hz-panel);
+  border: 1px solid var(--hz-line);
+  border-radius: 999px;
+  box-shadow: var(--hz-shadow);
+}
+
+.md-top:hover {
+  background: var(--hz-accent-soft);
+}
+
+/* 强调语法与标签高亮统一到工作台主色 */
+.md-typeset mark {
+  color: var(--hz-accent-dark);
+  background: rgba(63, 111, 228, 0.16);
+}
+
+.md-typeset .headerlink {
+  color: var(--hz-accent);
+}
+
+/* 选中文本 */
+::selection {
+  background: rgba(91, 140, 255, 0.28);
+  color: var(--hz-text-strong);
+}
