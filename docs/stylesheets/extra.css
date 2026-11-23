@@ -33,11 +33,11 @@
   }
 }
 
-/* AI timeline topic: keep the timeline readable while inheriting Material colors. */
+/* AI timeline topic: 配色统一取自 repositories 工作台（--hz-* 令牌）。 */
 .ai-timeline {
-  --timeline-accent: var(--md-primary-fg-color, #459df5);
-  --timeline-border: var(--md-default-fg-color--lightest);
-  --timeline-card: var(--md-code-bg-color);
+  --timeline-accent: var(--hz-accent);
+  --timeline-border: var(--hz-line);
+  --timeline-card: var(--hz-panel);
   max-width: 58rem;
   margin: 2rem auto 3rem;
 }
@@ -46,7 +46,7 @@
   margin: 2.6rem 0 0.5rem;
   padding: 0.65rem 0 0.65rem 1rem;
   border-left: 4px solid var(--timeline-accent);
-  background: color-mix(in srgb, var(--timeline-accent) 8%, var(--md-default-bg-color));
+  background: color-mix(in srgb, var(--timeline-accent) 8%, var(--hz-bg));
   border-radius: 0 0.35rem 0.35rem 0;
 }
 
@@ -105,7 +105,7 @@
   overflow-wrap: anywhere;
 }
 
-/* Academic paper site directory, using the site's Material color variables. */
+/* 学术论文站点目录：与 repositories 工作台的卡片同色同形。 */
 .paper-sites-grid ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
@@ -118,16 +118,18 @@
 .paper-sites-grid li {
   margin: 0;
   padding: 0.9rem 1rem;
-  background: var(--md-code-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-left: 3px solid var(--md-primary-fg-color);
-  border-radius: 0.45rem;
-  transition: border-color 140ms ease, transform 140ms ease;
+  background: var(--hz-card-grad);
+  border: 1px solid var(--hz-line);
+  border-left: 3px solid var(--hz-accent);
+  border-radius: 0.75rem;
+  box-shadow: var(--hz-inset), var(--hz-shadow);
+  transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
 }
 
 .paper-sites-grid li:hover {
-  border-color: var(--md-primary-fg-color);
+  border-color: var(--hz-accent);
   transform: translateY(-2px);
+  box-shadow: var(--hz-inset), 0 18px 32px -24px rgba(16, 24, 40, 0.55);
 }
 
 .paper-sites-grid li a {

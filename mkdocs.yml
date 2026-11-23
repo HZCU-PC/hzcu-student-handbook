@@ -52,6 +52,9 @@ extra:
   generator: false
 
 extra_css:
+  # palette.css 是全站唯一配色来源（取自 repositories 工作台），必须最先加载；
+  # 其余样式表只引用其中的 --hz-* 令牌。
+  - stylesheets/palette.css
   - stylesheets/extra.css
   - stylesheets/light-home.css
   - stylesheets/papers-workbench.css

@@ -1,30 +1,32 @@
 /* ===== ZJUers 风格轻首页 · 样式 =====
-   移植自 https://zjuers.com/ 的公开页面样式（ZUI/Bootstrap 网格 + 自定义 CSS）。
-   原站核心配色：主色 #459df5、页面底色 #f2f2f2、卡片 #fff、正文 #808080。
+   版式移植自 https://zjuers.com/ 的公开页面（ZUI/Bootstrap 网格 + 自定义 CSS）。
+   配色不再用原站的 #459df5/#f2f2f2 蓝色调，统一取自 repositories 工作台
+   （palette.css 的 --hz-* 令牌）：底色 #f7f8fb、卡片 #ffffff、主色 #3f6fe4、
+   标题 #15171f、正文 #5b6272。
    所有规则都限定在 .zjuers-light 作用域内，避免影响 Material 主题和本站其它页面。 */
 
 .zjuers-light {
-  --z-bg: #f2f2f2;
-  --z-card: #ffffff;
-  --z-text: #808080;
-  --z-sub: #959595;
-  --z-title: #484848;
-  --z-line: #e6e6e6;
-  --z-blue: #459df5;
-  --z-blue-soft: #64b5f6;
+  --z-bg: var(--hz-bg);
+  --z-card: var(--hz-panel);
+  --z-text: var(--hz-muted);
+  --z-sub: var(--hz-dim);
+  --z-title: var(--hz-text);
+  --z-line: var(--hz-line);
+  --z-blue: var(--hz-accent);
+  --z-blue-soft: var(--hz-accent-light);
   --z-hover-text: #ffffff;
-  --z-shadow: rgba(0, 0, 0, .08);
+  --z-shadow: rgba(16, 24, 40, .12);
 }
 
-/* 深色模式：跟随 Material 的配色切换 */
+/* 深色模式：跟随 Material 的配色切换（同工作台 slate 取值） */
 [data-md-color-scheme="slate"] .zjuers-light {
-  --z-bg: #1e2129;
-  --z-card: #262b36;
-  --z-text: #c5c9d3;
-  --z-sub: #9aa0ad;
-  --z-title: #e8eaed;
-  --z-line: #3a4150;
-  --z-shadow: rgba(0, 0, 0, .4);
+  --z-bg: var(--hz-bg);
+  --z-card: #262626;
+  --z-text: var(--hz-text);
+  --z-sub: var(--hz-dim);
+  --z-title: var(--hz-text-strong);
+  --z-line: var(--hz-line);
+  --z-shadow: rgba(0, 0, 0, .45);
 }
 
 /* ---------- 页面容器 ---------- */
