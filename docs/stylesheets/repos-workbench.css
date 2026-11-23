@@ -1,5 +1,5 @@
 .repos-page{
-      --bg: #f7f8fb;
+      --bg: #ffffff;
       --panel: #ffffff;
       --panel-top: #ffffff;
       --line: rgba(16, 24, 40, 0.10);
@@ -713,7 +713,7 @@ body:has(.repos-page)[data-md-color-scheme="slate"] .md-content {
   background: transparent;
 }
 body:has(.repos-page):not([data-md-color-scheme="slate"]) {
-  background: #f7f8fb;
+  background: #ffffff;
 }
 body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-container,
 body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-main,
@@ -725,7 +725,7 @@ body:has(.repos-page)[data-md-color-scheme="slate"] .md-nav__title {
   background-color: #1e1e1e;
 }
 body:has(.repos-page):not([data-md-color-scheme="slate"]) .md-nav__title {
-  background-color: #f7f8fb;
+  background-color: #ffffff;
 }
 
 .repos-page .repos-search { padding: 16px 16px 0; }
