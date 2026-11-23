@@ -52,14 +52,19 @@ extra:
   generator: false
 
 extra_css:
+  # palette.css 是全站唯一配色来源（取自 repositories 工作台），必须最先加载；
+  # 其余样式表只引用其中的 --hz-* 令牌。
+  - stylesheets/palette.css
   - stylesheets/extra.css
   - stylesheets/light-home.css
   - stylesheets/papers-workbench.css
   - stylesheets/repos-workbench.css
+  - stylesheets/semester.css
 
 extra_javascript:
   - javascripts/papers-shelf.js
   - javascripts/repos-shelf.js
+  - javascripts/semester-progress.js
 
 nav:
   - 首页 · 前言: index.md
@@ -74,6 +79,7 @@ nav:
   - 学期安排: semester.md
   - 培养方案详解:
       - 学年总览: curriculum/index.md
+      - 培养方案知识地图: curriculum/knowledge-map.md
       - 大一: curriculum/year-1.md
       - 大二: curriculum/year-2.md
       - 大三: curriculum/year-3.md

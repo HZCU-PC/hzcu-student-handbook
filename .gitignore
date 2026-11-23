@@ -6,3 +6,4 @@ __pycache__/
 .dsh-preview/
 docs/*.bak
 site-test/
+mkdocs_*/

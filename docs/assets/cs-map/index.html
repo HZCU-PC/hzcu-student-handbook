@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>培养方案知识地图 · HZCU 计算机与计算科学学院</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <!-- 院徽取自计算机与计算科学学院官网页眉标识：http://jsxy.hzcu.edu.cn/ -->
+    <div class="brand-mark" role="img" aria-label="浙大城市学院计算机与计算科学学院院徽" title="浙大城市学院计算机与计算科学学院院徽">
+      <img src="brand-emblem-light.png" alt="">
+    </div>
+    <div class="brand-text">
+      <h1>计算学院 · 培养方案知识地图</h1>
+      <p>HZCU · 计算机与计算科学学院 · 2025 / 2026 级</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <div class="year-switch" role="tablist" aria-label="年级">
+      <button type="button" data-year="2025" role="tab" aria-selected="false">2025 级</button>
+      <button type="button" data-year="2026" role="tab" aria-selected="true" class="on">2026 级</button>
+    </div>
+    <button type="button" class="ghost-btn" id="overviewBtn" aria-haspopup="dialog" aria-label="查看培养方案总览">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="1.5"/><path d="M2 6h12M6 6v7.5M10 6v7.5"/></svg>
+      <span class="btn-label">总览</span>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="筛选与统计">
+    <button type="button" class="mobile-filter-btn" id="mobileFilter" aria-expanded="false" aria-controls="sidebar">
+      <span class="left">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 4h12M4 8h8M6.5 12h3"/></svg>
+        <span id="mobileFilterLabel">筛选与统计</span>
+        <span class="badge" id="filterBadge">0</span>
+      </span>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+    </button>
+
+    <section class="side-card">
+      <div class="side-eyebrow">Find</div>
+      <div class="side-title">检索课程</div>
+      <div class="search">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
+        <input type="search" id="search" placeholder="课程名、课程号、模块…" autocomplete="off" aria-label="检索课程">
+        <button type="button" class="search-clear" id="searchClear" aria-label="清除检索">×</button>
+      </div>
+      <div class="search-status" id="searchStatus"></div>
+    </section>
+
+    <section class="side-card">
+      <div class="side-eyebrow">Filter</div>
+      <div class="side-title">筛选标签</div>
+
+      <div class="field">
+        <label class="field-label" for="planSelect">培养方案 <span class="hint" id="planHint">全部</span></label>
+        <select class="select" id="planSelect"></select>
+      </div>
+
+      <div class="field">
+        <div class="field-label">必修性质 <span class="hint">课程性质</span></div>
+        <div class="chips" id="natureChips"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">建议学年 <button type="button" class="link-btn" id="allYears">全选</button></div>
+        <div class="chips" id="yearChips"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">知识大类 <span class="hint" id="catSummary">全部</span></div>
+        <details class="cat-filter" id="catDetails">
+          <summary>选择知识领域</summary>
+          <div class="cat-tools">
+            <button type="button" class="link-btn" id="catsAll">全选</button>
+            <button type="button" class="link-btn" id="catsNone">清空</button>
+          </div>
+          <div class="cat-list" id="catList"></div>
+        </details>
+      </div>
+
+      <div style="margin-top:14px;padding-top:11px;border-top:1px dashed var(--line)">
+        <button type="button" class="link-btn" id="resetFilters">清除全部筛选</button>
+      </div>
+    </section>
+
+    <section class="side-card">
+      <div class="side-eyebrow">Overview</div>
+      <div class="side-title">当前视图</div>
+      <div class="stats">
+        <div class="stat"><b id="statPlans">4</b><span>培养方案</span></div>
+        <div class="stat"><b id="statRecords">297</b><span>课程记录</span></div>
+        <div class="stat"><b id="statUnique">163</b><span>不同课程</span></div>
+        <div class="stat"><b id="statCats">12</b><span>知识大类</span></div>
+        <div class="stat wide"><b id="statCredits">160–163</b><span>最低毕业学分区间</span></div>
+      </div>
+      <p class="side-note" style="margin-top:10px">“不同课程”按课程号跨方案去重；“课程记录”保留各方案中的开设记录。</p>
+    </section>
+
+    <div class="note-card">
+      <h3>层级与口径</h3>
+      <p><b>拔尖创新班</b>是计算机科学与技术专业下的培养类型，不是独立专业。计算机类实际是 2 个专业、3 套方案。</p>
+      <p><b>学分</b>：“最低毕业学分”来自方案页；“Σ”是当前所列课程学分合计，不等于最低毕业学分。</p>
+      <p><b>先修关系</b>：原文件未提供，本图只表达课程归属与分类，不代表修读先后。</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="plan-cards" id="planCards" aria-label="培养方案卡片"></div>
+
+    <nav class="modebar" id="modebar" aria-label="分支标准">
+      <button type="button" data-mode="major" class="on"><span class="num">01</span>专业脉络</button>
+      <button type="button" data-mode="module"><span class="num">02</span>课程模块</button>
+      <button type="button" data-mode="year"><span class="num">03</span>学年学期</button>
+      <button type="button" data-mode="category"><span class="num">04</span>知识领域</button>
+      <button type="button" data-mode="nature"><span class="num">05</span>必修性质</button>
+    </nav>
+
+    <section class="map-panel" aria-label="知识地图">
+      <header class="map-head">
+        <div class="map-kicker" id="mapKicker">PRIMARY TREE</div>
+        <h2 id="mapTitle">学院 → 门类·专业类 → 专业 → 培养类型 → 课程模块 → 课程</h2>
+        <p class="map-desc" id="mapDesc">主树：先看专业与培养类型，再展开课程模块。点击课程查看详情。</p>
+        <div class="map-tools">
+          <button type="button" class="tool primary" id="expandAll"><span aria-hidden="true">＋</span>展开全部</button>
+          <button type="button" class="tool" id="resetView"><span aria-hidden="true">↺</span>默认层级</button>
+          <span class="tool-spacer"></span>
+          <span class="map-count" id="mapCount"></span>
+        </div>
+      </header>
+
+      <div class="tree-scroll" id="treeScroll">
+        <div class="tree" id="tree" role="tree" aria-label="培养方案课程层级"><div class="boot">正在载入 2025 / 2026 级培养方案…</div></div>
+      </div>
+
+      <footer class="map-foot">
+        <span><b>数据来源</b> 浙大城市学院《本科专业培养方案查询》2025 / 2026 级</span>
+        <span class="dot">·</span>
+        <span>仅整理计算机与计算科学学院</span>
+        <span class="dot">·</span>
+        <span>计划课程数按教务口径；2026 软件工程含 1 条重复记录，去重后 75 门</span>
+        <span class="dot">·</span>
+        <span>专核 / 普必归入专业必修，专任归入专业选修</span>
+        <span class="dot">·</span>
+        <span>先修关系需另行梳理</span>
+      </footer>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <div class="drawer-kicker" id="drawerKicker">课程详情</div>
+    <h3 id="drawerTitle"></h3>
+    <p class="drawer-meta" id="drawerMeta"></p>
+    <button type="button" class="drawer-close" id="drawerClose" aria-label="关闭详情">×</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<div class="modal-wrap" id="overviewWrap" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="overviewTitle">
+    <button type="button" class="modal-close" id="overviewClose" aria-label="关闭总览">×</button>
+    <h2 id="overviewTitle">培养方案总览</h2>
+    <p class="modal-sub">计算机与计算科学学院 · 2025 / 2026 级 · 4 套方案 / 级</p>
+    <div class="table-wrap" id="overviewTable"></div>
+    <div class="modal-notes" id="overviewNotes"></div>
+  </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>

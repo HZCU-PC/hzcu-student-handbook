@@ -1,0 +1,515 @@
+/* ==========================================================================
+   学期安排页（docs/semester.md）专用样式
+   类名以 semester- / sg- 开头，令牌以 --sc- 开头，不污染其他页面。
+   ========================================================================== */
+
+.md-typeset {
+  /* ---- 令牌：浅色 ---- */
+  --sc-card: #ffffff;
+  --sc-card-2: #fbfcfe;
+  --sc-ink: #111827;
+  --sc-ink2: #454e60;
+  --sc-ink3: #6b7488;
+  --sc-line: #e5e9f0;
+  --sc-line-2: #eef1f6;
+  --sc-brand: #3f6fe4;
+  --sc-brand-ink: #2a55be;
+  --sc-brand-wash: #eef3ff;
+  --sc-amber-ink: #7a4a05;
+  --sc-amber-wash: #fbefdb;
+  --sc-amber-line: #e8cfa4;
+  --sc-exam: #1b2233;
+  --sc-exam-fg: #ffffff;
+  --sc-mid: #e3e9f4;
+  --sc-mid-fg: #1b2233;
+  --sc-we: #f4f6fa;
+  --sc-today: #3f6fe4;
+  --sc-today-fg: #ffffff;
+  --sc-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  counter-reset: sp;
+}
+
+[data-md-color-scheme="slate"] .md-typeset {
+  --sc-card: #262a34;
+  --sc-card-2: #2c313c;
+  --sc-ink: #e9ecf3;
+  --sc-ink2: #b3bbc9;
+  --sc-ink3: #8b94a4;
+  --sc-line: rgba(255, 255, 255, 0.10);
+  --sc-line-2: rgba(255, 255, 255, 0.06);
+  --sc-brand: #7ea2ff;
+  --sc-brand-ink: #a8c0ff;
+  --sc-brand-wash: rgba(63, 111, 228, 0.16);
+  --sc-amber-ink: #e7bd7d;
+  --sc-amber-wash: rgba(200, 140, 40, 0.14);
+  --sc-amber-line: rgba(200, 140, 40, 0.35);
+  --sc-exam: #3d4a6b;
+  --sc-exam-fg: #eef2ff;
+  --sc-mid: rgba(150, 176, 220, 0.17);
+  --sc-mid-fg: #cfdaee;
+  --sc-we: rgba(255, 255, 255, 0.055);
+  --sc-today: #7ea2ff;
+  --sc-today-fg: #0f1523;
+  --sc-shadow: none;
+}
+
+/* ---------- 章节标题：01 02 03 ---------- */
+.md-typeset h2.sp-h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 40px 0 12px;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5;
+  counter-increment: sp;
+}
+
+.md-typeset h2.sp-h2::before {
+  content: counter(sp, decimal-leading-zero);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--sc-brand);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 附录性质的两节：不占编号，靠一条细线分隔 */
+.md-typeset h2.sp-h2.is-plain {
+  margin-top: 44px;
+  padding-top: 18px;
+  border-top: 1px solid var(--sc-line);
+  font-size: 13px;
+  color: var(--sc-ink3);
+  counter-increment: none;
+}
+
+.md-typeset h2.sp-h2.is-plain::before { display: none; }
+
+/* ---------- 01 学期概览 ---------- */
+.md-typeset .semester-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--sc-line);
+  border-radius: 11px;
+  background: var(--sc-card);
+  overflow: hidden;
+  box-shadow: var(--sc-shadow);
+}
+
+.md-typeset .semester-stat {
+  padding: 13px 16px 14px;
+  border-left: 1px solid var(--sc-line-2);
+}
+
+.md-typeset .semester-stat:first-child { border-left: 0; }
+.md-typeset .semester-stat > span { display: block; font-size: 11px; color: var(--sc-ink3); letter-spacing: 0.02em; }
+
+.md-typeset .semester-stat > b {
+  display: block;
+  margin-top: 1px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--sc-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .semester-stat > i { display: block; font-style: normal; font-size: 11px; color: var(--sc-ink3); line-height: 1.5; }
+.md-typeset .semester-stat.is-key > b { color: var(--sc-brand-ink); }
+
+/* ---------- 02 学期进度 ---------- */
+.md-typeset .semester-rail {
+  border: 1px solid var(--sc-line);
+  border-radius: 11px;
+  background: var(--sc-card);
+  padding: 15px 18px 14px;
+  box-shadow: var(--sc-shadow);
+}
+
+.md-typeset .semester-rail__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.md-typeset .semester-rail__now { display: flex; align-items: baseline; gap: 8px; }
+
+.md-typeset .semester-rail__now b {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--sc-ink);
+}
+
+.md-typeset .semester-rail__now em {
+  font-style: normal;
+  font-size: 13px;
+  color: var(--sc-ink3);
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .semester-rail__now span { font-size: 12px; color: var(--sc-ink3); }
+
+.md-typeset .semester-rail__facts { display: flex; gap: 22px; }
+.md-typeset .semester-rail__facts > div { text-align: right; }
+.md-typeset .semester-rail__facts .lab { display: block; font-size: 11px; color: var(--sc-ink3); }
+
+.md-typeset .semester-rail__facts b {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sc-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.md-typeset .semester-rail__facts small { font-size: 11px; font-weight: 400; color: var(--sc-ink3); margin-left: 2px; }
+
+.md-typeset .semester-bar {
+  display: grid;
+  grid-template-columns: repeat(19, 1fr);
+  gap: 3px;
+  height: 9px;
+  margin: 16px 0 8px;
+}
+
+.md-typeset .semester-bar i { display: block; background: var(--sc-line-2); border-radius: 3px; }
+.md-typeset .semester-bar i.is-past { background: #d3dcee; }
+[data-md-color-scheme="slate"] .semester-bar i.is-past { background: rgba(255, 255, 255, 0.22); }
+.md-typeset .semester-bar i.is-exam { background: var(--sc-exam); }
+
+.md-typeset .semester-bar i.is-now {
+  background: var(--sc-brand);
+  box-shadow: 0 0 0 2px var(--sc-card), 0 0 0 3.5px var(--sc-brand);
+}
+
+.md-typeset .semester-bar__months {
+  display: grid;
+  grid-template-columns: repeat(19, 1fr);
+  gap: 3px;
+}
+
+.md-typeset .semester-bar__months span { font-size: 10px; color: var(--sc-ink3); letter-spacing: 0.02em; padding-left: 1px; }
+
+/* ---------- 03 校历网格 ---------- */
+.md-typeset .semester-cal {
+  border: 1px solid var(--sc-line);
+  border-radius: 11px;
+  background: var(--sc-card);
+  box-shadow: var(--sc-shadow);
+  overflow: hidden;
+}
+
+.md-typeset .semester-cal__scroll { overflow-x: auto; overscroll-behavior-x: contain; }
+
+.md-typeset .sg-wrap { padding: 12px 14px 10px; min-width: 640px; }
+
+.md-typeset .sg {
+  display: grid;
+  grid-template-columns: 1.6rem repeat(var(--cols, 22), minmax(0, 1fr));
+  gap: 2px;
+}
+
+.md-typeset .sg-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--sc-ink3);
+}
+
+.md-typeset .sg--months { margin-bottom: 1px; }
+.md-typeset .sg--months span { font-size: 10px; color: var(--sc-ink3); letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; }
+.md-typeset .sg--head { margin-bottom: 3px; }
+
+.md-typeset .sg-wn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  font-size: 10.5px;
+  color: var(--sc-ink2);
+  border-radius: 3px;
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+.md-typeset .sg-wn.on { background: var(--sc-brand-wash); color: var(--sc-brand-ink); }
+
+.md-typeset .sg--body { row-gap: 2px; }
+
+.md-typeset .sg-cd {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 37px;
+  padding-top: 5px;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.md-typeset .sg-cd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  pointer-events: none;
+  background: transparent;
+  transition: background 0.12s;
+}
+
+.md-typeset .sg-cd.is-hl::after { background: rgba(63, 111, 228, 0.08); }
+
+.md-typeset .sg-cd b {
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .sg-cd em {
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 8px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: inherit;
+  opacity: 0.9;
+}
+
+.md-typeset .sg-cd em.is-long { font-size: 7.5px; letter-spacing: -0.02em; }
+
+.md-typeset .sg-cd.is-we { background: var(--sc-we); }
+.md-typeset .sg-cd.is-out { opacity: 0.35; }
+.md-typeset .sg-cd.is-hol { background: var(--sc-amber-wash); color: var(--sc-amber-ink); }
+.md-typeset .sg-cd.is-exam { background: var(--sc-exam); color: var(--sc-exam-fg); }
+.md-typeset .sg-cd.is-exam b { font-weight: 600; }
+.md-typeset .sg-cd.is-mid { background: var(--sc-mid); color: var(--sc-mid-fg); }
+.md-typeset .sg-cd.is-mid b { font-weight: 600; }
+.md-typeset .sg-cd.is-mid em { font-weight: 600; opacity: 1; }
+.md-typeset .sg-cd.is-make { background: var(--sc-brand-wash); color: var(--sc-brand-ink); }
+.md-typeset .sg-cd.is-make b { font-weight: 600; }
+.md-typeset .sg-cd.is-make em { font-weight: 600; opacity: 1; }
+.md-typeset .sg-cd.is-start b { font-weight: 700; }
+.md-typeset .sg-cd.is-start em { color: var(--sc-brand-ink); font-weight: 600; opacity: 1; }
+.md-typeset .sg-cd.is-info em { color: var(--sc-ink3); opacity: 0.85; }
+
+.md-typeset .sg-cd.is-today {
+  background: var(--sc-today);
+  color: var(--sc-today-fg);
+  font-weight: 700;
+  box-shadow: 0 0 0 2px var(--sc-card), 0 0 0 3.5px var(--sc-today);
+}
+
+.md-typeset .semester-cal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 9px 14px 11px;
+  border-top: 1px solid var(--sc-line-2);
+  background: var(--sc-card-2);
+}
+
+.md-typeset .semester-readout { font-size: 11.5px; color: var(--sc-ink2); font-variant-numeric: tabular-nums; }
+.md-typeset .semester-readout b { font-weight: 600; color: var(--sc-brand-ink); }
+.md-typeset .semester-hint { display: none; font-size: 10.5px; color: var(--sc-ink3); margin-left: 6px; }
+
+.md-typeset .semester-legend { display: flex; align-items: center; gap: 12px; font-size: 10.5px; color: var(--sc-ink3); }
+.md-typeset .semester-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+.md-typeset .semester-legend .sw-hol { background: var(--sc-amber-wash); border: 1px solid var(--sc-amber-line); }
+.md-typeset .semester-legend .sw-exam { background: var(--sc-exam); }
+.md-typeset .semester-legend .sw-mid { background: var(--sc-mid); }
+.md-typeset .semester-legend .sw-make { background: var(--sc-brand-wash); border: 1px solid rgba(63, 111, 228, 0.25); }
+.md-typeset .semester-legend .sw-we { background: var(--sc-we); border: 1px solid var(--sc-line); }
+.md-typeset .semester-legend .sw-today { width: 8px; height: 8px; border-radius: 50%; background: var(--sc-today); margin-right: 6px; }
+
+/* ---------- 04 关键节点 ---------- */
+/* Material 给 ul 加了 .625em 左缩进（CSSOM 里查不到来源，用 !important 兜住），
+   这里必须与卡片的左边缘对齐 */
+.md-typeset .semester-events {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.md-typeset .semester-events li {
+  display: grid;
+  grid-template-columns: 5.6rem 1fr;
+  gap: 14px;
+  align-items: baseline;
+  margin: 0 !important; /* Material 给 li 加了左缩进 */
+  padding: 9px 2px;
+  border-bottom: 1px solid var(--sc-line-2);
+}
+
+.md-typeset .semester-events li:last-child { border-bottom: 0; }
+
+.md-typeset .semester-events time {
+  font-size: 12px;
+  color: var(--sc-ink3);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .semester-events time .wd { font-size: 10.5px; opacity: 0.8; margin-left: 4px; }
+.md-typeset .semester-events time .dash { margin: 0 1px; opacity: 0.6; }
+
+.md-typeset .semester-events p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--sc-ink); }
+.md-typeset .semester-events b { font-weight: 500; }
+.md-typeset .semester-events .note { font-size: 12.5px; color: var(--sc-ink3); }
+.md-typeset .semester-events .note::before { content: "·"; margin: 0 6px; opacity: 0.55; }
+
+/* ---------- 05 周次速查 ---------- */
+.md-typeset .semester-lookup {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--sc-line);
+  border-radius: 11px;
+  background: var(--sc-card);
+  box-shadow: none;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.md-typeset .semester-lookup summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 0;
+  background: transparent; /* Material 把 details 当提示框，标题带蓝底 */
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sc-ink2);
+  cursor: pointer;
+  list-style: none;
+}
+
+.md-typeset .semester-lookup summary::-webkit-details-marker { display: none; }
+
+.md-typeset .semester-lookup summary::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 1px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s;
+}
+
+.md-typeset .semester-lookup[open] summary::before { transform: rotate(45deg); }
+.md-typeset .semester-lookup summary span { font-size: 11px; font-weight: 400; color: var(--sc-ink3); }
+.md-typeset .semester-lookup summary:hover { background: var(--sc-card-2); }
+
+.md-typeset .semester-lookup table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  border-collapse: collapse;
+  background: transparent;
+  box-shadow: none;
+  font-size: 12.5px;
+}
+
+.md-typeset .semester-lookup th {
+  padding: 6px 16px;
+  border: 0;
+  border-top: 1px solid var(--sc-line);
+  border-bottom: 1px solid var(--sc-line-2);
+  background: transparent;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--sc-ink3);
+  text-align: left;
+}
+
+.md-typeset .semester-lookup td {
+  padding: 6px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--sc-line-2);
+  color: var(--sc-ink2);
+}
+
+.md-typeset .semester-lookup td:first-child {
+  width: 4.5rem;
+  color: var(--sc-ink3);
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .semester-lookup tr.is-now td { background: var(--sc-brand-wash); color: var(--sc-brand-ink); }
+.md-typeset .semester-lookup tr.is-now td:first-child { font-weight: 700; color: var(--sc-brand-ink); }
+
+.md-typeset .semester-todo {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--sc-ink3);
+  line-height: 1.7;
+}
+
+.md-typeset .semester-todo code { font-size: 11px; }
+
+/* Material 会给表格套一层 shrink-wrap 容器，撑满卡片宽度 */
+.md-typeset .semester-lookup .md-typeset__scrollwrap { margin: 0; padding: 0; overflow-x: auto; }
+
+.md-typeset .semester-lookup .md-typeset__table {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 周次速查里的小标签 */
+.md-typeset .semester-lookup em {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.tag-hol { background: var(--sc-amber-wash); color: var(--sc-amber-ink); }
+.tag-exam { background: var(--sc-exam); color: var(--sc-exam-fg); }
+.tag-mid { background: var(--sc-mid); color: var(--sc-mid-fg); }
+.tag-info { background: var(--sc-line-2); color: var(--sc-ink3); }
+
+/* 学校原图（补上之后自动启用） */
+.md-typeset .semester-figure { margin: 1.25rem 0 1.5rem; text-align: center; }
+
+.md-typeset .semester-figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--sc-line);
+  border-radius: 11px;
+}
+
+.md-typeset .semester-figure figcaption { margin-top: 0.5rem; font-size: 0.8rem; color: var(--sc-ink3); }
+
+/* ---------- 窄屏 ---------- */
+@media screen and (max-width: 680px) {
+  .md-typeset .semester-stats { grid-template-columns: 1fr 1fr; }
+  .md-typeset .semester-stat:nth-child(3) { border-left: 0; }
+  .md-typeset .semester-stat:nth-child(1),
+  .md-typeset .semester-stat:nth-child(2) { border-bottom: 1px solid var(--sc-line-2); }
+  .md-typeset .semester-hint { display: inline; }
+  .md-typeset .semester-rail__top { gap: 12px; }
+  .md-typeset .semester-rail__now b { font-size: 20px; }
+  .md-typeset .semester-rail__facts > div { text-align: left; }
+  .md-typeset .semester-events li { grid-template-columns: 4.8rem 1fr; gap: 10px; }
+}
