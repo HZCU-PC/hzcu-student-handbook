@@ -1,0 +1,28 @@
+{
+  "ok": {
+    "WB-A04": "https://arxiv.org/pdf/1312.6114.pdf",
+    "WB-A07": "https://arxiv.org/pdf/1607.06450.pdf",
+    "WB-A13": "https://arxiv.org/pdf/2001.08361.pdf",
+    "WB-A14": "https://arxiv.org/pdf/2101.03961.pdf",
+    "WB-A15": "https://arxiv.org/pdf/2006.16668.pdf",
+    "WB-A16": "https://arxiv.org/pdf/2104.12369.pdf",
+    "WB-A17": "https://arxiv.org/pdf/2107.02137.pdf",
+    "WB-A21": "https://arxiv.org/pdf/2204.02311.pdf",
+    "WB-A11": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+    "WB-A23": "https://arxiv.org/pdf/2302.13971.pdf",
+    "WB-A24": "https://arxiv.org/pdf/2307.09288.pdf",
+    "WB-A25": "https://arxiv.org/pdf/2310.06825.pdf",
+    "WB-A27": "https://arxiv.org/pdf/2305.10403.pdf",
+    "WB-A28": "https://arxiv.org/pdf/2312.11805.pdf",
+    "WB-A29": "https://arxiv.org/pdf/2309.16609.pdf",
+    "WB-A30": "https://arxiv.org/pdf/2406.12793.pdf",
+    "WB-A31": "https://arxiv.org/pdf/2309.10305.pdf",
+    "WB-A32": "https://arxiv.org/pdf/2305.13048.pdf",
+    "WB-A33": "https://arxiv.org/pdf/2407.21783.pdf",
+    "WB-A34": "https://arxiv.org/pdf/2401.04088.pdf",
+    "WB-A35": "https://arxiv.org/pdf/2312.00752.pdf"
+  },
+  "fail": {
+    "WB-A18": "no PDF URL for link='https://arxiv.org/search/?query=WuDao+2.0&searchtype=all'"
+  }
+}

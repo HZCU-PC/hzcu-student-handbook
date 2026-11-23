@@ -147,16 +147,101 @@ EXTRA = {
 "这项系统工作关注智能体训练里容易被忽视的基础设施，并报告了大规模生产使用数据。性能数字来自特定集群和工作负载，不能直接外推到所有平台；环境隔离、任务安全和结果可复现仍需单独设计。")
 }
 
+# ---------------------------------------------------------------------------
+# 旧编号迁移表
+#
+# 本扩展表最初按「HEAD 版 45 篇」的编号（B01..B20 / F01..F25）书写，当前页面已
+# 改成 WB-* 分组编号，且**编号被重新编排过**：旧 B01 是反向传播，而当前
+# WB-B01 是 LeNet-5。因此**绝不能**用 "WB-" + 旧键 推导，否则会把文案写到
+# 别的论文上（能跑通、不报错、但内容是错的）。
+#
+# 下面 44 条按论文标题逐条核对生成；新增/换数据时若对不上，_wb_key() 会直接
+# 报错而不是静默写错。
+# ---------------------------------------------------------------------------
+LEGACY_TO_WB = {
+    "B01": "WB-A01",   # 反向传播
+    "F01": "WB-A02",   # LSTM
+    "B02": "WB-B01",   # LeNet-5
+    "F02": "WB-A03",   # 深度信念网络
+    "B03": "WB-B02",   # AlexNet
+    "F03": "WB-C01",   # word2vec
+    "B04": "WB-E01",   # GAN
+    "F04": "WB-C02",   # Seq2Seq
+    "B05": "WB-D01",   # DQN
+    "F05": "WB-A05",   # Adam
+    "F06": "WB-C03",   # 注意力机制
+    "F07": "WB-A06",   # BatchNorm
+    "B06": "WB-D02",   # AlphaGo
+    "B07": "WB-A08",   # XGBoost
+    "B08": "WB-B05",   # ResNet
+    "B09": "WB-A09",   # Transformer
+    "F08": "WB-D03",   # PPO
+    "F09": "WB-D04",   # AlphaZero
+    "B10": "WB-A10",   # BERT
+    "B11": "WB-A12",   # GPT-3
+    "F10": "WB-C06",   # T5
+    "F12": "WB-E03",   # DDPM
+    "F13": "WB-A13",   # 缩放定律（现名 Scaling Laws）
+    "B12": "WB-F01",   # AlphaFold2
+    "F11": "WB-B13",   # ViT
+    "F14": "WB-B14",   # CLIP
+    "F15": "WB-C09",   # Codex
+    "B13": "WB-E05",   # LDM / Stable Diffusion（现名 潜在扩散 LDM）
+    "B14": "WB-A22",   # InstructGPT
+    "F16": "WB-A19",   # Chinchilla
+    "F17": "WB-D08",   # 思维链（现名 思维链 CoT）
+    "F18": "WB-A20",   # LoRA
+    "B15": "WB-A26",   # GPT-4
+    "B16": "WB-A23",   # LLaMA（当前重复条目两条中取 2023 那条）
+    "F19": "WB-C11",   # DPO
+    "F20": "WB-B20",   # SAM
+    "B17": "WB-F16",   # AlphaFold 3（现名 AlphaFold3）
+    "F21": "WB-A35",   # Mamba（当前重复条目两条中取 2024 CMU 那条）
+    "F22": "WB-A40",   # DeepSeek-V3
+    "B18": "WB-A47",   # DeepSeek-R1
+    "F23": "WB-D15",   # AlphaProof
+    "B19": "WB-F18",   # The AI Scientist
+    "B20": "WB-F19",   # 多智能体科研系统
+    "F24": "WB-A49",   # Kimi K3（现名 Kimi K2）
+}
+
+# 旧扩展表里有、但新数据集没有对应论文的键：保留原文案备查，不参与合并。
+LEGACY_DROPPED = {
+    "F25": "DSec —— 新数据集未收录，无对应论文",
+}
+
+
+def _wb_key(key: str) -> str:
+    """旧键 → 当前 WB-* id。绝不做前缀推导，映射不到直接失败。"""
+    if key.startswith("WB-"):
+        return key
+    if key in LEGACY_TO_WB:
+        return LEGACY_TO_WB[key]
+    raise SystemExit(
+        f"EXTRA 键 {key!r} 没有 WB id 映射：请在 LEGACY_TO_WB 补一条（按标题核对），"
+        f"或移入 LEGACY_DROPPED。不要用前缀推导，那会写到别的论文上。"
+    )
+
+
+EXTRA = {_wb_key(key): value for key, value in EXTRA.items() if key not in LEGACY_DROPPED}
+
 def main():
     source = DATA.read_text(encoding="utf-8")
     match = re.search(PATTERN, source, flags=re.S)
     if not match:
         raise SystemExit(f"Cannot find embedded paper data in {DATA}")
     papers = json.loads(match.group(2))
-    missing = {p["id"] for p in papers} - EXTRA.keys()
-    if missing:
-        raise SystemExit(f"Missing explanations: {sorted(missing)}")
+
+    known = {p["id"] for p in papers}
+    orphan = sorted(set(EXTRA) - known)
+    if orphan:
+        raise SystemExit(f"EXTRA 中有 {len(orphan)} 个键在 papers 里不存在：{orphan}")
+
+    touched = 0
     for p in papers:
+        if p["id"] not in EXTRA:
+            continue
+        touched += 1
         add = EXTRA[p["id"]]
         for key, text in zip(("solve", "method", "impact"), add):
             parts = p[key].split("\n\n")
@@ -166,7 +251,10 @@ def main():
                     p[key] = p[key].rstrip() + "\n\n" + text
     replacement = match.group(1) + json.dumps(papers, ensure_ascii=False, separators=(",", ":")) + match.group(3)
     DATA.write_text(source[:match.start()] + replacement + source[match.end():], encoding="utf-8")
-    print(f"Updated {len(papers)} papers in {DATA}")
+    print(
+        f"{DATA.name}: 扫描 {len(papers)} 篇，扩展 {touched} 篇"
+        f"（EXTRA {len(EXTRA)} 条，跳过 LEGACY_DROPPED {len(LEGACY_DROPPED)} 条）"
+    )
 
 if __name__ == "__main__":
     main()

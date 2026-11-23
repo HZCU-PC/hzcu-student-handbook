@@ -4,4 +4,6 @@ site/
 .DS_Store
 __pycache__/
 .dsh-preview/
+docs/*.bak
+site-test/
 mkdocs_*/
