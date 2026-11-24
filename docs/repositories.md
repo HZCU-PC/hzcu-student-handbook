@@ -27,11 +27,11 @@
           </button>
           <div class="block-body" id="recentBody">
             <ul class="recent-list">
-              <li><a class="recent-item" href="#r-krahets-hello-algo" data-jump>krahets/hello-algo</a></li>
-              <li><a class="recent-item" href="#r-duckdb-duckdb" data-jump>duckdb/duckdb</a></li>
-              <li><a class="recent-item" href="#r-langgenius-dify" data-jump>langgenius/dify</a></li>
-              <li><a class="recent-item" href="#r-ollama-ollama" data-jump>ollama/ollama</a></li>
-              <li><a class="recent-item" href="#r-microsoft-vscode" data-jump>microsoft/vscode</a></li>
+              <li><a class="recent-item" href="#r-k-dense-ai-scientific-agent-skills" data-jump>K-Dense-AI/scientific-agent-skills</a></li>
+              <li><a class="recent-item" href="#r-thu-maic-openmaic" data-jump>THU-MAIC/OpenMAIC</a></li>
+              <li><a class="recent-item" href="#r-ccch1mneyyy-dsh-go" data-jump>ccch1mneyyy/dsh-Go</a></li>
+              <li><a class="recent-item" href="#r-paperclipai-paperclip" data-jump>paperclipai/paperclip</a></li>
+              <li><a class="recent-item" href="#r-vectorize-io-hindsight" data-jump>vectorize-io/hindsight</a></li>
             </ul>
           </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="side-block" id="allBlock">
           <button type="button" class="side-head" id="allToggle" aria-expanded="true" aria-controls="allBody">
             <span class="head-title">全部</span>
-            <span class="reset-count" id="resetCount">86 个仓库</span>
+            <span class="reset-count" id="resetCount">110 个仓库</span>
             <span class="caret">▾</span>
           </button>
           <div class="block-body all-body" id="allBody">
@@ -53,7 +53,7 @@
           </button>
           <ul class="sub-list">
             <li><button type="button" class="sub-item" data-sub="editor">编辑器与命令行<span class="sub-n">2</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="devkit">装机必备工具<span class="sub-n">3</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="devkit">装机必备工具<span class="sub-n">5</span></button></li>
             <li><button type="button" class="sub-item" data-sub="desktop">Windows 更好用<span class="sub-n">4</span></button></li>
           </ul>
         </div>
@@ -80,11 +80,11 @@
             <span class="caret">▾</span>
           </button>
           <ul class="sub-list">
-            <li><button type="button" class="sub-item" data-sub="infer">本地跑模型<span class="sub-n">8</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="agent">AI 助手与 Agent<span class="sub-n">13</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="skills">给 AI 装技能<span class="sub-n">5</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="media">画图、配音与视频<span class="sub-n">10</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="rag">让 AI 读懂你的资料<span class="sub-n">6</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="infer">本地跑模型<span class="sub-n">10</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="agent">AI 助手与 Agent<span class="sub-n">22</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="skills">给 AI 装技能<span class="sub-n">11</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="media">画图、配音与视频<span class="sub-n">11</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="rag">让 AI 读懂你的资料<span class="sub-n">7</span></button></li>
           </ul>
         </div>
 
@@ -111,14 +111,24 @@
           </button>
           <ul class="sub-list">
             <li><button type="button" class="sub-item" data-sub="ops">部署上线<span class="sub-n">1</span></button></li>
-            <li><button type="button" class="sub-item" data-sub="selfhost">自己搭服务<span class="sub-n">4</span></button></li>
+            <li><button type="button" class="sub-item" data-sub="selfhost">自己搭服务<span class="sub-n">5</span></button></li>
             <li><button type="button" class="sub-item" data-sub="interview">面试准备<span class="sub-n">2</span></button></li>
             <li><button type="button" class="sub-item" data-sub="roadmap">继续自学<span class="sub-n">3</span></button></li>
           </ul>
         </div>
           </div>
         </div>
-      </nav>
+              <div class="side-group" data-cat="life">
+          <button type="button" class="cat-toggle" data-cat="life" aria-expanded="true">
+            <span class="cat-num">Ⅵ</span>
+            <span class="cat-name">生活小妙招</span>
+            <span class="caret">▾</span>
+          </button>
+          <ul class="sub-list">
+            <li><button type="button" class="sub-item" data-sub="life">生活与常识<span class="sub-n">2</span></button></li>
+          </ul>
+        </div>
+</nav>
     </aside>
 
     <main class="region region-main" id="repos-main">
@@ -159,7 +169,7 @@
           </ul>
         </section>
         <section class="sub" data-sub="devkit">
-          <h3 class="sub-head">装机必备工具<span class="sub-count">3</span></h3>
+          <h3 class="sub-head">装机必备工具<span class="sub-count">5</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-devtoys-app-devtoys">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/DevToys-app.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/DevToys-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -197,7 +207,31 @@
                 <ul class="repo-topics"><li>ai</li><li>apis</li><li>automation</li><li>cli</li><li>data-flow</li></ul>
               </div>
             </li>
-          </ul>
+                      <li class="repo-item" id="r-liseami-ccbaga">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">L</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/liseami.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/liseami.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/liseami/CCBaga" target="_blank" rel="noopener">liseami/CCBaga</a>
+                  <span class="repo-stars">★ 3.8k</span>
+                </div>
+                <p class="repo-desc">跨平台桌面工具箱（Rust + Tauri）：管理 Claude 身份、隔离浏览器指纹、调系统设置和网络配置。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 388</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>tauri</li><li>rust</li><li>toolkit</li><li>desktop</li><li>privacy</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-nationalsecurityagency-ghidra">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/NationalSecurityAgency.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/NationalSecurityAgency.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/NationalSecurityAgency/ghidra" target="_blank" rel="noopener">NationalSecurityAgency/ghidra</a>
+                  <span class="repo-stars">★ 101.2k</span>
+                </div>
+                <p class="repo-desc">NSA 开源的逆向工程框架：反汇编、反编译、脚本化分析二进制文件，安全研究和恶意样本分析常用。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#b07219"></i>Java</span><span class="meta-item">⑂ 11.5k</span><span class="meta-item">Apache-2.0</span></div>
+                <ul class="repo-topics"><li>reverse-engineering</li><li>disassembler</li><li>security</li><li>binary</li><li>java</li></ul>
+              </div>
+            </li>
+</ul>
         </section>
         <section class="sub" data-sub="desktop">
           <h3 class="sub-head">Windows 更好用<span class="sub-count">4</span></h3>
@@ -439,7 +473,7 @@
 
 
 <section class="sub" data-sub="infer">
-          <h3 class="sub-head">本地跑模型<span class="sub-count">8</span></h3>
+          <h3 class="sub-head">本地跑模型<span class="sub-count">10</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-open-webui-open-webui">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">O</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/open-webui.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/open-webui.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -537,10 +571,34 @@
                 <ul class="repo-topics"><li>compiler</li><li>inference</li><li>mobile</li><li>webgpu</li><li>llm</li></ul>
               </div>
             </li>
+            <li class="repo-item" id="r-flashml-org-freetoken">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/FlashML-org.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/FlashML-org.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/FlashML-org/FreeToken" target="_blank" rel="noopener">FlashML-org/FreeToken</a>
+                  <span class="repo-stars">★ 17.7k</span>
+                </div>
+                <p class="repo-desc">把数据中心级的模型服务搬到桌面：本地跑超大 MoE 模型（DeepSeek、Qwen、GLM），主打速度和显存效率。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 1.8k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://flashml.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>inference</li><li>moe</li><li>local</li><li>deepseek</li><li>qwen</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-deepseek-ai-deepinfer">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/deepseek-ai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/deepseek-ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/deepseek-ai/DeepInfer" target="_blank" rel="noopener">deepseek-ai/DeepInfer</a>
+                  <span class="repo-stars">★ 26.4k</span>
+                </div>
+                <p class="repo-desc">DeepSeek 官方的大模型推理框架，针对自家模型优化，主打大规模部署时的吞吐和显存效率。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 3.3k</span><span class="meta-item">Apache-2.0</span></div>
+                <ul class="repo-topics"><li>inference</li><li>deepseek</li><li>serving</li><li>llm</li><li>performance</li></ul>
+              </div>
+            </li>
 </ul>
         </section>
         <section class="sub" data-sub="agent">
-          <h3 class="sub-head">AI 助手与 Agent<span class="sub-count">13</span></h3>
+          <h3 class="sub-head">AI 助手与 Agent<span class="sub-count">22</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-deepseek-ai-deepseek-harness">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/deepseek-ai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/deepseek-ai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -697,10 +755,118 @@
                 <ul class="repo-topics"><li>coding-agent</li><li>cli</li><li>mcp</li><li>ai</li><li>terminal</li></ul>
               </div>
             </li>
+            <li class="repo-item" id="r-ag-ui-protocol-ag-ui">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">A</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/ag-ui-protocol.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/ag-ui-protocol.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/ag-ui-protocol/ag-ui" target="_blank" rel="noopener">ag-ui-protocol/ag-ui</a>
+                  <span class="repo-stars">★ 21.5k</span>
+                </div>
+                <p class="repo-desc">让 Agent 和前端应用对话的统一协议，一套 SDK 就能把 Agent 接进网页，不用为每个框架单独适配。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 2.2k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://ag-ui.com" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ag-ui-protocol</li><li>agent-frontend</li><li>agent-ui</li><li>ai-agents</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-alibaba-open-code-review">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">A</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/alibaba.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/alibaba.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">alibaba/open-code-review</a>
+                  <span class="repo-stars">★ 55.9k</span>
+                </div>
+                <p class="repo-desc">阿里开源的代码审查工具：固定规则 + LLM Agent 混合，评论精确到行，内置空指针、线程安全、XSS、SQL 注入等检查。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00ADD8"></i>Go</span><span class="meta-item">⑂ 4.6k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://open-codereview.ai" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>code-review</li><li>llm-agent</li><li>static-analysis</li><li>security</li><li>agent</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-chaitin-monkeycode">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/chaitin.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/chaitin.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/chaitin/MonkeyCode" target="_blank" rel="noopener">chaitin/MonkeyCode</a>
+                  <span class="repo-stars">★ 5.4k</span>
+                </div>
+                <p class="repo-desc">长亭开源的企业级 AI 办公与编码工作台，支持 Claude、Codex、Cursor、OpenCode 等模型与 CLI，可私有化部署。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 813</span><span class="meta-item">AGPL-3.0</span><a class="meta-home" href="https://work.baizhi.cloud/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-coding</li><li>ai-agent</li><li>vibe-coding</li><li>enterprise</li><li>codex</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-frigadehq-yogurt">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/FrigadeHQ.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/FrigadeHQ.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/FrigadeHQ/yogurt" target="_blank" rel="noopener">FrigadeHQ/yogurt</a>
+                  <span class="repo-stars">★ 3.1k</span>
+                </div>
+                <p class="repo-desc">私密的 AI 会议记录工具：不用会议机器人，录音转写和总结都在本机跑，是 Granola、Otter 的开源替代。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 272</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://yogurt.so" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>meeting-notes</li><li>local-first</li><li>whisper</li><li>transcription</li><li>privacy</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-storytold-craft-anything">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">S</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/storytold.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/storytold.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/storytold/craft-anything" target="_blank" rel="noopener">storytold/craft-anything</a>
+                  <span class="repo-stars">★ 42.5k</span>
+                </div>
+                <p class="repo-desc">盯住一个网站、应用或游戏，用检查工具研究它怎么工作，再让 AI 照着造一个自己的版本；纯 Rust 写的开源引擎。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#dea584"></i>Rust</span><span class="meta-item">⑂ 8.4k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://getartcraft.com/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>reverse-engineering</li><li>ai-agent</li><li>rust</li><li>code-generation</li><li>desktop</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-milind-soni-openmausbot">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/milind-soni.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/milind-soni.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/milind-soni/OpenMausBot" target="_blank" rel="noopener">milind-soni/OpenMausBot</a>
+                  <span class="repo-stars">★ 27.4k</span>
+                </div>
+                <p class="repo-desc">开源版 Grok Bot：给 Bot 一台虚拟机，让它自己开浏览器、点鼠标、跑命令；Docker 部署，也有 Electron 桌面端。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 3.9k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://www.mausbot.com/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-agents</li><li>computer-use</li><li>self-hosted</li><li>docker</li><li>electron</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-paperclipai-paperclip">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">P</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/paperclipai.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/paperclipai.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener">paperclipai/paperclip</a>
+                  <span class="repo-stars">★ 116.6k</span>
+                </div>
+                <p class="repo-desc">管理“上班的 Agent”的开源工作台：给 Agent 派活、看进度、管多 Agent 协作，把 Claude、Codex、Hermes 等接进一个界面。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 19.4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://paperclip.ing" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>ai-agents</li><li>multi-agent</li><li>orchestration</li><li>claude</li><li>mcp</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-ccch1mneyyy-dsh-go">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/ccch1mneyyy.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/ccch1mneyyy.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/ccch1mneyyy/dsh-Go" target="_blank" rel="noopener">ccch1mneyyy/dsh-Go</a>
+                  <span class="repo-stars">★ 31.2k</span>
+                </div>
+                <p class="repo-desc">把 DeepSeek Harness 装进口袋：手机上直接跑 Agent，也能远程遥控电脑上正在跑的会话。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#00B4AB"></i>Dart</span><span class="meta-item">⑂ 1.5k</span><span class="meta-item">AGPL-3.0</span></div>
+                <ul class="repo-topics"><li>deepseek-harness</li><li>flutter</li><li>android</li><li>coding-agent</li><li>dsh</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-thu-maic-openmaic">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">T</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/THU-MAIC.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/THU-MAIC.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/THU-MAIC/OpenMAIC" target="_blank" rel="noopener">THU-MAIC/OpenMAIC</a>
+                  <span class="repo-stars">★ 44.4k</span>
+                </div>
+                <p class="repo-desc">清华 MAIC 开源的多 Agent 互动课堂：一句话生成一整节课，多个 AI 角色分别负责讲、问、评，能当自习搭子。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 6.8k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>multi-agent</li><li>education</li><li>classroom</li><li>ai-agents</li><li>llm</li></ul>
+              </div>
+            </li>
 </ul>
         </section>
                   <section class="sub" data-sub="skills">
-          <h3 class="sub-head">给 AI 装技能<span class="sub-count">5</span></h3>
+          <h3 class="sub-head">给 AI 装技能<span class="sub-count">11</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-nutlope-hallmark">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">N</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Nutlope.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Nutlope.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -762,10 +928,82 @@
                 <ul class="repo-topics"><li>ai-agent</li><li>mcp</li><li>cli</li><li>web-scraper</li><li>free-api</li></ul>
               </div>
             </li>
-          </ul>
+                      <li class="repo-item" id="r-mvanhorn-last30days-skill">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">M</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/mvanhorn.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/mvanhorn.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener">mvanhorn/last30days-skill</a>
+                  <span class="repo-stars">★ 73.8k</span>
+                </div>
+                <p class="repo-desc">给 Agent 加一个“查最近 30 天”的技能：把 Reddit、X、YouTube、HN 上的讨论抓下来，汇成一份带出处的简报。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 6.5k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>agent-skills</li><li>research</li><li>dsh-plugin</li><li>osint</li><li>automation</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-kajisho5-ffmpeg-skill">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/kajisho5.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/kajisho5.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">kajisho5/ffmpeg-skill</a>
+                  <span class="repo-stars">★ 10.5k</span>
+                </div>
+                <p class="repo-desc">给编程 Agent 装一套 FFmpeg 工具箱：42 个命令，剪切、字幕、改画幅、响度归一、各平台导出，本地跑不用云服务。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 908</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>ffmpeg</li><li>mcp-server</li><li>video-editing</li><li>captions</li><li>agent-skills</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-google-labs-code-stitch-skills">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/google-labs-code.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/google-labs-code.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/google-labs-code/stitch-skills" target="_blank" rel="noopener">google-labs-code/stitch-skills</a>
+                  <span class="repo-stars">★ 12.5k</span>
+                </div>
+                <p class="repo-desc">Google Stitch 配套的 Agent Skills 库：配合 Stitch MCP，让 Agent 直接出 UI 稿，Antigravity、Gemini CLI、Claude Code、Cursor 都能用。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3178c6"></i>TypeScript</span><span class="meta-item">⑂ 1.5k</span><span class="meta-item">Apache-2.0</span><a class="meta-home" href="https://stitch.withgoogle.com/docs/mcp/setup" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agent-skills</li><li>mcp</li><li>stitch</li><li>ui-design</li><li>google</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-donchitos-claude-code-game-studios">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">D</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Donchitos.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Donchitos.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/Donchitos/Claude-Code-Game-Studios" target="_blank" rel="noopener">Donchitos/Claude-Code-Game-Studios</a>
+                  <span class="repo-stars">★ 40.8k</span>
+                </div>
+                <p class="repo-desc">把 Claude Code 变成一间游戏工作室：49 个 AI 角色（策划、美术、程序、QA）+ 75 个工作流技能，按真实团队层级协作。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#89e051"></i>Shell</span><span class="meta-item">⑂ 5.4k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>ai-agents</li><li>claude-code</li><li>game-development</li><li>godot</li><li>unity</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-ayghri-i-have-adhd">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">A</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/ayghri.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/ayghri.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/ayghri/i-have-adhd" target="_blank" rel="noopener">ayghri/i-have-adhd</a>
+                  <span class="repo-stars">★ 62.1k</span>
+                </div>
+                <p class="repo-desc">让 Agent 别再“把答案埋起来”：输出改成先给结论、再给步骤的短句格式，对注意力容易跑掉的人更友好。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 3.6k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>adhd</li><li>claude-code</li><li>skills</li><li>productivity</li><li>developer-tools</li></ul>
+              </div>
+            </li>
+            <li class="repo-item" id="r-k-dense-ai-scientific-agent-skills">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">K</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/K-Dense-AI.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/K-Dense-AI.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank" rel="noopener">K-Dense-AI/scientific-agent-skills</a>
+                  <span class="repo-stars">★ 58.3k</span>
+                </div>
+                <p class="repo-desc">把 Agent 变成“AI 科学家”：177 个已验证的科研技能加 100 多个生物、化学、医学数据库接口，覆盖基因、蛋白和药物发现。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 5.1k</span><span class="meta-item">MIT License</span></div>
+                <ul class="repo-topics"><li>agent-skills</li><li>ai-scientist</li><li>bioinformatics</li><li>drug-discovery</li><li>science</li></ul>
+              </div>
+            </li>
+</ul>
           </section>
 <section class="sub" data-sub="media">
-          <h3 class="sub-head">画图、配音与视频<span class="sub-count">10</span></h3>
+          <h3 class="sub-head">画图、配音与视频<span class="sub-count">11</span></h3>
           <ul class="repo-list">
 <li class="repo-item" id="r-comfy-org-comfyui">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">C</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/Comfy-Org.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/Comfy-Org.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -887,11 +1125,23 @@
                 <ul class="repo-topics"><li>html-to-video</li><li>motion-graphics</li><li>mcp</li><li>ffmpeg</li></ul>
               </div>
             </li>
+            <li class="repo-item" id="r-earthtojake-text-to-cad">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">E</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/earthtojake.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/earthtojake.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/earthtojake/text-to-cad" target="_blank" rel="noopener">earthtojake/text-to-cad</a>
+                  <span class="repo-stars">★ 27.3k</span>
+                </div>
+                <p class="repo-desc">用一句话生成能拿去制造的 CAD 模型：直接输出 STEP/STL，在命令行里改尺寸和结构，适合做实体产品原型。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 2.6k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://www.texttocad.dev" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>text-to-cad</li><li>cad</li><li>3d</li><li>agents</li><li>stl</li></ul>
+              </div>
+            </li>
 </ul>
         </section>
 
         <section class="sub" data-sub="rag">
-          <h3 class="sub-head">让 AI 读懂你的资料<span class="sub-count">6</span></h3>
+          <h3 class="sub-head">让 AI 读懂你的资料<span class="sub-count">7</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-firecrawl-firecrawl">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">F</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/firecrawl.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/firecrawl.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -965,7 +1215,19 @@
                 <ul class="repo-topics"><li>ai-gateway</li><li>anthropic</li><li>azure-openai</li><li>bedrock</li><li>gateway</li></ul>
               </div>
             </li>
-          </ul>
+                      <li class="repo-item" id="r-vectorize-io-hindsight">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">V</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/vectorize-io.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/vectorize-io.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/vectorize-io/hindsight" target="_blank" rel="noopener">vectorize-io/hindsight</a>
+                  <span class="repo-stars">★ 63.0k</span>
+                </div>
+                <p class="repo-desc">给 Agent 的长期记忆层：把对话和操作沉淀下来，下次自动想起该记的事，而且用得越久越准。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#3572A5"></i>Python</span><span class="meta-item">⑂ 7.4k</span><span class="meta-item">MIT License</span><a class="meta-home" href="https://hindsight.vectorize.io/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>agentic-ai</li><li>ai-memory</li><li>memory</li><li>agents</li><li>rag</li></ul>
+              </div>
+            </li>
+</ul>
         </section>
 
       
@@ -1162,7 +1424,7 @@
           </ul>
         </section>
         <section class="sub" data-sub="selfhost">
-          <h3 class="sub-head">自己搭服务<span class="sub-count">4</span></h3>
+          <h3 class="sub-head">自己搭服务<span class="sub-count">5</span></h3>
           <ul class="repo-list">
             <li class="repo-item" id="r-immich-app-immich">
               <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">I</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/immich-app.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/immich-app.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
@@ -1212,7 +1474,19 @@
                 <ul class="repo-topics"><li>csharp</li><li>dotnet</li><li>hacktoberfest</li><li>jellyfin</li></ul>
               </div>
             </li>
-          </ul>
+                      <li class="repo-item" id="r-we-promise-sure">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">W</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/we-promise.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/we-promise.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/we-promise/sure" target="_blank" rel="noopener">we-promise/sure</a>
+                  <span class="repo-stars">★ 17.7k</span>
+                </div>
+                <p class="repo-desc">开源自托管的记账应用，替代 Mint 那类订阅服务：账户、交易、预算、报表都放在自己服务器上。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#701516"></i>Ruby</span><span class="meta-item">⑂ 1.5k</span><span class="meta-item">AGPL-3.0</span><a class="meta-home" href="https://sure.am" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>personal-finance</li><li>self-hosted</li><li>budgeting</li><li>rails</li><li>finance</li></ul>
+              </div>
+            </li>
+</ul>
         </section>
         <section class="sub" data-sub="interview">
           <h3 class="sub-head">面试准备<span class="sub-count">2</span></h3>
@@ -1282,12 +1556,46 @@
                 <ul class="repo-topics"><li>course</li><li>data-engineering</li><li>dbt</li><li>docker</li><li>free</li></ul>
               </div>
             </li>
-          </ul>
+                      </ul>
         </section>
 
       
       </section>
 
-    </main>
+          <section class="cat" data-cat="life">
+        <h2 class="cat-head"><span class="cat-num">Ⅵ</span>生活小妙招</h2>
+        <p class="cat-note">代码之外的经验：把日子过得省一点、稳一点。</p>
+
+        <section class="sub" data-sub="life">
+          <h3 class="sub-head">生活与常识<span class="sub-count">2</span></h3>
+          <ul class="repo-list">
+<li class="repo-item" id="r-eternity4719-howtolivebetter">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">E</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/eternity4719.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/eternity4719.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/eternity4719/HowToLiveBetter" target="_blank" rel="noopener">eternity4719/HowToLiveBetter</a>
+                  <span class="repo-stars">★ 77.4k</span>
+                </div>
+                <p class="repo-desc">一份“高性价比人生指南”：长寿防病、理财、法律、社保、婚育、创业这些事，每条都标成本、收益、证据等级和原始出处。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#e34c26"></i>HTML</span><span class="meta-item">⑂ 6.8k</span><span class="meta-item">CC-BY-4.0</span><a class="meta-home" href="https://eternity4719.github.io/HowToLiveBetter/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>life-guide</li><li>health</li><li>personal-finance</li><li>evidence-based</li><li>chinese</li></ul>
+              </div>
+            </li>
+                      <li class="repo-item" id="r-geekan-howtolivelonger">
+              <span class="repo-avatar" aria-hidden="true"><span class="avatar-letter">G</span><img class="avatar-img" src="https://wsrv.nl/?url=github.com/geekan.png&w=80&h=80&fit=cover&output=png&maxage=7d" data-fallback="https://github.com/geekan.png?size=80" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.dataset.fallback;}"></span>
+              <div class="repo-body">
+                <div class="repo-line">
+                  <a class="repo-name" href="https://github.com/geekan/HowToLiveLonger" target="_blank" rel="noopener">geekan/HowToLiveLonger</a>
+                  <span class="repo-stars">★ 36.2k</span>
+                </div>
+                <p class="repo-desc">程序员的健康长寿指南：睡眠、饮食、运动、体检这些事按证据强弱分级，有 8 种语言版本。</p>
+                <div class="repo-meta"><span class="meta-item"><i class="lang-dot" style="--c:#e34c26"></i>HTML</span><span class="meta-item">⑂ 2.4k</span><span class="meta-item">Unlicense</span><a class="meta-home" href="https://geekan.github.io/HowToLiveLonger/" target="_blank" rel="noopener">官网</a></div>
+                <ul class="repo-topics"><li>longevity</li><li>health</li><li>programmer</li><li>evidence-based</li><li>chinese</li></ul>
+              </div>
+            </li>
+</ul>
+        </section>
+      </section>
+</main>
   </div>
 </div>
